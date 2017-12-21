@@ -2,6 +2,7 @@ const chai = require('chai');
 // eslint-disable-next-line no-unused-vars
 const should = chai.should();
 const chaiHttp = require('chai-http');
+// eslint-disable-next-line no-unused-vars
 const server = require('../server');
 
 // const environment = process.env.NODE_ENV || 'test';
