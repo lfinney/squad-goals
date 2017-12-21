@@ -1,0 +1,12 @@
+{
+    "extends": "airbnb",
+    "rules": {
+      "import/no-unresolved": 0,
+      "import/extensions": 0,
+      "prefer-template": 0,
+      "no-path-concat": 0,
+      "react/prefer-stateless-function": 0,
+      "react/jsx-filename-extension": 0,
+      "no-undef": 0
+  }
+}
