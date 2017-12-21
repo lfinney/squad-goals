@@ -5,7 +5,7 @@ import './tempPolyfills';
 const localStorageMock = {
   getItem: jest.fn(() => (JSON.stringify({}))),
   setItem: jest.fn(),
-  clear: jest.fn()
+  clear: jest.fn(),
 };
 global.localStorage = localStorageMock;
 
