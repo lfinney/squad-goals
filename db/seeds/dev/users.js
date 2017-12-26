@@ -16,6 +16,10 @@ const createComments = (knex, comment) => {
   return knex('comments').insert(comment);
 };
 
+const createChallenges = (knex, challenge) => {
+  return knex('challenges').insert(challenge);
+};
+
 exports.seed = (knex, Promise) => {
   return knex('challenges').del()
     .then(() => knex('comments').del())
@@ -44,5 +48,13 @@ exports.seed = (knex, Promise) => {
         commentPromises.push(createComments(knex, comment));
       });
       return Promise.all(commentPromises);
+    })
+    .then(() => {
+      const challengesPromises = [];
+
+      challengesData.forEach((challenge) => {
+        challengesPromises.push(createChallenges(knex, challenge));
+      });
+      return Promise.all(challengesPromises);
     });
 };
