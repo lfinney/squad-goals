@@ -10,7 +10,7 @@
   "scripts": {
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "serve": "nodemon server.js",
+    "server": "nodemon server.js",
     "build-js": "react-scripts build",
     "build": "npm-run-all build-css build-js",
     "test": "npm-run-all testserver testreactci",
