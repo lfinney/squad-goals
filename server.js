@@ -24,7 +24,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/api/v1/users', (request, response) => {
-  database('').select()
+  database('users').select()
     .then(items => response.status(200).json(items))
     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
@@ -32,7 +32,7 @@ app.get('/api/v1/users', (request, response) => {
 app.get('/api/v1/users/:id', (request, response) => {
   const { id } = request.params;
 
-  database('').where('id', id).select()
+  database('users').where('id', id).select()
     .then((user) => {
       user.length ? response.status(200).json(user)
         :
@@ -41,28 +41,28 @@ app.get('/api/v1/users/:id', (request, response) => {
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
-app.get('/api/v1/squads', (request, response) => {
-  database('').select()
-    .then(items => response.status(200).json(items))
-    .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
-});
-
-app.get('/api/v1/users/:id/squads', (request, response) => {
-  const { id } = request.params;
-
-  database('').where('id', id).select()
-    .then((user) => {
-      user.length ? response.status(200).json(user)
-        :
-        response.status(404).json({ error: `Could not find user with id: ${id}` });
-    })
-    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-});
+// app.get('/api/v1/squads', (request, response) => {
+//   database('').select()
+//     .then(items => response.status(200).json(items))
+//     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
+// });
+//
+// app.get('/api/v1/users/:id/squads', (request, response) => {
+//   const { id } = request.params;
+//
+//   database('').where('id', id).select()
+//     .then((user) => {
+//       user.length ? response.status(200).json(user)
+//         :
+//         response.status(404).json({ error: `Could not find user with id: ${id}` });
+//     })
+//     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+// });
 
 app.get('/api/v1/users/:id/challenges', (request, response) => {
-  const { userId } = request.params;
+  const userId = request.params.id;
 
-  database('').where('userId', userId).select()
+  database('challenges').where('creator_id', userId).select()
     .then((user) => {
       user.length ? response.status(200).json(user)
         :
