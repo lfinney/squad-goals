@@ -12,6 +12,10 @@ const createConversations = (knex, conversation) => {
   return knex('conversations').insert(conversation);
 };
 
+const createComments = (knex, comment) => {
+  return knex('comments').insert(comment);
+};
+
 exports.seed = (knex, Promise) => {
   return knex('challenges').del()
     .then(() => knex('comments').del())
@@ -32,5 +36,13 @@ exports.seed = (knex, Promise) => {
         conversationsPromises.push(createConversations(knex, conversation));
       });
       return Promise.all(conversationsPromises);
+    })
+    .then(() => {
+      const commentPromises = [];
+
+      commentsData.forEach((comment) => {
+        commentPromises.push(createComments(knex, comment));
+      });
+      return Promise.all(commentPromises);
     });
 };
