@@ -89,16 +89,24 @@ app.get('/api/v1/challenges', (request, response) => {
     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
 
-app.get('/api/v1/squads/:id', (request, response) => {
-  const { id } = request.params;
-});
+// app.get('/api/v1/squads/:id', (request, response) => {
+//   const { id } = request.params;
+// });
+//
+// app.get('/api/v1/squads/:id/conversations/:id/comments', (request, response) => {
+//   const { id } = request.params;
+// });
 
-app.get('/api/v1/squads/:id/conversations/:id/comments', (request, response) => {
-  const { id } = request.params;
-});
+app.get('/api/v1/challenges/:id/conversations/:convoId/comments', (request, response) => {
+  const { id, convoId } = request.params;
 
-app.get('/api/v1/challenges/:id/conversations/:id/comments', (request, response) => {
-  const { id } = request.params;
+  database('comments').where('conversation_id', convoId).select()
+    .then((conversation) => {
+      conversation.length ? response.status(200).json(conversation)
+        :
+        response.status(404).json({ error: `Could not find conversation with id: ${convoId}` });
+    })
+    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
 app.post('/api/v1/user/', (request, response) => {
