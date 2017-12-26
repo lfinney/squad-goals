@@ -3,7 +3,6 @@ const commentsData = require('../../../data/comments_data');
 const conversationsData = require('../../../data/conversations_data');
 const usersData = require('../../../data/users_data');
 
-
 const createUser = (knex, user) => {
   return knex('users').insert(user);
 };
