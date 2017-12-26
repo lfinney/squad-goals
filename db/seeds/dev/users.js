@@ -5,12 +5,11 @@ const usersData = require('../../../data/users_data');
 
 
 const createUser = (knex, user) => {
-  return knex('users').insert({
-    id: user.id,
-    user_name: user.user_name,
-    firebase_id: user.firebase_id,
-    points: user.points,
-  });
+  return knex('users').insert(user);
+};
+
+const createConversations = (knex, conversation) => {
+  return knex('conversations').insert(conversation);
 };
 
 exports.seed = (knex, Promise) => {
@@ -26,7 +25,12 @@ exports.seed = (knex, Promise) => {
       });
       return Promise.all(userPromises);
     })
-    // .then(() => {
-    //   return knex('conversations').insert('conversationsData');
-    // });
+    .then(() => {
+      const conversationsPromises = [];
+
+      conversationsData.forEach((conversation) => {
+        conversationsPromises.push(createConversations(knex, conversation));
+      });
+      return Promise.all(conversationsPromises);
+    });
 };
