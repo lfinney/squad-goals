@@ -73,10 +73,20 @@ app.get('/api/v1/users/:id/challenges', (request, response) => {
 
 app.get('/api/v1/challenges/:id', (request, response) => {
   const { id } = request.params;
+
+  database('challenges').where('id', id).select()
+    .then((challenge) => {
+      challenge.length ? response.status(200).json(challenge)
+        :
+        response.status(404).json({ error: `Could not find challenge with id: ${id}` });
+    })
+    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
 app.get('/api/v1/challenges', (request, response) => {
-
+  database('challenges').select()
+    .then(items => response.status(200).json(items))
+    .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
 
 app.get('/api/v1/squads/:id', (request, response) => {
