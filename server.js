@@ -110,7 +110,19 @@ app.get('/api/v1/challenges/:id/conversations/:convoId/comments', (request, resp
 });
 
 app.post('/api/v1/user/', (request, response) => {
+  const newUser = request.body;
 
+  for (const requiredParameter of ['user_name', 'firebase_id', 'points']) {
+    if (!newUser[requiredParameter]) {
+      return response.status(422).json({
+        error: `you are missing the ${requiredParameter} property`,
+      });
+    }
+  }
+
+  database('users').insert(newUser, '*')
+    .then(insertedUser => response.status(201).json(insertedUser))
+    .catch(error => response.status(500).json({ error }));
 });
 
 app.post('/api/v1/squads', (request, response) => {
