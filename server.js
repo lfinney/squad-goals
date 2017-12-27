@@ -22,7 +22,6 @@ app.set('port', process.env.PORT || 3000);
 app.locals.title = 'Squad Goals';
 app.use(express.static(__dirname + '/public'));
 
-
 app.get('/api/v1/users', (request, response) => {
   database('users').select()
     .then(items => response.status(200).json(items))
@@ -125,12 +124,35 @@ app.post('/api/v1/user/', (request, response) => {
     .catch(error => response.status(500).json({ error }));
 });
 
-app.post('/api/v1/squads', (request, response) => {
+// app.post('/api/v1/squads', (request, response) => {
+//
+// });
 
-});
+app.post('/api/v1/users/:id/challenges', (request, response) => {
+  let newChallenge = request.body;
+  const { id } = request.params;
 
-app.post('/api/v1/challenges', (request, response) => {
+  for (const requiredParameter of ['title', 'description', 'challenge_time', 'challenge_points']) {
+    if (!newChallenge[requiredParameter]) {
+      return response.status(422).json({
+        error: `you are missing the ${requiredParameter} property`,
+      });
+    }
+  }
 
+  const convoTitle = { title: `${newChallenge.title} Conversation` };
+
+  database('conversations').insert(convoTitle, 'id')
+    .then((convoId) => {
+      newChallenge = Object.assign({}, newChallenge, {
+        creator_id: id,
+        conversation_id: convoId[0],
+      });
+      database('challenges').insert(newChallenge, '*')
+        .then(insertedChallenge => response.status(201).json(insertedChallenge))
+        .catch(error => response.status(500).json({ error }));
+    })
+    .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
 });
 
 app.post('/api/v1/squads/:id/conversations/:id/comments', (request, response) => {
