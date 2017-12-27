@@ -202,6 +202,33 @@ app.patch('/api/v1/users/:id', (request, response) => {
     .catch(error => response.status(500).json({ error }));
 });
 
+
+app.patch('/api/v1/squads/:id', (request, response) => {
+  const { id } = request.params;
+});
+
+app.patch('/api/v1/challenges/:id', (request, response) => {
+  const { id } = request.params;
+  const updateChallenge = request.body;
+
+  if (!(updateChallenge.title || updateChallenge.description ||
+    updateChallenge.challenge_time || updateChallenge.challenge_points)) {
+    return response.status(422).json({
+      error: 'You must send only an object literal with a key of title, body, challenge_time, or challenge_points',
+    });
+  }
+
+  database('challenges').where('id', id)
+    .update(updateChallenge, '*')
+    .then((update) => {
+      return update ?
+        response.sendStatus(204)
+        :
+        response.sendStatus(404);
+    })
+    .catch(error => response.status(500).json({ error }));
+});
+
 app.patch('/api/v1/comments/:id', (request, response) => {
   const { id } = request.params;
   const updateComment = request.body;
@@ -215,20 +242,12 @@ app.patch('/api/v1/comments/:id', (request, response) => {
   database('comments').where('id', id)
     .update(updateComment, '*')
     .then((update) => {
-      update ?
+      return update ?
         response.sendStatus(204)
         :
         response.sendStatus(404);
     })
     .catch(error => response.status(500).json({ error }));
-});
-
-app.patch('/api/v1/squads/:id', (request, response) => {
-  const { id } = request.params;
-});
-
-app.patch('/api/v1/challenges/:id', (request, response) => {
-  const { id } = request.params;
 });
 
 app.delete('/api/v1/users/:id', (request, response) => {
