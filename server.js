@@ -175,20 +175,14 @@ app.post('/api/v1/challenges/:id/conversations', (request, response) => {
 
   database('conversations').insert(convoTitle, 'id')
     .then((convoId) => {
-      console.log(convoId);
       newComment = Object.assign({}, newComment, {
         conversation_id: convoId[0],
       });
-      console.log(newComment);
       database('comments').insert(newComment, '*')
         .then(insertedComment => response.status(201).json(insertedComment))
         .catch(error => response.status(500).json({ error }));
     })
     .catch(error => response.status(500).json({ error: `Error creating new comment: ${error}` }));
-
-  // database('comments').insert(newComment, '*')
-  //   .then(insertedComment => response.status(201).json(insertedComment))
-  //   .catch(error => response.status(500).json({ error }));
 });
 
 app.patch('/api/v1/user/:id', (request, response) => {
