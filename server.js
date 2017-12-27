@@ -197,8 +197,17 @@ app.patch('/api/v1/challenges/:id', (request, response) => {
   const { id } = request.params;
 });
 
-app.delete('/api/v1/user/:id', (request, response) => {
+app.delete('/api/v1/users/:id', (request, response) => {
   const { id } = request.params;
+
+  database('users').where('id', id).del()
+    .then((result) => {
+      result ?
+        response.sendStatus(204)
+        :
+        response.status(422).json({ error: `No user with id ${id}` });
+    })
+    .catch(error => response.status(422).json(error));
 });
 
 app.delete('/api/v1/squads/:id', (request, response) => {
