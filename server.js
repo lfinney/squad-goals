@@ -207,10 +207,15 @@ app.delete('/api/v1/squads/:id', (request, response) => {
 
 app.delete('/api/v1/challenges/:id', (request, response) => {
   const { id } = request.params;
-});
 
-app.delete('/api/v1/squads/:id/conversations/:id/comments', (request, response) => {
-  const { id } = request.params;
+  database('challenges').where('id', id).del()
+    .then((result) => {
+      result ?
+        response.sendStatus(204)
+        :
+        response.status(422).json({ error: `No challenge with id ${id}` });
+    })
+    .catch(error => response.status(422).json(error));
 });
 
 app.delete('/api/v1/comments/:id', (request, response) => {
