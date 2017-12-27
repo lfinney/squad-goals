@@ -1,5 +1,6 @@
 module.exports = [
   {
+    id: 1,
     title: 'chess tourney',
     description: 'to rule them all',
     challenge_time: '2018-01-12 15:00:00',
@@ -8,6 +9,7 @@ module.exports = [
     conversation_id: 1,
   },
   {
+    id: 2,
     title: 'darts tourney',
     description: 'to skewer them all',
     challenge_time: '2018-01-13 16:00:00',
@@ -16,6 +18,7 @@ module.exports = [
     conversation_id: 2,
   },
   {
+    id: 3,
     title: 'pool tourney',
     description: 'to pool them all',
     challenge_time: '2018-01-14 17:00:00',
@@ -24,6 +27,7 @@ module.exports = [
     conversation_id: 3,
   },
   {
+    id: 4,
     title: 'drinking tourney',
     description: 'to drink them all',
     challenge_time: '2018-01-14 18:00:00',
