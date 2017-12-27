@@ -155,12 +155,34 @@ app.post('/api/v1/users/:id/challenges', (request, response) => {
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
 });
 
-app.post('/api/v1/squads/:id/conversations/:id/comments', (request, response) => {
-  const { id } = request.params;
-});
+// app.post('/api/v1/squads/:id/conversations/:id/comments', (request, response) => {
+//   const { id } = request.params;
+// });
 
-app.post('/api/v1/challenges/:id/conversations/:id/comments', (request, response) => {
+app.post('/api/v1/challenges/:id/conversations', (request, response) => {
+  let newComment = request.body;
   const { id } = request.params;
+
+  for (const requiredParameter of ['body']) {
+    if (!newComment[requiredParameter]) {
+      return response.status(422).json({
+        error: `you are missing the ${requiredParameter} property`,
+      });
+    }
+  }
+
+  const convoTitle = { title: `${newComment.title} Conversation` };
+
+  database('conversations').insert(convoTitle, 'id')
+    .then((convoId) => {
+      newComment = Object.assign({}, newComment, {
+        conversation_id: convoId[0],
+      });
+      database('comments').insert(newComment, '*')
+        .then(insertedComment => response.status(201).json(insertedComment))
+        .catch(error => response.status(500).json({ error }));
+    })
+    .catch(error => response.status(500).json({ error: `Error creating new comment: ${error}` }));
 });
 
 app.patch('/api/v1/user/:id', (request, response) => {
@@ -191,8 +213,22 @@ app.delete('/api/v1/squads/:id/conversations/:id/comments', (request, response) 
   const { id } = request.params;
 });
 
-app.delete('/api/v1/challenges/:id/conversations/:id/comments', (request, response) => {
+
+app.delete('/api/v1/challenges/:id/conversations', (request, response) => {
   const { id } = request.params;
+  console.log('delete id', id);
+
+  database('conversations').where('id', id).del()
+    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+
+  database('comments').where('conversation_id', id).del()
+    .then((comment) => {
+      comment ?
+        response.sendStatus(204)
+        :
+        response.status(422).json({ error: `Nothing to delete with id ${id}` });
+    })
+    .catch(error => response.status(500).json({ error }));
 });
 
 
