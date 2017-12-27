@@ -181,8 +181,46 @@ app.post('/api/v1/challenges/:id/conversations', (request, response) => {
     .catch(error => response.status(500).json({ error: `Error creating new comment: ${error}` }));
 });
 
-app.patch('/api/v1/user/:id', (request, response) => {
+app.patch('/api/v1/users/:id', (request, response) => {
   const { id } = request.params;
+  const updateUsername = request.body;
+
+  if (!updateUsername.user_name) {
+    return response.status(422).json({
+      error: 'You must send only an object literal with the key user_name',
+    });
+  }
+
+  database('users').where('id', id)
+    .update(updateUsername, '*')
+    .then((update) => {
+      update ?
+        response.sendStatus(204)
+        :
+        response.sendStatus(404);
+    })
+    .catch(error => response.status(500).json({ error }));
+});
+
+app.patch('/api/v1/comments/:id', (request, response) => {
+  const { id } = request.params;
+  const updateComment = request.body;
+
+  if (!updateComment.body) {
+    return response.status(422).json({
+      error: 'You must send only an object literal with the key body',
+    });
+  }
+
+  database('comments').where('id', id)
+    .update(updateComment, '*')
+    .then((update) => {
+      update ?
+        response.sendStatus(204)
+        :
+        response.sendStatus(404);
+    })
+    .catch(error => response.status(500).json({ error }));
 });
 
 app.patch('/api/v1/squads/:id', (request, response) => {
