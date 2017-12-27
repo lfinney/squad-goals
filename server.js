@@ -213,23 +213,36 @@ app.delete('/api/v1/squads/:id/conversations/:id/comments', (request, response) 
   const { id } = request.params;
 });
 
-
-app.delete('/api/v1/challenges/:id/conversations', (request, response) => {
+app.delete('/api/v1/comments/:id', (request, response) => {
   const { id } = request.params;
-  console.log('delete id', id);
 
-  database('conversations').where('id', id).del()
-    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-
-  database('comments').where('conversation_id', id).del()
-    .then((comment) => {
-      comment ?
+  database('comments').where('id', id).del()
+    .then((result) => {
+      result ?
         response.sendStatus(204)
         :
-        response.status(422).json({ error: `Nothing to delete with id ${id}` });
+        response.status(422).json({ error: `No comment with id ${id}` });
     })
-    .catch(error => response.status(500).json({ error }));
+    .catch(error => response.status(422).json(error));
 });
+
+// app.delete('/api/v1/challenges/:id/conversations', (request, response) => {
+//   const { id } = request.params;
+//   console.log('delete id', id);
+//
+//   database('challenges').where('id', id).select('conversation_id')
+//     .then(res => console.log(res[0].conversation_id))
+//     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+//
+//   database('comments').where('conversation_id', id).del()
+//     .then((comment) => {
+//       comment ?
+//         response.sendStatus(204)
+//         :
+//         response.status(422).json({ error: `Nothing to delete with id ${id}` });
+//     })
+//     .catch(error => response.status(500).json({ error }));
+// });
 
 
 app.listen(app.get('port'), () => {
