@@ -155,10 +155,6 @@ app.post('/api/v1/users/:id/challenges', (request, response) => {
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
 });
 
-// app.post('/api/v1/squads/:id/conversations/:id/comments', (request, response) => {
-//   const { id } = request.params;
-// });
-
 app.post('/api/v1/challenges/:id/conversations', (request, response) => {
   let newComment = request.body;
   const { id } = request.params;
@@ -185,9 +181,27 @@ app.post('/api/v1/challenges/:id/conversations', (request, response) => {
     .catch(error => response.status(500).json({ error: `Error creating new comment: ${error}` }));
 });
 
-app.patch('/api/v1/user/:id', (request, response) => {
+app.patch('/api/v1/users/:id', (request, response) => {
   const { id } = request.params;
+  const updateUsername = request.body;
+
+  if (!updateUsername.user_name) {
+    return response.status(422).json({
+      error: 'You must send only an object literal with the key user_name',
+    });
+  }
+
+  database('users').where('id', id)
+    .update(updateUsername, '*')
+    .then((update) => {
+      update ?
+        response.sendStatus(204)
+        :
+        response.sendStatus(404);
+    })
+    .catch(error => response.status(500).json({ error }));
 });
+
 
 app.patch('/api/v1/squads/:id', (request, response) => {
   const { id } = request.params;
@@ -195,10 +209,58 @@ app.patch('/api/v1/squads/:id', (request, response) => {
 
 app.patch('/api/v1/challenges/:id', (request, response) => {
   const { id } = request.params;
+  const updateChallenge = request.body;
+
+  if (!(updateChallenge.title || updateChallenge.description ||
+    updateChallenge.challenge_time || updateChallenge.challenge_points)) {
+    return response.status(422).json({
+      error: 'You must send only an object literal with a key of title, body, challenge_time, or challenge_points',
+    });
+  }
+
+  database('challenges').where('id', id)
+    .update(updateChallenge, '*')
+    .then((update) => {
+      return update ?
+        response.sendStatus(204)
+        :
+        response.sendStatus(404);
+    })
+    .catch(error => response.status(500).json({ error }));
 });
 
-app.delete('/api/v1/user/:id', (request, response) => {
+app.patch('/api/v1/comments/:id', (request, response) => {
   const { id } = request.params;
+  const updateComment = request.body;
+
+  if (!updateComment.body) {
+    return response.status(422).json({
+      error: 'You must send only an object literal with the key body',
+    });
+  }
+
+  database('comments').where('id', id)
+    .update(updateComment, '*')
+    .then((update) => {
+      return update ?
+        response.sendStatus(204)
+        :
+        response.sendStatus(404);
+    })
+    .catch(error => response.status(500).json({ error }));
+});
+
+app.delete('/api/v1/users/:id', (request, response) => {
+  const { id } = request.params;
+
+  database('users').where('id', id).del()
+    .then((result) => {
+      result ?
+        response.sendStatus(204)
+        :
+        response.status(422).json({ error: `No user with id ${id}` });
+    })
+    .catch(error => response.status(422).json(error));
 });
 
 app.delete('/api/v1/squads/:id', (request, response) => {
@@ -207,29 +269,47 @@ app.delete('/api/v1/squads/:id', (request, response) => {
 
 app.delete('/api/v1/challenges/:id', (request, response) => {
   const { id } = request.params;
-});
 
-app.delete('/api/v1/squads/:id/conversations/:id/comments', (request, response) => {
-  const { id } = request.params;
-});
-
-
-app.delete('/api/v1/challenges/:id/conversations', (request, response) => {
-  const { id } = request.params;
-  console.log('delete id', id);
-
-  database('conversations').where('id', id).del()
-    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-
-  database('comments').where('conversation_id', id).del()
-    .then((comment) => {
-      comment ?
+  database('challenges').where('id', id).del()
+    .then((result) => {
+      result ?
         response.sendStatus(204)
         :
-        response.status(422).json({ error: `Nothing to delete with id ${id}` });
+        response.status(422).json({ error: `No challenge with id ${id}` });
     })
-    .catch(error => response.status(500).json({ error }));
+    .catch(error => response.status(422).json(error));
 });
+
+app.delete('/api/v1/comments/:id', (request, response) => {
+  const { id } = request.params;
+
+  database('comments').where('id', id).del()
+    .then((result) => {
+      result ?
+        response.sendStatus(204)
+        :
+        response.status(422).json({ error: `No comment with id ${id}` });
+    })
+    .catch(error => response.status(422).json(error));
+});
+
+// app.delete('/api/v1/challenges/:id/conversations', (request, response) => {
+//   const { id } = request.params;
+//   console.log('delete id', id);
+//
+//   database('challenges').where('id', id).select('conversation_id')
+//     .then(res => console.log(res[0].conversation_id))
+//     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+//
+//   database('comments').where('conversation_id', id).del()
+//     .then((comment) => {
+//       comment ?
+//         response.sendStatus(204)
+//         :
+//         response.status(422).json({ error: `Nothing to delete with id ${id}` });
+//     })
+//     .catch(error => response.status(500).json({ error }));
+// });
 
 
 app.listen(app.get('port'), () => {
