@@ -155,10 +155,6 @@ app.post('/api/v1/users/:id/challenges', (request, response) => {
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
 });
 
-// app.post('/api/v1/squads/:id/conversations/:id/comments', (request, response) => {
-//   const { id } = request.params;
-// });
-
 app.post('/api/v1/challenges/:id/conversations', (request, response) => {
   let newComment = request.body;
   const { id } = request.params;
