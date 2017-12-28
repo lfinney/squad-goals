@@ -12,6 +12,11 @@
       "no-unused-vars": 0,
       "consistent-return": 0,
       "arrow-body-style": 0,
-      "no-restricted-syntax": 0
+      "no-restricted-syntax": 0,
+      "jsx-a11y/anchor-is-valid": [ 0, {
+      "components": [ "Link" ],
+      "specialLink": [ "hrefLeft", "hrefRight" ],
+      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    }]
   }
 }
