@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import './Welcome.css';
 
-class Welcome extends React.Component {
+class Welcome extends Component {
   render() {
     return (
-      <div className="Welcome">
-        HELLO!
+      <div className="welcome">
+        <h1>Squad Goals</h1>
+        <input type="submit" value="Log In" />
+        <input type="submit" value="Sign Up" />
       </div>
     );
   }
