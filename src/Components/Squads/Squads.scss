@@ -1,0 +1,13 @@
+.welcome {
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.welcome input {
+  background-color: teal;
+  border-radius: 5px;
+  margin: 0 auto 5px auto;
+  width: 25%;
+}
