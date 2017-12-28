@@ -6,6 +6,7 @@ import Dashboard from '../Dashboard/Dashboard';
 import Squads from '../Squads/Squads';
 import Challenges from '../Challenges/Challenges';
 import CreateChallenges from '../CreateChallenges/CreateChallenges';
+import CreateSquads from '../CreateSquads/CreateSquads';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <Route path="/Squads" component={Squads} />
         <Route path="/Challenges" component={Challenges} />
         <Route path="/CreateChallenges" component={CreateChallenges} />
+        <Route path="/CreateSquads" component={CreateSquads} />
       </div>
     );
   }
