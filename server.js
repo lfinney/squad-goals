@@ -40,11 +40,11 @@ app.get('/api/v1/users/:id', (request, response) => {
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
-// app.get('/api/v1/squads', (request, response) => {
-//   database('').select()
-//     .then(items => response.status(200).json(items))
-//     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
-// });
+app.get('/api/v1/squads', (request, response) => {
+  database('').select()
+    .then(items => response.status(200).json(items))
+    .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
+});
 //
 // app.get('/api/v1/users/:id/squads', (request, response) => {
 //   const { id } = request.params;
