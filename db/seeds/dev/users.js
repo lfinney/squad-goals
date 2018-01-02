@@ -2,6 +2,9 @@ const challengesData = require('../../../data/challenges_data');
 const commentsData = require('../../../data/comments_data');
 const conversationsData = require('../../../data/conversations_data');
 const usersData = require('../../../data/users_data');
+const squadData = require('../../../data/squad_data');
+const userSquadData = require('../../../data/users_squads_data');
+const usersChallengesData = require('../../../data/users_challenges_data');
 
 const createUser = (knex, user) => {
   return knex('users').insert(user);
@@ -19,8 +22,23 @@ const createChallenges = (knex, challenge) => {
   return knex('challenges').insert(challenge);
 };
 
+const createSquads = (knex, squad) => {
+  return knex('squads').insert(squad);
+};
+
+const createUserSquad = (knex, userSquad) => {
+  return knex('users_squads').insert(userSquad);
+};
+
+const createUserChallenges = (knex, userChallenge) => {
+  return knex('users_challenges').insert(userChallenge);
+};
+
 exports.seed = (knex, Promise) => {
-  return knex('challenges').del()
+  return knex('users_challenges').del()
+    .then(() => knex('users_squads').del())
+    .then(() => knex('squads').del())
+    .then(() => knex('challenges').del())
     .then(() => knex('comments').del())
     .then(() => knex('conversations').del())
     .then(() => knex('users').del())
@@ -55,5 +73,29 @@ exports.seed = (knex, Promise) => {
         challengesPromises.push(createChallenges(knex, challenge));
       });
       return Promise.all(challengesPromises);
+    })
+    .then(() => {
+      const squadPromises = [];
+
+      squadData.forEach((squad) => {
+        squadPromises.push(createSquads(knex, squad));
+      });
+      return Promise.all(squadPromises);
+    })
+    .then(() => {
+      const userSquadPromises = [];
+
+      userSquadData.forEach((userSquad) => {
+        userSquadPromises.push(createUserSquad(knex, userSquad));
+      });
+      return Promise.all(userSquadPromises);
+    })
+    .then(() => {
+      const userChallengesPromises = [];
+
+      usersChallengesData.forEach((userChallenge) => {
+        userChallengesPromises.push(createUserChallenges(knex, userChallenge));
+      });
+      return Promise.all(userChallengesPromises);
     });
 };
