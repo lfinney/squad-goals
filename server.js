@@ -256,9 +256,28 @@ app.post('/api/v1/user/', (request, response) => {
     .catch(error => response.status(500).json({ error }));
 });
 
-// app.post('/api/v1/squads', (request, response) => {
-//
-// });
+app.post('/api/v1/squads', (request, response) => {
+  let newSquad = request.body;
+
+  if (!newSquad.squad_name) {
+    return response.status(422).json({
+      error: 'you are missing the squad_name property',
+    });
+  }
+
+  const convoTitle = { title: `${newSquad.title} Conversation` };
+
+  database('conversations').insert(convoTitle, 'id')
+    .then((convoId) => {
+      newSquad = Object.assign({}, newSquad, {
+        conversation_id: convoId[0],
+      });
+      database('squads').insert(newSquad, '*')
+        .then(insertedSquad => response.status(201).json(insertedSquad))
+        .catch(error => response.status(500).json({ error }));
+    })
+    .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
+});
 
 app.post('/api/v1/users/:id/challenges', (request, response) => {
   let newChallenge = request.body;
