@@ -1,3 +1,10 @@
-* {
-  margin: 0;
-  background-color: lightgreen; }
+.navigation {
+  background-color: lightpink; }
+
+.nav-links {
+  list-style: none; }
+
+.nav-links a {
+  display: block;
+  font: bold 11px Arial;
+  font-size: 16px; }
