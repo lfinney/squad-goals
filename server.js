@@ -110,6 +110,21 @@ app.get('/api/v1/users/:id/challenges', (request, response) => {
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
+// add a user to a challenge
+app.post('/api/v1/users/:userId/challenges/:challengeId', (request, response) => {
+  const { userId, challengeId } = request.params;
+
+  database('users_challenges').insert({ user_id: userId, challenge_id: challengeId })
+    .then(() => response.sendStatus(204))
+    .catch(error => response.status(422).json(error));
+});
+
+// remove a user from a challenge
+
+// add a user to a squad
+
+// remove a user from a squad
+
 app.get('/api/v1/users/:id/challenges-created', (request, response) => {
   const userId = request.params.id;
 
