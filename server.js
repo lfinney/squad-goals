@@ -95,9 +95,69 @@ app.get('/api/v1/challenges/:challengeId/users', (request, response) => {
 });
 
 // all challenges one users is a part of
-
-
 app.get('/api/v1/users/:id/challenges', (request, response) => {
+  const { id } = request.params;
+
+  database('challenges')
+    .join('users_challenges', 'users_challenges.challenge_id', '=', 'challenges.id')
+    .where('users_challenges.user_id', id)
+    .select('*')
+    .then((challenges) => {
+      challenges.length ? response.status(200).json(challenges)
+        :
+        response.status(404).json({ error: `Could not find a challenges for user with id${id}` });
+    })
+    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+});
+
+// add a user to a challenge
+app.post('/api/v1/users/:userId/challenges/:challengeId', (request, response) => {
+  const { userId, challengeId } = request.params;
+
+  database('users_challenges').insert({ user_id: userId, challenge_id: challengeId })
+    .then(() => response.sendStatus(204))
+    .catch(error => response.status(422).json(error));
+});
+
+// remove a user from a challenge
+app.delete('/api/v1/users/:userId/challenges/:challengeId', (request, response) => {
+  const { userId, challengeId } = request.params;
+
+  database('users_challenges').where({ user_id: userId, challenge_id: challengeId })
+    .del()
+    .then((result) => {
+      !result ? response.status(404).json({ error: 'No user or challenge' })
+        :
+        response.sendStatus(204);
+    })
+    .catch(error => response.status(422).json(error));
+});
+
+// add a user to a squad
+
+app.post('/api/v1/users/:userId/squads/:squadId', (request, response) => {
+  const { userId, squadId } = request.params;
+
+  database('users_squads').insert({ user_id: userId, squad_id: squadId })
+    .then(() => response.sendStatus(204))
+    .catch(error => response.status(422).json(error));
+});
+
+// remove a user from a squad
+app.delete('/api/v1/users/:userId/squads/:squadId', (request, response) => {
+  const { userId, squadId } = request.params;
+
+  database('users_squads').where({ user_id: userId, squad_id: squadId })
+    .del()
+    .then((result) => {
+      !result ? response.status(404).json({ error: 'No user or squad' })
+        :
+        response.sendStatus(204);
+    })
+    .catch(error => response.status(422).json(error));
+});
+
+app.get('/api/v1/users/:id/challenges-created', (request, response) => {
   const userId = request.params.id;
 
   database('challenges').where('creator_id', userId).select()
@@ -127,22 +187,55 @@ app.get('/api/v1/challenges', (request, response) => {
     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
 
-// app.get('/api/v1/squads/:id', (request, response) => {
-//   const { id } = request.params;
-// });
-//
-// app.get('/api/v1/squads/:id/conversations/:id/comments', (request, response) => {
-//   const { id } = request.params;
-// });
+app.get('/api/v1/squads/:id', (request, response) => {
+  const { id } = request.params;
 
-app.get('/api/v1/challenges/:id/conversations/:convoId/comments', (request, response) => {
-  const { id, convoId } = request.params;
-
-  database('comments').where('conversation_id', convoId).select()
-    .then((conversation) => {
-      conversation.length ? response.status(200).json(conversation)
+  database('squads').where('id', id).select()
+    .then((squad) => {
+      squad.length ?
+        response.status(200).json(squad)
         :
-        response.status(404).json({ error: `Could not find conversation with id: ${convoId}` });
+        response.status(404).json({ error: `Could not find squad with id: ${id}` });
+    })
+    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+});
+
+app.get('/api/v1/squads/:id/comments', (request, response) => {
+  const { id } = request.params;
+
+  database('squads').where('id', id).select()
+    .then((squad) => {
+      if (squad.length) {
+        return database('comments').where('conversation_id', squad[0].conversation_id).select()
+          .then((comments) => {
+            comments.length ?
+              response.status(200).json(comments)
+              :
+              response.status(404).json({ error: `Could not find comments for squad with id: ${id}` });
+          })
+          .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+      }
+      return response.status(404).json({ error: `Could not find squad with id: ${id}` });
+    })
+    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+});
+
+app.get('/api/v1/challenges/:id/comments', (request, response) => {
+  const { id } = request.params;
+
+  database('challenges').where('id', id).select()
+    .then((challenge) => {
+      if (challenge.length) {
+        return database('comments').where('conversation_id', challenge[0].conversation_id).select()
+          .then((comments) => {
+            comments.length ?
+              response.status(200).json(comments)
+              :
+              response.status(404).json({ error: `Could not find comments for challenge with id: ${id}` });
+          })
+          .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+      }
+      return response.status(404).json({ error: `Could not find challenge with id: ${id}` });
     })
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
@@ -163,9 +256,28 @@ app.post('/api/v1/user/', (request, response) => {
     .catch(error => response.status(500).json({ error }));
 });
 
-// app.post('/api/v1/squads', (request, response) => {
-//
-// });
+app.post('/api/v1/squads', (request, response) => {
+  let newSquad = request.body;
+
+  if (!newSquad.squad_name) {
+    return response.status(422).json({
+      error: 'you are missing the squad_name property',
+    });
+  }
+
+  const convoTitle = { title: `${newSquad.title} Conversation` };
+
+  database('conversations').insert(convoTitle, 'id')
+    .then((convoId) => {
+      newSquad = Object.assign({}, newSquad, {
+        conversation_id: convoId[0],
+      });
+      database('squads').insert(newSquad, '*')
+        .then(insertedSquad => response.status(201).json(insertedSquad))
+        .catch(error => response.status(500).json({ error }));
+    })
+    .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
+});
 
 app.post('/api/v1/users/:id/challenges', (request, response) => {
   let newChallenge = request.body;
@@ -331,25 +443,6 @@ app.delete('/api/v1/comments/:id', (request, response) => {
     })
     .catch(error => response.status(422).json(error));
 });
-
-// app.delete('/api/v1/challenges/:id/conversations', (request, response) => {
-//   const { id } = request.params;
-//   console.log('delete id', id);
-//
-//   database('challenges').where('id', id).select('conversation_id')
-//     .then(res => console.log(res[0].conversation_id))
-//     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-//
-//   database('comments').where('conversation_id', id).del()
-//     .then((comment) => {
-//       comment ?
-//         response.sendStatus(204)
-//         :
-//         response.status(422).json({ error: `Nothing to delete with id ${id}` });
-//     })
-//     .catch(error => response.status(500).json({ error }));
-// });
-
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
