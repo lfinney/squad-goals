@@ -17,7 +17,7 @@ exports.up = function(knex, Promise) {
       table.increments('id').primary();
       table.string('body');
       table.integer('conversation_id').unsigned();
-      table.foreign('conversation_id').references('conversations.id').onDelete('cascade');
+      table.foreign('conversation_id').references('conversations.id');
       table.timestamps(true, true);
     }),
     knex.schema.createTable('challenges', (table) => {
