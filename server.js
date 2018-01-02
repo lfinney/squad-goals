@@ -187,9 +187,17 @@ app.get('/api/v1/challenges', (request, response) => {
     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
 
-// app.get('/api/v1/squads/:id', (request, response) => {
-//   const { id } = request.params;
-// });
+app.get('/api/v1/squads/:id', (request, response) => {
+  const { id } = request.params;
+
+  database('squads').where('id', id).select()
+    .then((squad) => {
+      squad.length ? response.status(200).json(squad)
+        :
+        response.status(404).json({ error: `Could not find squad with id: ${id}` });
+    })
+    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+});
 //
 // app.get('/api/v1/squads/:id/conversations/:id/comments', (request, response) => {
 //   const { id } = request.params;
@@ -391,25 +399,6 @@ app.delete('/api/v1/comments/:id', (request, response) => {
     })
     .catch(error => response.status(422).json(error));
 });
-
-// app.delete('/api/v1/challenges/:id/conversations', (request, response) => {
-//   const { id } = request.params;
-//   console.log('delete id', id);
-//
-//   database('challenges').where('id', id).select('conversation_id')
-//     .then(res => console.log(res[0].conversation_id))
-//     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-//
-//   database('comments').where('conversation_id', id).del()
-//     .then((comment) => {
-//       comment ?
-//         response.sendStatus(204)
-//         :
-//         response.status(422).json({ error: `Nothing to delete with id ${id}` });
-//     })
-//     .catch(error => response.status(500).json({ error }));
-// });
-
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
