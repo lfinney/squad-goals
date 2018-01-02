@@ -95,7 +95,7 @@ app.get('/api/v1/challenges/:challengeId/users', (request, response) => {
 });
 
 // all challenges one users is a part of
-// 
+
 
 app.get('/api/v1/users/:id/challenges', (request, response) => {
   const userId = request.params.id;
