@@ -123,6 +123,14 @@ app.post('/api/v1/users/:userId/challenges/:challengeId', (request, response) =>
 
 // add a user to a squad
 
+app.post('/api/v1/users/:userId/squads/:squadId', (request, response) => {
+  const { userId, squadId } = request.params;
+
+  database('users_squads').insert({ user_id: userId, squad_id: squadId })
+    .then(() => response.sendStatus(204))
+    .catch(error => response.status(422).json(error));
+});
+
 // remove a user from a squad
 
 app.get('/api/v1/users/:id/challenges-created', (request, response) => {
