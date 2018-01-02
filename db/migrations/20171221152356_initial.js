@@ -27,7 +27,7 @@ exports.up = function(knex, Promise) {
       table.dateTime('challenge_time');
       table.integer('challenge_points');
       table.integer('creator_id').unsigned();
-      table.foreign('creator_id').references('users.id').onDelete('cascade');
+      table.foreign('creator_id').references('users.id');
       table.integer('conversation_id').unsigned();
       table.foreign('conversation_id').references('conversations.id').onDelete('cascade');
       table.timestamps(true, true);
@@ -40,6 +40,6 @@ exports.down = function(knex, Promise) {
     knex.schema.dropTable('challenges'),
     knex.schema.dropTable('comments'),
     knex.schema.dropTable('conversations'),
-    knex.schema.dropTable('users')
+    knex.schema.dropTable('users'),
   ])
 };
