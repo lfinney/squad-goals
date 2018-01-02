@@ -95,9 +95,22 @@ app.get('/api/v1/challenges/:challengeId/users', (request, response) => {
 });
 
 // all challenges one users is a part of
-
-
 app.get('/api/v1/users/:id/challenges', (request, response) => {
+  const { id } = request.params;
+
+  database('challenges')
+    .join('users_challenges', 'users_challenges.challenge_id', '=', 'challenges.id')
+    .where('users_challenges.user_id', id)
+    .select('*')
+    .then((challenges) => {
+      challenges.length ? response.status(200).json(challenges)
+        :
+        response.status(404).json({ error: `Could not find a challenges for user with id${id}` });
+    })
+    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+});
+
+app.get('/api/v1/users/:id/challenges-created', (request, response) => {
   const userId = request.params.id;
 
   database('challenges').where('creator_id', userId).select()
