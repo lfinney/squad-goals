@@ -120,6 +120,18 @@ app.post('/api/v1/users/:userId/challenges/:challengeId', (request, response) =>
 });
 
 // remove a user from a challenge
+app.delete('/api/v1/users/:userId/challenges/:challengeId', (request, response) => {
+  const { userId, challengeId } = request.params;
+
+  database('users_challenges').where({ user_id: userId, challenge_id: challengeId })
+    .del()
+    .then((result) => {
+      !result ? response.status(404).json({ error: 'No user or challenge' })
+        :
+        response.sendStatus(204);
+    })
+    .catch(error => response.status(422).json(error));
+});
 
 // add a user to a squad
 
