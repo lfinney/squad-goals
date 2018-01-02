@@ -46,6 +46,7 @@ app.get('/api/v1/squads', (request, response) => {
     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
 
+// all users part of one squad
 app.get('/api/v1/squads/:squadId/users', (request, response) => {
   const { squadId } = request.params;
 
@@ -56,7 +57,23 @@ app.get('/api/v1/squads/:squadId/users', (request, response) => {
     .then((users) => {
       users.length ? response.status(200).json(users)
         :
-        response.status(404).json({ error: `Could not find user with id: ${squadId}` });
+        response.status(404).json({ error: `Could not find squad with id: ${squadId}` });
+    })
+    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+});
+
+// all users part of a challenge
+app.get('/api/v1/challenges/:challengeId/users', (request, response) => {
+  const { challengeId } = request.params;
+
+  database('users')
+    .join('users_challenges', 'users_challenges.user_id', '=', 'users.id')
+    .where('users_challenges.challenge_id', challengeId)
+    .select('*')
+    .then((users) => {
+      users.length ? response.status(200).json(users)
+        :
+        response.status(404).json({ error: `Could not find challenge with id: ${challengeId}` });
     })
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
