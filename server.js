@@ -211,7 +211,7 @@ app.get('/api/v1/squads/:id/comments', (request, response) => {
             comments.length ?
               response.status(200).json(comments)
               :
-              response.status(404).json({ error: `Could not find comments with id: ${id}` });
+              response.status(404).json({ error: `Could not find comments for squad with id: ${id}` });
           })
           .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
       }
@@ -220,14 +220,22 @@ app.get('/api/v1/squads/:id/comments', (request, response) => {
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
-app.get('/api/v1/challenges/:id/conversations/:convoId/comments', (request, response) => {
-  const { id, convoId } = request.params;
+app.get('/api/v1/challenges/:id/comments', (request, response) => {
+  const { id } = request.params;
 
-  database('comments').where('conversation_id', convoId).select()
-    .then((conversation) => {
-      conversation.length ? response.status(200).json(conversation)
-        :
-        response.status(404).json({ error: `Could not find conversation with id: ${convoId}` });
+  database('challenges').where('id', id).select()
+    .then((challenge) => {
+      if (challenge.length) {
+        return database('comments').where('conversation_id', challenge[0].conversation_id).select()
+          .then((comments) => {
+            comments.length ?
+              response.status(200).json(comments)
+              :
+              response.status(404).json({ error: `Could not find comments for challenge with id: ${id}` });
+          })
+          .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+      }
+      return response.status(404).json({ error: `Could not find challenge with id: ${id}` });
     })
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
