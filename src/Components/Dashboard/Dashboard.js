@@ -20,6 +20,13 @@ class Dashboard extends Component {
       .catch(error => console.error(error));
   }
 
+  getChallenges() {
+    const url = '/api/v1/challenges';
+    return this.contentFetch(url)
+      .then(parsed => console.log(parsed))
+      .catch(error => console.error(error));
+  }
+
   contentFetch(url) {
     return fetch(url)
       .then(result => result.json())
@@ -45,7 +52,14 @@ class Dashboard extends Component {
             type="button"
             value="Squads"
           />
-          <input onClick={() => this.showContent('challenges')} type="button" value="Challenges" />
+          <input
+            onClick={() => {
+            this.showContent('challenges');
+            this.getChallenges();
+          }}
+            type="button"
+            value="Challenges"
+          />
         </div>
         {
           this.state.displayComponent === 'squads' &&
