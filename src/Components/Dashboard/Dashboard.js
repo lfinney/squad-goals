@@ -5,16 +5,17 @@ import Squads from '../Squads/Squads.js';
 class Dashboard extends Component {
   constructor(props, context) {
     super(props, context);
-    this.showChallenges = this.showChallenges.bind(this);
-    this.showSquads = this.showSquads.bind(this);
+    this.showContent = this.showContent.bind(this);
+    this.state = {
+      displayComponent: 'squads',
+    };
   }
 
-  showSquads() {
-    console.log('yello luke');
-  }
-
-  showChallenges() {
-    console.log('yello again luke');
+  showContent(type) {
+    console.log(type);
+    this.setState({
+      displayComponent: type,
+    });
   }
 
   render() {
@@ -22,11 +23,17 @@ class Dashboard extends Component {
       <div className="dashboard">
         <h1>Squad Goals</h1>
         <div className="dash-header">
-          <input onClick={this.showSquads} type="button" value="Squads" />
-          <input onClick={this.showChallenges} type="button" value="Challenges" />
+          <input onClick={() => this.showContent('squads')} type="button" value="Squads" />
+          <input onClick={() => this.showContent('challenges')} type="button" value="Challenges" />
         </div>
-        <Challenges />
-        <Squads />
+        {
+          this.state.displayComponent === 'squads' &&
+          <Squads />
+        }
+        {
+          this.state.displayComponent === 'challenges' &&
+          <Challenges />
+        }
       </div>
     );
   }
