@@ -7,6 +7,7 @@ const Squads = ({ squadData }) => {
     return (
       <SquadCard
         squad={squad}
+        key={`squad-${squad.id}`}
       />
     );
   });
@@ -16,14 +17,12 @@ const Squads = ({ squadData }) => {
       <h2 className="squads-body-title">Squads</h2>
       <table className="squads-body-info">
         <tbody>
-          <thead>
-            <tr className="squad-row">
-              <th>Squad Title</th>
-              <th>Competitors</th>
-              <th>Squad Challenges</th>
-              <th />
-            </tr>
-          </thead>
+          <tr className="squad-row">
+            <th>Squad Title</th>
+            <th>Competitors</th>
+            <th>Squad Challenges</th>
+            <th />
+          </tr>
           { squadsInfo }
         </tbody>
       </table>
