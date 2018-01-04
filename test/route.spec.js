@@ -79,6 +79,50 @@ describe('API Routes', () => {
     });
   });
 
+  describe('POST /api/v1/users', () => {
+    const newUser = {
+      id: 5,
+      user_name: 'Bruce',
+      firebase_id: 'asdf7234nf4',
+      points: 1,
+    };
+
+    const incompleteUser = {
+      id: 6,
+      user_name: 'Bruce',
+      points: 1,
+    };
+
+    it('should add a new user', (done) => {
+      chai.request(server)
+        .post('/api/v1/users')
+        .send(newUser)
+        .end((error, response) => {
+          response.should.have.status(201);
+          response.body[0].should.have.property('id');
+          response.body[0].id.should.equal(5);
+          chai.request(server)
+            .get('/api/v1/users')
+            .end((postError, postResponse) => {
+              postResponse.body.should.be.a('array');
+              postResponse.body.length.should.equal(5);
+              postResponse.body.includes(newUser);
+              done();
+            });
+        });
+    });
+
+    it('should not be able to add a new user if a property is missing', (done) => {
+      chai.request(server)
+        .post('/api/v1/users/')
+        .send(incompleteUser)
+        .end((error, response) => {
+          response.should.have.status(422);
+          done();
+        });
+    });
+  });
+
   describe('GET /api/v1/users/:id', () => {
     it('should retrieve a specific user', (done) => {
       chai.request(server)
