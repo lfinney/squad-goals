@@ -23,6 +23,13 @@
     "lint": "./node_modules/.bin/eslint ./"
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
     "body-parser": "^1.18.2",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.1",
