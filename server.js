@@ -29,7 +29,7 @@ app.get('/api/v1/users', (request, response) => {
     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
 
-app.post('/api/v1/user/', (request, response) => {
+app.post('/api/v1/users/', (request, response) => {
   const newUser = request.body;
 
   for (const requiredParameter of ['user_name', 'firebase_id', 'points']) {
