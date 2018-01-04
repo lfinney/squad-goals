@@ -134,6 +134,23 @@ app.get('/api/v1/squads/:id', (request, response) => {
 
 app.patch('/api/v1/squads/:id', (request, response) => {
   const { id } = request.params;
+  const updateSquadname = request.body;
+
+  if (!updateSquadname.squad_name) {
+    return response.status(422).json({
+      error: 'You must send only an object literal with the key squad_name',
+    });
+  }
+
+  database('squads').where('id', id)
+    .update(updateSquadname, '*')
+    .then((update) => {
+      update ?
+        response.sendStatus(204)
+        :
+        response.sendStatus(404);
+    })
+    .catch(error => response.status(500).json({ error }));
 });
 
 app.delete('/api/v1/squads/:id', (request, response) => {
