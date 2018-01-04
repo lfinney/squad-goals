@@ -52,5 +52,21 @@ describe('API Routes', () => {
       });
   });
 
-  // describe('GET ');
+  describe('GET /api/v1/users', () => {
+    it('should retrieve all signed-up users', (done) => {
+      chai.request(server)
+        .get('/api/v1/users')
+        .end((error, response) => {
+          response.should.have.status(200);
+          response.should.be.json;
+          response.body.should.be.a('array');
+          response.body.length.should.equal(4);
+          response.body.includes({ 'id': 1 });
+          response.body.includes({ 'user_name': 'Gizmo' });
+          response.body.includes({ 'points': '1000' });
+          response.body.includes({ 'firebase_id': 'gqye6482kjsj' });
+          done();
+        });
+    });
+  });
 });
