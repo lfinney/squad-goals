@@ -316,11 +316,30 @@ app.post('/api/v1/challenges/:id/comments', (request, response) => {
     });
   }
 
-  console.log(newComment);
-
   database('challenges').where('id', id).select('conversation_id')
     .then((convoId) => {
-      console.log(convoId[0].conversation_id);
+      newComment = Object.assign({}, newComment, {
+        conversation_id: convoId[0].conversation_id,
+      });
+      database('comments').insert(newComment, '*')
+        .then(insertedComment => response.status(201).json(insertedComment))
+        .catch(error => response.status(500).json({ error }));
+    })
+    .catch(error => response.status(500).json({ error: `Error creating new comment: ${error}` }));
+});
+
+app.post('/api/v1/squads/:id/comments', (request, response) => {
+  let newComment = request.body;
+  const { id } = request.params;
+
+  if (!newComment.body) {
+    return response.status(422).json({
+      error: `you are missing the ${requiredParameter} property`,
+    });
+  }
+
+  database('squads').where('id', id).select('conversation_id')
+    .then((convoId) => {
       newComment = Object.assign({}, newComment, {
         conversation_id: convoId[0].conversation_id,
       });
