@@ -71,7 +71,7 @@ describe('API Routes', () => {
 
     it('should return a 404 if path does not exist', (done) => {
       chai.request(server)
-        .get('/api/v1/sadness')
+        .get('/api/v1/users/100')
         .end((error, response) => {
           response.should.have.status(404);
           done();
@@ -108,7 +108,7 @@ describe('API Routes', () => {
 
   describe('PATCH /api/v1/users/:id', () => {
     const updateUser = {
-      user_name: 'What were their 5th grade teachers thinking?',
+      user_name: 'Gaspard',
     };
 
     it('should be able to update the body of a discussion', (done) => {
@@ -127,13 +127,30 @@ describe('API Routes', () => {
         });
     });
 
-    it('should throw a 422 if a discussion body is not provided', (done) => {
+    it('should throw a 422 if a users body is not provided', (done) => {
       chai.request(server)
         .patch('/api/v1/users/1')
         .send()
         .end((error, response) => {
           response.should.have.status(422);
           done();
+        });
+    });
+  });
+
+  describe('DELETE /api/v1/users/:id', () => {
+    it('should delete a specific users', (done) => {
+      chai.request(server)
+        .delete('/api/v1/users/1')
+        .end((error, response) => {
+          response.should.have.status(204);
+          response.body.should.be.a('object');
+          chai.request(server)
+            .get('/api/v1/users/1')
+            .end((deleteError, deleteResponse) => {
+              deleteResponse.should.have.status(404);
+              done();
+            });
         });
     });
   });

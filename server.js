@@ -86,7 +86,7 @@ app.delete('/api/v1/users/:id', (request, response) => {
       result ?
         response.sendStatus(204)
         :
-        response.status(422).json({ error: `No user with id ${id}` });
+        response.status(404).json({ error: `No user with id ${id}` });
     })
     .catch(error => response.status(422).json(error));
 });

@@ -27,9 +27,9 @@ exports.up = function(knex, Promise) {
       table.dateTime('challenge_time');
       table.integer('challenge_points');
       table.integer('creator_id').unsigned();
-      table.foreign('creator_id').references('users.id');
+      table.foreign('creator_id').references('users.id').onDelete('CASCADE');
       table.integer('conversation_id').unsigned();
-      table.foreign('conversation_id').references('conversations.id').onDelete('cascade');
+      table.foreign('conversation_id').references('conversations.id').onDelete('CASCADE');
       table.timestamps(true, true);
     })
   ])
