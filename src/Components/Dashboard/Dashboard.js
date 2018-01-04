@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
+import Challenges from '../Challenges/Challenges.js';
+import Squads from '../Squads/Squads.js';
 
 class Dashboard extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.showChallenges = this.showChallenges.bind(this);
+    this.showSquads = this.showSquads.bind(this);
+  }
+
+  showSquads() {
+    console.log('yello luke');
+  }
+
+  showChallenges() {
+    console.log('yello again luke');
+  }
+
   render() {
     return (
       <div className="dashboard">
-        <h1>Dashboard</h1>
-        <div>
-          <h3>Squads</h3>
+        <h1>Squad Goals</h1>
+        <div className="dash-header">
+          <input onClick={this.showSquads} type="button" value="Squads" />
+          <input onClick={this.showChallenges} type="button" value="Challenges" />
         </div>
-        <div>
-          <h3>Challenges</h3>
-        </div>
-        <div>
-          <h3>Stats</h3>
-        </div>
+        <Challenges />
+        <Squads />
       </div>
     );
   }

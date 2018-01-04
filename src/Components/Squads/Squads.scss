@@ -1,3 +1,27 @@
-.squads {
-  background-color: magenta;
+.squads-body {
+  text-align: center;
+  background-color: #0e5bd7;
+  box-shadow: 2px 2px 4px black;
+  border-radius: 5px;
+  color: #fff;
+  height: 50vw;
+  width: 50vw;
+  margin: 10px auto 10px auto;
+  opacity: .95;
+}
+
+.squads-body-title {
+  font-weight: lighter;
+  font-size: 1.5em;
+  margin: 10px 0 15px 0;
+}
+
+.squads-body-info {
+  display: flex;
+  flex-direction: row;
+  font-size: .8em
+}
+
+.squads-body-info p {
+  margin: 10px 0 10px 10px;
 }
