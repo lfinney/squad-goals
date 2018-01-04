@@ -13,22 +13,30 @@ class Dashboard extends Component {
     };
   }
 
+  componentDidMount() {
+    this.getSquads();
+  }
+
   getSquads() {
-    const url = '/api/v1/squads';
-    return this.contentFetch(url)
-      .then(parsedData => this.setState({
-        squadData: parsedData,
-      }))
-      .catch(error => console.error(error));
+    if (!this.state.squadData.length) {
+      const url = '/api/v1/squads';
+      return this.contentFetch(url)
+        .then(parsedData => this.setState({
+          squadData: parsedData,
+        }))
+        .catch(error => console.error(error));
+    }
   }
 
   getChallenges() {
-    const url = '/api/v1/challenges';
-    return this.contentFetch(url)
-      .then(parsedData => this.setState({
-        challengeData: parsedData,
-      }))
-      .catch(error => console.error(error));
+    if (!this.state.challengeData.length) {
+      const url = '/api/v1/challenges';
+      return this.contentFetch(url)
+        .then(parsedData => this.setState({
+          challengeData: parsedData,
+        }))
+        .catch(error => console.error(error));
+    }
   }
 
   contentFetch(url) {
@@ -51,7 +59,6 @@ class Dashboard extends Component {
           <input
             onClick={() => {
             this.showContent('squads');
-            this.getSquads();
           }}
             type="button"
             value="Squads"
