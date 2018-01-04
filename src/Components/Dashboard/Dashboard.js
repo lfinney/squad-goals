@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Challenges from '../Challenges/Challenges.js';
+import Squads from '../Squads/Squads.js';
 
 class Dashboard extends Component {
   constructor(props, context) {
@@ -23,16 +25,8 @@ class Dashboard extends Component {
           <input onClick={this.showSquads} type="button" value="Squads" />
           <input onClick={this.showChallenges} type="button" value="Challenges" />
         </div>
-        <div className="dash-body">
-          <h2 className="dash-body-title">Challenges</h2>
-          <div className="dash-body-info">
-            <p>Challenge Title</p>
-            <p>Challenge Description </p>
-            <p>Challenge Time </p>
-            <p>Challenge Points </p>
-            <p>Challenge Creator </p>
-          </div>
-        </div>
+        <Challenges />
+        <Squads />
       </div>
     );
   }
