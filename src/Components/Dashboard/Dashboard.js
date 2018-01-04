@@ -5,16 +5,50 @@ import Squads from '../Squads/Squads.js';
 class Dashboard extends Component {
   constructor(props, context) {
     super(props, context);
-    this.showChallenges = this.showChallenges.bind(this);
-    this.showSquads = this.showSquads.bind(this);
+    this.showContent = this.showContent.bind(this);
+    this.state = {
+      displayComponent: 'squads',
+      squadData: [],
+      challengeData: [],
+    };
   }
 
-  showSquads() {
-    console.log('yello luke');
+  componentDidMount() {
+    this.getSquads();
   }
 
-  showChallenges() {
-    console.log('yello again luke');
+  getSquads() {
+    if (!this.state.squadData.length) {
+      const url = '/api/v1/squads';
+      return this.contentFetch(url)
+        .then(parsedData => this.setState({
+          squadData: parsedData,
+        }))
+        .catch(error => console.error(error));
+    }
+  }
+
+  getChallenges() {
+    if (!this.state.challengeData.length) {
+      const url = '/api/v1/challenges';
+      return this.contentFetch(url)
+        .then(parsedData => this.setState({
+          challengeData: parsedData,
+        }))
+        .catch(error => console.error(error));
+    }
+  }
+
+  contentFetch(url) {
+    return fetch(url)
+      .then(result => result.json())
+      .catch(error => console.error(error));
+  }
+
+  showContent(type) {
+    this.setState({
+      displayComponent: type,
+    });
   }
 
   render() {
@@ -22,11 +56,30 @@ class Dashboard extends Component {
       <div className="dashboard">
         <h1>Squad Goals</h1>
         <div className="dash-header">
-          <input onClick={this.showSquads} type="button" value="Squads" />
-          <input onClick={this.showChallenges} type="button" value="Challenges" />
+          <input
+            onClick={() => {
+            this.showContent('squads');
+          }}
+            type="button"
+            value="Squads"
+          />
+          <input
+            onClick={() => {
+            this.showContent('challenges');
+            this.getChallenges();
+          }}
+            type="button"
+            value="Challenges"
+          />
         </div>
-        <Challenges />
-        <Squads />
+        {
+          this.state.displayComponent === 'squads' &&
+          <Squads squadData={this.state.squadData} />
+        }
+        {
+          this.state.displayComponent === 'challenges' &&
+          <Challenges challengeData={this.state.challengeData} />
+        }
       </div>
     );
   }

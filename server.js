@@ -7,6 +7,7 @@ const database = require('knex')(configuration);
 const app = express();
 const bodyParser = require('body-parser');
 
+
 const requireHTTPS = (request, response, next) => {
   if (request.header('x-forwarded-proto') !== 'https') {
     return response.redirect(`https://${request.header('host')}${request.url}`);
@@ -18,9 +19,9 @@ if (process.env.NODE_ENV === 'production') { app.use(requireHTTPS); }
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4000);
 app.locals.title = 'Squad Goals';
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + './build'));
 
 app.get('/api/v1/users', (request, response) => {
   database('users').select()
