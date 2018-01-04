@@ -68,5 +68,14 @@ describe('API Routes', () => {
           done();
         });
     });
+
+    it('should return a 404 if path does not exist', (done) => {
+      chai.request(server)
+        .get('/api/v1/sadness')
+        .end((error, response) => {
+          response.should.have.status(404);
+          done();
+        });
+    });
   });
 });
