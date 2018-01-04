@@ -8,11 +8,25 @@ class Dashboard extends Component {
     this.showContent = this.showContent.bind(this);
     this.state = {
       displayComponent: 'squads',
+      squadData: [],
+      challengeData: [],
     };
   }
 
+  getSquads() {
+    const url = '/api/v1/squads';
+    return this.contentFetch(url)
+      .then(parsed => console.log(parsed))
+      .catch(error => console.error(error));
+  }
+
+  contentFetch(url) {
+    return fetch(url)
+      .then(result => result.json())
+      .catch(error => console.error(error));
+  }
+
   showContent(type) {
-    console.log(type);
     this.setState({
       displayComponent: type,
     });
@@ -23,18 +37,29 @@ class Dashboard extends Component {
       <div className="dashboard">
         <h1>Squad Goals</h1>
         <div className="dash-header">
-          <input onClick={() => this.showContent('squads')} type="button" value="Squads" />
+          <input
+            onClick={() => {
+            this.showContent('squads');
+            this.getSquads();
+          }}
+            type="button"
+            value="Squads"
+          />
           <input onClick={() => this.showContent('challenges')} type="button" value="Challenges" />
         </div>
         {
           this.state.displayComponent === 'squads' &&
-          <Squads />
+          <Squads squadData={this.state.squadData} />
         }
         {
           this.state.displayComponent === 'challenges' &&
-          <Challenges />
+          <Challenges challengeData={this.state.challengeData} />
         }
       </div>
+
+      // need a func that takes a url and makes a fetch call and bring back data for both
+      // make api calls
+      // wire each api call to get data to button that is clicked
     );
   }
 }
