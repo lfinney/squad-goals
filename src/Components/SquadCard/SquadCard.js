@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SquadCard = ({ squad }) => {
-  console.log(squad);
   return (
     <tr className="squad-row">
       <td>{squad.squad_name}</td>
