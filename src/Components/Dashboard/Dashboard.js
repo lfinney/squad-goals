@@ -24,7 +24,14 @@ class Dashboard extends Component {
           <input onClick={this.showChallenges} type="button" value="Challenges" />
         </div>
         <div className="dash-body">
-          <h3>Squads and Challenges</h3>
+          <h2 className="dash-body-title">Challenges</h2>
+          <div className="dash-body-info">
+            <p>Challenge Title</p>
+            <p>Challenge Description </p>
+            <p>Challenge Time </p>
+            <p>Challenge Points </p>
+            <p>Challenge Creator </p>
+          </div>
         </div>
       </div>
     );

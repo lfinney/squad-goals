@@ -1,5 +1,11 @@
 .navigation {
-  background-color: lightgrey; }
+  background-color: lightgrey;
+  height: 40px; }
+
+.navigation ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
 
 .nav-links {
   list-style: none; }
