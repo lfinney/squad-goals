@@ -16,14 +16,18 @@ class Dashboard extends Component {
   getSquads() {
     const url = '/api/v1/squads';
     return this.contentFetch(url)
-      .then(parsed => console.log(parsed))
+      .then(parsedData => this.setState({
+        squadData: parsedData,
+      }))
       .catch(error => console.error(error));
   }
 
   getChallenges() {
     const url = '/api/v1/challenges';
     return this.contentFetch(url)
-      .then(parsed => console.log(parsed))
+      .then(parsedData => this.setState({
+        challengeData: parsedData,
+      }))
       .catch(error => console.error(error));
   }
 
@@ -70,10 +74,6 @@ class Dashboard extends Component {
           <Challenges challengeData={this.state.challengeData} />
         }
       </div>
-
-      // need a func that takes a url and makes a fetch call and bring back data for both
-      // make api calls
-      // wire each api call to get data to button that is clicked
     );
   }
 }
