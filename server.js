@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('port', process.env.PORT || 4000);
 app.locals.title = 'Squad Goals';
-app.use(express.static(__dirname + './build'));
+app.use(express.static('./build'));
 
 app.get('/api/v1/users', (request, response) => {
   database('users').select()
