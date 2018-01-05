@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ChallengesContainer from '../ChallengesContainer/ChallengesContainer.js';
-import Squads from '../Squads/Squads.js';
+import Squads from '../SquadsContainer/Squads.js';
 
 class UserDashboard extends Component {
   constructor(props, context) {

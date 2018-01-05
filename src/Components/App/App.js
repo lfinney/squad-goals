@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Welcome from '../Welcome/Welcome';
 import Navigation from '../Navigation/Navigation';
 import UserDashboard from '../UserDashboard/UserDashboard';
-import Squads from '../Squads/Squads';
+import Squads from '../SquadsContainer/Squads';
 import ChallengesContainer from '../ChallengesContainer/ChallengesContainer';
 import CreateChallenges from '../CreateChallenges/CreateChallenges';
 import CreateSquads from '../CreateSquads/CreateSquads';
