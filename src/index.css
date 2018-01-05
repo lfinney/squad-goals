@@ -237,3 +237,51 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif; }
+
+.dashboard-container {
+  background-image: url(./Components/Assets/up-arrows.jpg);
+  background-size: cover;
+  height: 100vh; }
+
+.smack-talk {
+  background-color: #22affe;
+  margin: auto;
+  height: 40%;
+  width: 80%; }
+
+.smack-talk h1 {
+  font-size: 1.3em;
+  font-weight: lighter; }
+
+.dashboard-body {
+  text-align: center;
+  background-color: #0e5bd7;
+  box-shadow: 2px 2px 4px black;
+  border-radius: 5px;
+  color: #fff;
+  height: 65vw;
+  width: 50vw;
+  margin: 10px auto 10px auto;
+  opacity: .95; }
+
+.dashboard-body-title {
+  font-weight: lighter;
+  font-size: 1.5em;
+  margin: 20px 0 20px 0;
+  padding-top: 20px; }
+
+.dashboard-body-info {
+  background-color: #22affe;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: .8em;
+  height: 40%;
+  width: 80%;
+  margin: auto auto 50px auto; }
+
+.dashboard-body-info h2 {
+  font-size: 1.3em;
+  font-weight: lighter;
+  margin: 10px; }

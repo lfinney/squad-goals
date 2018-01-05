@@ -7,7 +7,8 @@ import SquadsContainer from '../SquadsContainer/SquadsContainer';
 import GoalsContainer from '../GoalsContainer/GoalsContainer';
 import CreateGoals from '../CreateGoals/CreateGoals';
 import CreateSquads from '../CreateSquads/CreateSquads';
-import Squad from '../Squad/Squad';
+import GoalDashboard from '../GoalDashboard/GoalDashboard';
+import SquadDashboard from '../SquadDashboard/SquadDashboard';
 
 class App extends Component {
   render() {
@@ -18,9 +19,10 @@ class App extends Component {
         <Route path="/UserDashboard" component={UserDashboard} />
         <Route path="/Squads" component={SquadsContainer} />
         <Route path="/CreateSquads" component={CreateSquads} />
+        <Route path="/Goal" component={GoalDashboard} />
         <Route path="/Goals" component={GoalsContainer} />
         <Route path="/CreateGoals" component={CreateGoals} />
-        <Route path="/Squad" component={Squad} />
+        <Route path="/Squad" component={SquadDashboard} />
       </div>
     );
   }
