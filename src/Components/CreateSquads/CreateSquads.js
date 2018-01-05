@@ -1,15 +1,38 @@
 import React, { Component } from 'react';
 
 class CreateSquads extends Component {
+  createNewSquad() {
+    const squadName = document.querySelector('.squad-name').value;
+    const postBody = {
+      squad_name: squadName,
+    };
+    fetch('/api/v1/squads', {
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify(postBody),
+    })
+      .then(response => console.log(response))
+      .catch(error => console.error(error));
+  }
+
   render() {
     return (
       <div className="create-squads">
         <div className="create-squads-body">
           <h1>Create New Squad</h1>
           <div className="create-squads-form">
-            <input type="text" value="Squad Name" />
-            <input type="text" value="Squad Goal" />
-            <input type="button" value="Submit" />
+            <input className="squad-name" type="text" placeholder="Squad Name" />
+            <input type="text" placeholder="Squad Goal" />
+            <input
+              onClick={() => {
+                this.createNewSquad();
+              }}
+              type="button"
+              value="Submit"
+            />
           </div>
         </div>
       </div>
