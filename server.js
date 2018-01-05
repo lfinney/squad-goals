@@ -208,37 +208,37 @@ app.post('/api/v1/squads/:id/comments', (request, response) => {
     .catch(error => response.status(500).json({ error: `Error creating new comment: ${error}` }));
 });
 
-app.get('/api/v1/challenges', (request, response) => {
-  database('challenges').select()
+app.get('/api/v1/goals', (request, response) => {
+  database('goals').select()
     .then(items => response.status(200).json(items))
     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
 
-app.get('/api/v1/challenges/:id', (request, response) => {
+app.get('/api/v1/goals/:id', (request, response) => {
   const { id } = request.params;
 
-  database('challenges').where('id', id).select()
-    .then((challenge) => {
-      challenge.length ? response.status(200).json(challenge)
+  database('goals').where('id', id).select()
+    .then((goal) => {
+      goal.length ? response.status(200).json(goal)
         :
-        response.status(404).json({ error: `Could not find challenge with id: ${id}` });
+        response.status(404).json({ error: `Could not find goal with id: ${id}` });
     })
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
-app.patch('/api/v1/challenges/:id', (request, response) => {
+app.patch('/api/v1/goals/:id', (request, response) => {
   const { id } = request.params;
-  const updateChallenge = request.body;
+  const updateGoal = request.body;
 
-  if (!(updateChallenge.title || updateChallenge.description ||
-    updateChallenge.challenge_time || updateChallenge.challenge_points)) {
+  if (!(updateGoal.title || updateGoal.description ||
+    updateGoal.goal_time || updateGoal.goal_points)) {
     return response.status(422).json({
-      error: 'You must send only an object literal with a key of title, body, challenge_time, or challenge_points',
+      error: 'You must send only an object literal with a key of title, body, goal_time, or goal_points',
     });
   }
 
-  database('challenges').where('id', id)
-    .update(updateChallenge, '*')
+  database('goals').where('id', id)
+    .update(updateGoal, '*')
     .then((update) => {
       return update ?
         response.sendStatus(204)
@@ -248,40 +248,40 @@ app.patch('/api/v1/challenges/:id', (request, response) => {
     .catch(error => response.status(500).json({ error }));
 });
 
-app.delete('/api/v1/challenges/:id', (request, response) => {
+app.delete('/api/v1/goals/:id', (request, response) => {
   const { id } = request.params;
 
-  database('challenges').where('id', id).del()
+  database('goals').where('id', id).del()
     .then((result) => {
       result ?
         response.sendStatus(204)
         :
-        response.status(422).json({ error: `No challenge with id ${id}` });
+        response.status(422).json({ error: `No goal with id ${id}` });
     })
     .catch(error => response.status(422).json(error));
 });
 
-app.get('/api/v1/challenges/:id/comments', (request, response) => {
+app.get('/api/v1/goals/:id/comments', (request, response) => {
   const { id } = request.params;
 
-  database('challenges').where('id', id).select()
-    .then((challenge) => {
-      if (challenge.length) {
-        return database('comments').where('conversation_id', challenge[0].conversation_id).select()
+  database('goals').where('id', id).select()
+    .then((goal) => {
+      if (goal.length) {
+        return database('comments').where('conversation_id', goal[0].conversation_id).select()
           .then((comments) => {
             comments.length ?
               response.status(200).json(comments)
               :
-              response.status(404).json({ error: `Could not find comments for challenge with id: ${id}` });
+              response.status(404).json({ error: `Could not find comments for goal with id: ${id}` });
           })
           .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
       }
-      return response.status(404).json({ error: `Could not find challenge with id: ${id}` });
+      return response.status(404).json({ error: `Could not find goal with id: ${id}` });
     })
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
-app.post('/api/v1/challenges/:id/comments', (request, response) => {
+app.post('/api/v1/goals/:id/comments', (request, response) => {
   let newComment = request.body;
   const { id } = request.params;
 
@@ -291,7 +291,7 @@ app.post('/api/v1/challenges/:id/comments', (request, response) => {
     });
   }
 
-  database('challenges').where('id', id).select('conversation_id')
+  database('goals').where('id', id).select('conversation_id')
     .then((convoId) => {
       newComment = Object.assign({}, newComment, {
         conversation_id: convoId[0].conversation_id,
@@ -303,37 +303,37 @@ app.post('/api/v1/challenges/:id/comments', (request, response) => {
     .catch(error => response.status(500).json({ error: `Error creating new comment: ${error}` }));
 });
 
-app.post('/api/v1/users/:id/challenges', (request, response) => {
-  let newChallenge = request.body;
+app.post('/api/v1/users/:id/goals', (request, response) => {
+  let newGoal = request.body;
   const { id } = request.params;
 
-  for (const requiredParameter of ['title', 'description', 'challenge_time', 'challenge_points']) {
-    if (!newChallenge[requiredParameter]) {
+  for (const requiredParameter of ['title', 'description', 'goal_time', 'goal_points']) {
+    if (!newGoal[requiredParameter]) {
       return response.status(422).json({
         error: `you are missing the ${requiredParameter} property`,
       });
     }
   }
 
-  const convoTitle = { title: `${newChallenge.title} Conversation` };
+  const convoTitle = { title: `${newGoal.title} Conversation` };
 
   database('conversations').insert(convoTitle, 'id')
     .then((convoId) => {
-      newChallenge = Object.assign({}, newChallenge, {
+      newGoal = Object.assign({}, newGoal, {
         creator_id: id,
         conversation_id: convoId[0],
       });
-      database('challenges').insert(newChallenge, '*')
-        .then(insertedChallenge => response.status(201).json(insertedChallenge))
+      database('goals').insert(newGoal, '*')
+        .then(insertedGoal => response.status(201).json(insertedGoal))
         .catch(error => response.status(500).json({ error }));
     })
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
 });
 
-app.get('/api/v1/users/:id/challenges-created', (request, response) => {
+app.get('/api/v1/users/:id/goals-created', (request, response) => {
   const userId = request.params.id;
 
-  database('challenges').where('creator_id', userId).select()
+  database('goals').where('creator_id', userId).select()
     .then((user) => {
       user.length ? response.status(200).json(user)
         :
@@ -392,18 +392,18 @@ app.get('/api/v1/users/:userId/squads', (request, response) => {
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
-// GET all challenges for one users
-app.get('/api/v1/users/:id/challenges', (request, response) => {
+// GET all goals for one users
+app.get('/api/v1/users/:id/goals', (request, response) => {
   const { id } = request.params;
 
-  database('challenges')
-    .join('users_challenges', 'users_challenges.challenge_id', '=', 'challenges.id')
-    .where('users_challenges.user_id', id)
+  database('goals')
+    .join('users_goals', 'users_goals.goal_id', '=', 'goals.id')
+    .where('users_goals.user_id', id)
     .select('*')
-    .then((challenges) => {
-      challenges.length ? response.status(200).json(challenges)
+    .then((goals) => {
+      goals.length ? response.status(200).json(goals)
         :
-        response.status(404).json({ error: `Could not find a challenges for user with id${id}` });
+        response.status(404).json({ error: `Could not find a goals for user with id${id}` });
     })
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
@@ -424,39 +424,39 @@ app.get('/api/v1/squads/:squadId/users', (request, response) => {
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
-// GET all users part of a challenge
-app.get('/api/v1/challenges/:challengeId/users', (request, response) => {
-  const { challengeId } = request.params;
+// GET all users part of a goal
+app.get('/api/v1/goals/:goalId/users', (request, response) => {
+  const { goalId } = request.params;
 
   database('users')
-    .join('users_challenges', 'users_challenges.user_id', '=', 'users.id')
-    .where('users_challenges.challenge_id', challengeId)
+    .join('users_goals', 'users_goals.user_id', '=', 'users.id')
+    .where('users_goals.goal_id', goalId)
     .select('*')
     .then((users) => {
       users.length ? response.status(200).json(users)
         :
-        response.status(404).json({ error: `Could not find challenge with id: ${challengeId}` });
+        response.status(404).json({ error: `Could not find goal with id: ${goalId}` });
     })
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
-// POST user to a challenge
-app.post('/api/v1/users/:userId/challenges/:challengeId', (request, response) => {
-  const { userId, challengeId } = request.params;
+// POST user to a goal
+app.post('/api/v1/users/:userId/goals/:goalId', (request, response) => {
+  const { userId, goalId } = request.params;
 
-  database('users_challenges').insert({ user_id: userId, challenge_id: challengeId })
+  database('users_goals').insert({ user_id: userId, goal_id: goalId })
     .then(() => response.sendStatus(204))
     .catch(error => response.status(422).json(error));
 });
 
-// DELETE user from a challenge
-app.delete('/api/v1/users/:userId/challenges/:challengeId', (request, response) => {
-  const { userId, challengeId } = request.params;
+// DELETE user from a goal
+app.delete('/api/v1/users/:userId/goals/:goalId', (request, response) => {
+  const { userId, goalId } = request.params;
 
-  database('users_challenges').where({ user_id: userId, challenge_id: challengeId })
+  database('users_goals').where({ user_id: userId, goal_id: goalId })
     .del()
     .then((result) => {
-      !result ? response.status(404).json({ error: 'No user or challenge' })
+      !result ? response.status(404).json({ error: 'No user or goal' })
         :
         response.sendStatus(204);
     })

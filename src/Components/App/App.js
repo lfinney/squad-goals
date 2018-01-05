@@ -4,8 +4,8 @@ import Welcome from '../Welcome/Welcome';
 import Navigation from '../Navigation/Navigation';
 import UserDashboard from '../UserDashboard/UserDashboard';
 import SquadsContainer from '../SquadsContainer/SquadsContainer';
-import ChallengesContainer from '../ChallengesContainer/ChallengesContainer';
-import CreateChallenges from '../CreateChallenges/CreateChallenges';
+import GoalsContainer from '../GoalsContainer/GoalsContainer';
+import CreateGoals from '../CreateGoals/CreateGoals';
 import CreateSquads from '../CreateSquads/CreateSquads';
 
 class App extends Component {
@@ -17,8 +17,8 @@ class App extends Component {
         <Route path="/UserDashboard" component={UserDashboard} />
         <Route path="/Squads" component={SquadsContainer} />
         <Route path="/CreateSquads" component={CreateSquads} />
-        <Route path="/Challenges" component={ChallengesContainer} />
-        <Route path="/CreateChallenges" component={CreateChallenges} />
+        <Route path="/Goals" component={GoalsContainer} />
+        <Route path="/CreateGoals" component={CreateGoals} />
       </div>
     );
   }

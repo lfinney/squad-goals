@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-class CreateChallenges extends Component {
+class CreateGoals extends Component {
   constructor(props, context) {
     super(props, context);
     // this.showContent = this.showContent.bind(this);
     this.state = {
-      // challengeTitle: '',
+      // goalTitle: '',
       // description: '',
       // dateTime: '',
       // points: 0,
@@ -14,13 +14,13 @@ class CreateChallenges extends Component {
 
   render() {
     return (
-      <div className="create-challenges">
-        <h1>CreateChallenges</h1>
+      <div className="create-goals">
+        <h1>CreateGoals</h1>
         <form>
           <input
-            className="challenge-input"
+            className="goal-input"
             type="text"
-            placeholder="Challenge Title"
+            placeholder="Goal Title"
             value={this.state.goalName}
           />
         </form>
@@ -29,4 +29,4 @@ class CreateChallenges extends Component {
   }
 }
 
-export default CreateChallenges;
+export default CreateGoals;

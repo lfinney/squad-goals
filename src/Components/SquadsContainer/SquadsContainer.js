@@ -20,7 +20,7 @@ const SquadsContainer = ({ squadData }) => {
           <tr className="squad-row">
             <th>Squad Title</th>
             <th>Competitors</th>
-            <th>Squad Challenges</th>
+            <th>Squad Goals</th>
             <th />
           </tr>
           { squadsInfo }

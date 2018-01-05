@@ -16,11 +16,11 @@ exports.up = function(knex, Promise) {
       table.foreign('squad_id').references('squads.id').onDelete('cascade');
       table.timestamps(true, true);
     }),
-    knex.schema.createTable('users_challenges', (table) => {
+    knex.schema.createTable('users_goals', (table) => {
       table.integer('user_id').unsigned();
       table.foreign('user_id').references('users.id').onDelete('cascade');
-      table.integer('challenge_id').unsigned();
-      table.foreign('challenge_id').references('challenges.id').onDelete('cascade');
+      table.integer('goal_id').unsigned();
+      table.foreign('goal_id').references('goals.id').onDelete('cascade');
       table.timestamps(true, true);
     }),
   ])
@@ -28,7 +28,7 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('users_challenges'),
+    knex.schema.dropTable('users_goals'),
     knex.schema.dropTable('users_squads'),
     knex.schema.dropTable('squads'),
   ])

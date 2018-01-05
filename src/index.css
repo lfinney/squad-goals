@@ -118,7 +118,7 @@
   border: none;
   border-radius: 3px; }
 
-.challenge-body {
+.goal-body {
   text-align: center;
   background-color: #0e5bd7;
   box-shadow: 2px 2px 4px black;
@@ -129,20 +129,20 @@
   margin: 10px auto 10px auto;
   opacity: .95; }
 
-.challenge-body-title {
+.goal-body-title {
   font-weight: lighter;
   font-size: 1.5em;
   margin: 10px 0 15px 0; }
 
-.challenge-body-info {
+.goal-body-info {
   display: flex;
   flex-direction: row;
   font-size: .8em; }
 
-.challenge-body-info p {
+.goal-body-info p {
   margin: 10px 0 10px 0; }
 
-.create-challenges {
+.create-goals {
   background-color: red; }
 
 .create-squads {
