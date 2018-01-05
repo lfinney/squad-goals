@@ -1,2 +1,3 @@
-.create-goals {
-  background-color: red; }
+.create-goals-body {
+  display: flex;
+  flex-direction: column; }
