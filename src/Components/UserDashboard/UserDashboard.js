@@ -53,9 +53,9 @@ class UserDashboard extends Component {
 
   render() {
     return (
-      <div className="dashboard">
+      <div className="dashboard-container">
         <h1>Squad Goals</h1>
-        <div className="dash-header">
+        <div className="dashboard-header">
           <input
             onClick={() => {
             this.showContent('squads');

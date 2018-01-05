@@ -78,19 +78,12 @@
   margin: 0 auto 5px auto;
   width: 25%; }
 
-.dashboard {
-  background-image: url(./Components/Assets/up-arrows.jpg);
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  height: 100vh; }
-
-.dashboard h1 {
+.dashboard-container h1 {
   display: inline-block;
   color: #0e5bd7;
   margin: 10px 0 20px 30px; }
 
-.dash-header {
+.dashboard-header {
   align-items: center;
   background-color: #0e5bd7;
   box-shadow: 2px 2px 4px black;
@@ -103,39 +96,15 @@
   margin: 10px auto 10px auto;
   opacity: .95; }
 
-.dash-header input {
+.dashboard-header input {
   color: #fff;
   background-color: #0e5bd7;
   border: none;
   font-weight: lighter;
   font-size: 1.5em; }
 
-.dash-header input:focus {
+.dashboard-header input:focus {
   outline: none; }
-
-.dash-body {
-  text-align: center;
-  background-color: #0e5bd7;
-  box-shadow: 2px 2px 4px black;
-  border-radius: 5px;
-  color: #fff;
-  height: 50vw;
-  width: 50vw;
-  margin: 10px auto 10px auto;
-  opacity: .95; }
-
-.dash-body-title {
-  font-weight: lighter;
-  font-size: 1.5em;
-  margin: 10px 0 15px 0; }
-
-.dash-body-info {
-  display: flex;
-  flex-direction: row;
-  font-size: .8em; }
-
-.dash-body-info p {
-  margin: 10px 0 10px 0; }
 
 .squads-body {
   text-align: center;
@@ -232,54 +201,6 @@
   font-size: .8em;
   width: 35%;
   margin: 15px auto; }
-
-.smack-talk {
-  background-color: #22affe;
-  margin: auto;
-  height: 40%;
-  width: 80%; }
-
-.smack-talk h1 {
-  font-size: 1.3em;
-  font-weight: lighter; }
-
-.squad {
-  background-image: url(./Components/Assets/up-arrows.jpg);
-  background-size: cover;
-  height: 100vh; }
-
-.squad-body {
-  text-align: center;
-  background-color: #0e5bd7;
-  box-shadow: 2px 2px 4px black;
-  border-radius: 5px;
-  color: #fff;
-  height: 65vw;
-  width: 50vw;
-  margin: 10px auto 10px auto;
-  opacity: .95; }
-
-.squad-body-title {
-  font-weight: lighter;
-  font-size: 1.5em;
-  margin: 20px 0 20px 0;
-  padding-top: 20px; }
-
-.squad-body-info {
-  background-color: #22affe;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  font-size: .8em;
-  height: 40%;
-  width: 80%;
-  margin: auto auto 50px auto; }
-
-.squad-body-info h2 {
-  font-size: 1.3em;
-  font-weight: lighter;
-  margin: 10px; }
 
 body {
   margin: 0;
