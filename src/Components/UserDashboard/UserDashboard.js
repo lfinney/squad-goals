@@ -19,7 +19,7 @@ class UserDashboard extends Component {
 
   getSquads() {
     if (!this.state.squadData.length) {
-      const url = '/api/v1/squads';
+      const url = '/api/v1/users/1/squads';
       return this.contentFetch(url)
         .then(parsedData => this.setState({
           squadData: parsedData,
@@ -30,7 +30,7 @@ class UserDashboard extends Component {
 
   getGoals() {
     if (!this.state.goalData.length) {
-      const url = '/api/v1/goals';
+      const url = '/api/v1/users/1/goals';
       return this.contentFetch(url)
         .then(parsedData => this.setState({
           goalData: parsedData,
@@ -53,9 +53,9 @@ class UserDashboard extends Component {
 
   render() {
     return (
-      <div className="dashboard">
+      <div className="dashboard-container">
         <h1>Squad Goals</h1>
-        <div className="dash-header">
+        <div className="dashboard-header">
           <input
             onClick={() => {
             this.showContent('squads');

@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const Squad = ({ squadData }) => {
+const SquadDashboard = ({ squadData }) => {
   return (
-    <div className="squad">
-      <div className="squad-body">
-        <h1 className="squad-body-title">Squad Name</h1>
-        <div className="squad-body-info">
+    <div className="dashboard-container">
+      <div className="dashboard-body">
+        <h1 className="dashboard-body-title">Squad Name</h1>
+        <div className="dashboard-body-info">
           <div>
             <h2>Members</h2>
           </div>
@@ -15,7 +15,7 @@ const Squad = ({ squadData }) => {
             <h2>Leaderboard</h2>
           </div>
           <div>
-            <h2>Upcoming Challenges</h2>
+            <h2>Upcoming Goals</h2>
           </div>
         </div>
         <div className="smack-talk">
@@ -26,8 +26,8 @@ const Squad = ({ squadData }) => {
   );
 };
 
-Squad.propTypes = {
+SquadDashboard.propTypes = {
   squadData: PropTypes.arrayOf(PropTypes.object),
 };
 
-export default Squad;
+export default SquadDashboard;
