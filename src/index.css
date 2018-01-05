@@ -159,8 +159,16 @@
 .goal-body-info p {
   margin: 10px 0 10px 0; }
 
-.create-goals {
-  background-color: red; }
+.create-goals-body {
+  display: flex;
+  flex-direction: column; }
+
+.goal-input,
+.date-input,
+.goal-point-option,
+.create-goals-button {
+  border-radius: 5px;
+  margin: 25px; }
 
 .create-squads {
   background-image: url(./Components/Assets/up-arrows.jpg);
