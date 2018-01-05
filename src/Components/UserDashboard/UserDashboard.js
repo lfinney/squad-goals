@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ChallengesContainer from '../ChallengesContainer/ChallengesContainer.js';
-import Squads from '../SquadsContainer/Squads.js';
+import SquadsContainer from '../SquadsContainer/SquadsContainer.js';
 
 class UserDashboard extends Component {
   constructor(props, context) {
@@ -74,7 +74,7 @@ class UserDashboard extends Component {
         </div>
         {
           this.state.displayComponent === 'squads' &&
-          <Squads squadData={this.state.squadData} />
+          <SquadsContainer squadData={this.state.squadData} />
         }
         {
           this.state.displayComponent === 'challenges' &&
