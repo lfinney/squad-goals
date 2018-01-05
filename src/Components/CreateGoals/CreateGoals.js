@@ -6,8 +6,8 @@ class CreateGoals extends Component {
     this.state = {
       title: '',
       description: '',
-      dateTime: '',
-      points: 0,
+      goal_time: '',
+      goal_points: 0,
     };
     this.updateState = this.updateState.bind(this);
   }
@@ -17,10 +17,23 @@ class CreateGoals extends Component {
     this.setState({ [key]: event.target.value });
   }
 
+  postGoal(goal) {
+    fetch('/api/v1/users/1/goals', {
+      method: 'POST',
+      body: JSON.stringify(goal),
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(res => console.log(res))
+      .catch(error => console.log(error));
+  }
+
   handleSubmit() {
     const goal = Object.assign({}, this.state);
-    console.log(goal);
-  };
+    this.postGoal(goal);
+  }
 
   render() {
     return (
@@ -44,10 +57,10 @@ class CreateGoals extends Component {
           <input
             className="date-input"
             type="datetime-local"
-            value={this.state.dateTime}
-            onChange={event => this.updateState('dateTime', event)}
+            value={this.state.goal_time}
+            onChange={event => this.updateState('goal_time', event)}
           />
-          <select className="sportDropDown" value={this.state.points} onChange={event => this.updateState('points', event)}>
+          <select className="sportDropDown" value={this.state.goal_points} onChange={event => this.updateState('goal_points', event)}>
             <option value="">-Select Point Total-</option>
             <option value="100">100</option>
             <option value="250">250</option>
@@ -55,6 +68,7 @@ class CreateGoals extends Component {
             <option value="750">750</option>
             <option value="1000">1000</option>
           </select>
+          <input type="button" value="Set Goal" onClick={() => this.handleSubmit()} />
         </form>
       </div>
     );
