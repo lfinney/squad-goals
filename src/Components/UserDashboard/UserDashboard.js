@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Challenges from '../Challenges/Challenges.js';
+import ChallengesContainer from '../ChallengesContainer/ChallengesContainer.js';
 import Squads from '../Squads/Squads.js';
 
-class Dashboard extends Component {
+class UserDashboard extends Component {
   constructor(props, context) {
     super(props, context);
     this.showContent = this.showContent.bind(this);
@@ -78,11 +78,11 @@ class Dashboard extends Component {
         }
         {
           this.state.displayComponent === 'challenges' &&
-          <Challenges challengeData={this.state.challengeData} />
+          <ChallengesContainer challengeData={this.state.challengeData} />
         }
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default UserDashboard;

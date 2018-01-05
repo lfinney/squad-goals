@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ChallengeCard from '../ChallengeCard/ChallengeCard';
 
-const Challenges = ({ challengeData }) => {
+const ChallengesContainer = ({ challengeData }) => {
   const challengeInfo = challengeData.map((challenge) => {
     return (
       <ChallengeCard
@@ -30,8 +30,8 @@ const Challenges = ({ challengeData }) => {
   );
 };
 
-Challenges.propTypes = {
+ChallengesContainer.propTypes = {
   challengeData: PropTypes.arrayOf(PropTypes.object),
 };
 
-export default Challenges;
+export default ChallengesContainer;
