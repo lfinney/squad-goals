@@ -60,7 +60,7 @@ class CreateGoals extends Component {
             value={this.state.goal_time}
             onChange={event => this.updateState('goal_time', event)}
           />
-          <select className="sportDropDown" value={this.state.goal_points} onChange={event => this.updateState('goal_points', event)}>
+          <select className="goal-point-option" value={this.state.goal_points} onChange={event => this.updateState('goal_points', event)}>
             <option value="">-Select Point Total-</option>
             <option value="100">100</option>
             <option value="250">250</option>
@@ -68,7 +68,12 @@ class CreateGoals extends Component {
             <option value="750">750</option>
             <option value="1000">1000</option>
           </select>
-          <input type="button" value="Set Goal" onClick={() => this.handleSubmit()} />
+          <input
+            className="create-goals-button"
+            type="button"
+            value="Set Goal"
+            onClick={() => this.handleSubmit()}
+          />
         </form>
       </div>
     );
