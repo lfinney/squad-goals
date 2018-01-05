@@ -6,8 +6,9 @@
 # testing
 /coverage
 
-# production
-/build
+build/static
+build/asset-manifest.json
+build/service-worker.js
 
 # misc
 .DS_Store
