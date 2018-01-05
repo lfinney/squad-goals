@@ -1,5 +1,5 @@
 const goalsData = require('../../../data/test/goals_data_test');
-const commentsData = require('../../../data/ctest/omments_data_test');
+const commentsData = require('../../../data/test/omments_data_test');
 const conversationsData = require('../../../data/test/conversations_data_test');
 const usersData = require('../../../data/test/users_data_test');
 const squadData = require('../../../data/test/squad_data_test');
