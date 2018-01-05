@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ChallengesContainer from '../ChallengesContainer/ChallengesContainer.js';
+import GoalsContainer from '../GoalsContainer/GoalsContainer.js';
 import SquadsContainer from '../SquadsContainer/SquadsContainer.js';
 
 class UserDashboard extends Component {
@@ -9,7 +9,7 @@ class UserDashboard extends Component {
     this.state = {
       displayComponent: 'squads',
       squadData: [],
-      challengeData: [],
+      goalData: [],
     };
   }
 
@@ -28,12 +28,12 @@ class UserDashboard extends Component {
     }
   }
 
-  getChallenges() {
-    if (!this.state.challengeData.length) {
-      const url = '/api/v1/challenges';
+  getGoals() {
+    if (!this.state.goalData.length) {
+      const url = '/api/v1/goals';
       return this.contentFetch(url)
         .then(parsedData => this.setState({
-          challengeData: parsedData,
+          goalData: parsedData,
         }))
         .catch(error => console.error(error));
     }
@@ -65,11 +65,11 @@ class UserDashboard extends Component {
           />
           <input
             onClick={() => {
-            this.showContent('challenges');
-            this.getChallenges();
+            this.showContent('goals');
+            this.getGoals();
           }}
             type="button"
-            value="Challenges"
+            value="Goals"
           />
         </div>
         {
@@ -77,8 +77,8 @@ class UserDashboard extends Component {
           <SquadsContainer squadData={this.state.squadData} />
         }
         {
-          this.state.displayComponent === 'challenges' &&
-          <ChallengesContainer challengeData={this.state.challengeData} />
+          this.state.displayComponent === 'goals' &&
+          <GoalsContainer goalData={this.state.goalData} />
         }
       </div>
     );

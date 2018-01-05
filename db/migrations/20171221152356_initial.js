@@ -20,12 +20,12 @@ exports.up = function(knex, Promise) {
       table.foreign('conversation_id').references('conversations.id');
       table.timestamps(true, true);
     }),
-    knex.schema.createTable('challenges', (table) => {
+    knex.schema.createTable('goals', (table) => {
       table.increments('id').primary();
       table.string('title');
       table.string('description');
-      table.dateTime('challenge_time');
-      table.integer('challenge_points');
+      table.dateTime('goal_time');
+      table.integer('goal_points');
       table.integer('creator_id').unsigned();
       table.foreign('creator_id').references('users.id').onDelete('CASCADE');
       table.integer('conversation_id').unsigned();
@@ -37,7 +37,7 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('challenges'),
+    knex.schema.dropTable('goals'),
     knex.schema.dropTable('comments'),
     knex.schema.dropTable('conversations'),
     knex.schema.dropTable('users'),
