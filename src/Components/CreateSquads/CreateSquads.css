@@ -1,3 +1,38 @@
 .create-squads {
-  background-color: black;
-  color: white; }
+  background-image: url(./Components/Assets/up-arrows.jpg);
+  background-size: cover;
+  height: 100vh; }
+
+.create-squads-body {
+  text-align: center;
+  background-color: #0e5bd7;
+  box-shadow: 2px 2px 4px black;
+  border-radius: 5px;
+  color: #fff;
+  height: 50vw;
+  width: 50vw;
+  margin: 40px auto;
+  opacity: .95; }
+
+.create-squads-body h1 {
+  margin-bottom: 15px;
+  padding-top: 10px; }
+
+.create-squads-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 40%; }
+
+.create-squads-form input {
+  border: none;
+  margin: 10px;
+  border-radius: 3px; }
+
+.create-squads-form input:focus {
+  outline: none; }
+
+.create-squads-form input[type=button] {
+  width: 35%;
+  margin: 15px auto; }
