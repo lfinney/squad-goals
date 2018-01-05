@@ -1,10 +1,10 @@
-const goalsData = require('../../../data/goals_data');
-const commentsData = require('../../../data/comments_data');
-const conversationsData = require('../../../data/conversations_data');
-const usersData = require('../../../data/users_data');
-const squadData = require('../../../data/squad_data');
-const userSquadData = require('../../../data/users_squads_data');
-const usersGoalsData = require('../../../data/users_goals_data');
+const goalsData = require('../../../data/dev/goals_data');
+const commentsData = require('../../../data/dev/comments_data');
+const conversationsData = require('../../../data/dev/conversations_data');
+const usersData = require('../../../data/dev/users_data');
+const squadData = require('../../../data/dev/squad_data');
+const userSquadData = require('../../../data/dev/users_squads_data');
+const usersGoalsData = require('../../../data/dev/users_goals_data');
 
 const createUser = (knex, user) => {
   return knex('users').insert(user);
