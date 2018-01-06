@@ -31,26 +31,29 @@ class Welcome extends Component {
 
   signUp() {
     auth.onAuthStateChanged((user) => {
-      if (user) {
-        const { uid } = user.providerData[0].uid;
-        fetch(`/api/v1/users/${uid}`, {
-          method: 'POST',
-          body: JSON.stringify(user),
-          headers: {
-            'content-type': 'application/json',
-          },
-        })
-          .then(response => response.json())
-          .then(parsedData => console.log('signUpData', parsedData))
-          .catch(error => console.error(error));
-      }
+      console.log(user);
+      const postBody = {
+        'user_name': user.providerData[0].displayName,
+        'firebase_id': user.providerData[0].uid,
+        'points': 50,
+      };
+      fetch('/api/v1/users', {
+        method: 'POST',
+        body: JSON.stringify(postBody),
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+        .then(response => response.json())
+        .then(parsedData => console.log('signUpData', parsedData))
+        .catch(error => console.error(error));
     });
   }
 
   firebaseLogin() {
     auth.signInWithPopup(provider)
       .then((result) => {
-        // console.log(result);
+
       })
       .catch(error => console.error(error));
   }
