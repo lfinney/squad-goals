@@ -4,9 +4,14 @@ class Welcome extends Component {
   render() {
     return (
       <div className="welcome">
-        <h1>Squad Goals</h1>
-        <input type="submit" value="Log In" />
-        <input type="submit" value="Sign Up" />
+        <div className="dashboard-body">
+          <h1 className="dashboard-body-title">Squad Goals</h1>
+          <form className="welcome-form">
+            <input type="submit" value="Log In" />
+            <input type="submit" value="Sign Up" />
+          </form>
+          <div className="welcome-img" />
+        </div>
       </div>
     );
   }
