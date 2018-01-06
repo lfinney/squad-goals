@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { auth, provider } from '../../Utils/fire';
 
 class Welcome extends Component {
+  // constructor(props) {
+  //   super();
+  // }
+
   componentDidMount() {
     // this.checkForUser();
+  }
+
+  nextPath(path) {
+    this.props.history.push(`/UserDashboard/${path}`);
   }
 
   checkForUser() {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        const { uid } = user.providerData[0].uid;
-        fetch(`/api/v1/users/${uid}`)
+        const fireId = user.providerData[0].uid;
+        fetch(`/api/v1/users/${fireId}`)
           .then(response => response.json())
-          .then((parsedData) => {
-            // rip the id off of the parsedData and pass to user dashboard link
-            console.log('checkedUserData', parsedData);
-          })
+          .then(userId => this.nextPath(userId.user))
           .catch(error => console.error(error));
-        // const cleanedUser = this.cleanUserData(user);
       }
     });
   }
@@ -48,19 +54,16 @@ class Welcome extends Component {
           },
         })
           .then(response => response.json())
-          .then((parsedData) => {
-            // rip the id off of the parsedData and pass to user dashboard link
-            console.log('signUpData', parsedData);
-          })
+          .then(userId => this.nextPath(userId[0].id))
           .catch(error => console.error(error));
       });
   }
 
   firebaseLogin() {
     auth.signInWithPopup(provider)
-      .then((result) => {
-        // make call to get user/:fireid and take id that returns to pass to dashboard
-      })
+      .then(user => fetch(`/api/v1/users/${user.user.providerData[0].uid}`)
+        .then(result => result.json()))
+      .then(userId => this.nextPath(userId.user))
       .catch(error => console.error(error));
   }
 
@@ -94,4 +97,9 @@ class Welcome extends Component {
   }
 }
 
-export default Welcome;
+Welcome.propTypes = {
+  history: PropTypes.object,
+  push: PropTypes.func,
+};
+
+export default withRouter(Welcome);
