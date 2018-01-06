@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import GoalsContainer from '../GoalsContainer/GoalsContainer.js';
 import SquadsContainer from '../SquadsContainer/SquadsContainer.js';
+
 
 class UserDashboard extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       displayComponent: 'squads',
+      activeUser: '',
       squadData: [],
       goalData: [],
     };
@@ -14,7 +17,16 @@ class UserDashboard extends Component {
   }
 
   componentDidMount() {
-    this.getSquads();
+    this.getUserData();
+  }
+
+  getUserData() {
+    if (!this.state.activeUser) {
+      const url = `/api/v1/dashboard/${this.props.match.params.id}`;
+      return this.contentFetch(url)
+        .then(parsedData => console.log(parsedData))
+        .catch(error => console.error(error));
+    }
   }
 
   getSquads() {
@@ -84,5 +96,11 @@ class UserDashboard extends Component {
     );
   }
 }
+
+UserDashboard.propTypes = {
+  match: PropTypes.object,
+  params: PropTypes.object,
+  id: PropTypes.string,
+};
 
 export default UserDashboard;

@@ -60,8 +60,8 @@ app.get('/api/v1/users/:fireId', (request, response) => {
 app.get('/api/v1/dashboard/:uid', (request, response) => {
   const { uid } = request.params;
 
-  database('users').where('id', uid).select()
-    .then((user) => {
+  return database('users').where('id', uid).select()
+    .then(async (user) => {
       if (!user.length) {
         response.status(404).json({ error: `Could not find user with id: ${uid}` });
       }
@@ -72,7 +72,8 @@ app.get('/api/v1/dashboard/:uid', (request, response) => {
         points,
       } = user[0];
 
-      const squads = database('squads')
+      console.log(id);
+      const squads = await database('squads')
         .join('users_squads', 'users_squads.squad_id', '=', 'squads.id')
         .where('users_squads.user_id', id)
         .select('*')
@@ -88,7 +89,7 @@ app.get('/api/v1/dashboard/:uid', (request, response) => {
         })
         .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 
-      const goals = database('goals')
+      const goals = await database('goals')
         .join('users_goals', 'users_goals.goal_id', '=', 'goals.id')
         .where('users_goals.user_id', id)
         .select('*')
