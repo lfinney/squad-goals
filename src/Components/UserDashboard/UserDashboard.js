@@ -5,12 +5,12 @@ import SquadsContainer from '../SquadsContainer/SquadsContainer.js';
 class UserDashboard extends Component {
   constructor(props, context) {
     super(props, context);
-    this.showContent = this.showContent.bind(this);
     this.state = {
       displayComponent: 'squads',
       squadData: [],
       goalData: [],
     };
+    this.showContent = this.showContent.bind(this);
   }
 
   componentDidMount() {
