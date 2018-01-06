@@ -10,6 +10,7 @@ class UserDashboard extends Component {
     this.state = {
       displayComponent: 'squads',
       activeUser: '',
+      points: 0,
       squadData: [],
       goalData: [],
     };
@@ -24,7 +25,12 @@ class UserDashboard extends Component {
     if (!this.state.activeUser) {
       const url = `/api/v1/dashboard/${this.props.match.params.id}`;
       return this.contentFetch(url)
-        .then(parsedData => console.log(parsedData))
+        .then(parsedData => this.setState({
+          activeUser: parsedData.user_name,
+          points: parsedData.points,
+          squadData: parsedData.squads,
+          goalData: parsedData.goals,
+        }))
         .catch(error => console.error(error));
     }
   }
@@ -83,6 +89,8 @@ class UserDashboard extends Component {
             type="button"
             value="Goals"
           />
+          <h2>{this.state.activeUser}</h2>
+          <h2>{this.state.points}</h2>
         </div>
         {
           this.state.displayComponent === 'squads' &&
