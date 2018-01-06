@@ -17,6 +17,7 @@
       "quote-props":0,
       "react/require-default-props": 0,
       "react/forbid-prop-types": 0,
+      "camelcase": 0,
       "jsx-a11y/anchor-is-valid": [ 0, {
       "components": [ "Link" ],
       "specialLink": [ "hrefLeft", "hrefRight" ],

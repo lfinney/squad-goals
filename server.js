@@ -44,14 +44,63 @@ app.post('/api/v1/users/', (request, response) => {
     .catch(error => response.status(500).json({ error }));
 });
 
-app.get('/api/v1/users/:id', (request, response) => {
-  const { id } = request.params;
+app.get('/api/v1/users/:uid', (request, response) => {
+  const { uid } = request.params;
 
-  database('users').where('id', id).select()
-    .then((user) => {
-      user.length ? response.status(200).json(user)
-        :
-        response.status(404).json({ error: `Could not find user with id: ${id}` });
+  database('users').where('firebase_id', uid).select()
+    .then(async (user) => {
+      if (!user.length) {
+        response.status(404).json({ error: `Could not find user with id: ${uid}` });
+      }
+      const {
+        id,
+        user_name,
+        firebase_id,
+        points,
+      } = user[0];
+
+      const squads = await database('squads')
+        .join('users_squads', 'users_squads.squad_id', '=', 'squads.id')
+        .where('users_squads.user_id', id)
+        .select('*')
+        .then((uSquads) => {
+          return uSquads.reduce((accu, squad) => {
+            userSquad = {
+              id: squad.id,
+              squad_name: squad.squad_name,
+              conversation_id: squad.conversation_id,
+            };
+            return [...accu, userSquad];
+          }, []);
+        })
+        .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+
+      const goals = await database('goals')
+        .join('users_goals', 'users_goals.goal_id', '=', 'goals.id')
+        .where('users_goals.user_id', id)
+        .select('*')
+        .then((uGoals) => {
+          return uGoals.reduce((accu, goal) => {
+            userGoal = {
+              id: goal.id,
+              title: goal.title,
+              description: goal.description,
+              goal_points: goal.goal_points,
+              conversation_id: goal.conversation_id,
+            };
+            return [...accu, userGoal];
+          }, []);
+        })
+        .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+
+      response.status(200).json({
+        id,
+        user_name,
+        firebase_id,
+        points,
+        squads,
+        goals,
+      });
     })
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
