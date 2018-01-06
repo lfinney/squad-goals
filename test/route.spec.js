@@ -198,4 +198,31 @@ describe('API Routes', () => {
         });
     });
   });
+
+  describe('GET /api/v1/squads', () => {
+    it('should retrieve all signed-up squads', (done) => {
+      chai.request(server)
+        .get('/api/v1/squads')
+        .end((error, response) => {
+          response.should.have.status(200);
+          response.should.be.json;
+          response.body.should.be.a('array');
+          response.body.length.should.equal(2);
+          response.body.includes({ 'id': 1 });
+          response.body.includes({ 'squad_name': 'Gizmo' });
+          response.body.includes({ 'conversation_id': 5 });
+          done();
+        });
+    });
+
+    it('should return a 404 if path does not exist', (done) => {
+      chai.request(server)
+        .get('/api/v1/squads/100')
+        .end((error, response) => {
+          response.should.have.status(404);
+          done();
+        });
+    });
+  });
+
 });
