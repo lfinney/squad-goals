@@ -224,4 +224,40 @@ describe('API Routes', () => {
         });
     });
   });
+
+  describe('POST /api/v1/squads', () => {
+    const newSquad = {
+      id: 3,
+      squad_name: 'Runners Club',
+    };
+
+    it('should add a new squad', (done) => {
+      chai.request(server)
+        .post('/api/v1/squads')
+        .send(newSquad)
+        .end((error, response) => {
+          response.should.have.status(201);
+          response.body[0].should.have.property('id');
+          response.body[0].id.should.equal(3);
+          chai.request(server)
+            .get('/api/v1/squads')
+            .end((postError, postResponse) => {
+              postResponse.body.should.be.a('array');
+              postResponse.body.length.should.equal(3);
+              postResponse.body.includes(newSquad);
+              done();
+            });
+        });
+    });
+
+    it('should not be able to add a new squad if a property is missing', (done) => {
+      chai.request(server)
+        .post('/api/v1/squads/')
+        .send({})
+        .end((error, response) => {
+          response.should.have.status(422);
+          done();
+        });
+    });
+  });
 });
