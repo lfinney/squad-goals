@@ -155,7 +155,7 @@ describe('API Routes', () => {
       user_name: 'Gaspard',
     };
 
-    it('should be able to update the body of a discussion', (done) => {
+    it('should be able to update the body of a user', (done) => {
       chai.request(server)
         .patch('/api/v1/users/1')
         .send(updateUser)
@@ -191,6 +191,143 @@ describe('API Routes', () => {
           response.body.should.be.a('object');
           chai.request(server)
             .get('/api/v1/users/1')
+            .end((deleteError, deleteResponse) => {
+              deleteResponse.should.have.status(404);
+              done();
+            });
+        });
+    });
+  });
+
+  describe('GET /api/v1/squads', () => {
+    it('should retrieve all signed-up squads', (done) => {
+      chai.request(server)
+        .get('/api/v1/squads')
+        .end((error, response) => {
+          response.should.have.status(200);
+          response.should.be.json;
+          response.body.should.be.a('array');
+          response.body.length.should.equal(2);
+          response.body.includes({ 'id': 1 });
+          response.body.includes({ 'squad_name': 'Gizmo' });
+          response.body.includes({ 'conversation_id': 5 });
+          done();
+        });
+    });
+
+    it('should return a 404 if path does not exist', (done) => {
+      chai.request(server)
+        .get('/api/v1/squads/100')
+        .end((error, response) => {
+          response.should.have.status(404);
+          done();
+        });
+    });
+  });
+
+  describe('POST /api/v1/squads', () => {
+    const newSquad = {
+      id: 3,
+      squad_name: 'Runners Club',
+    };
+
+    it('should add a new squad', (done) => {
+      chai.request(server)
+        .post('/api/v1/squads')
+        .send(newSquad)
+        .end((error, response) => {
+          response.should.have.status(201);
+          response.body[0].should.have.property('id');
+          response.body[0].id.should.equal(3);
+          chai.request(server)
+            .get('/api/v1/squads')
+            .end((postError, postResponse) => {
+              postResponse.body.should.be.a('array');
+              postResponse.body.length.should.equal(3);
+              postResponse.body.includes(newSquad);
+              done();
+            });
+        });
+    });
+
+    it('should not be able to add a new squad if a property is missing', (done) => {
+      chai.request(server)
+        .post('/api/v1/squads/')
+        .send({})
+        .end((error, response) => {
+          response.should.have.status(422);
+          done();
+        });
+    });
+  });
+
+  describe('GET /api/v1/squads/:id', () => {
+    it('should retrieve a specific squad', (done) => {
+      chai.request(server)
+        .get('/api/v1/squads/1')
+        .end((error, response) => {
+          response.should.have.status(200);
+          response.should.be.json;
+          response.body.should.be.a('array');
+          response.body.length.should.equal(1);
+          response.body.includes({ 'id': 1 });
+          response.body.includes({ 'squad_name': 'Gizmo' });
+          response.body.includes({ 'conversation_id': 1 });
+          done();
+        });
+    });
+
+    it('should return a 404 if path does not exist', (done) => {
+      chai.request(server)
+        .get('/api/v1/squads/50')
+        .end((error, response) => {
+          response.should.have.status(404);
+          done();
+        });
+    });
+  });
+
+  describe('PATCH /api/v1/squads/:id', () => {
+    const updateSquad = {
+      squad_name: 'Hiking Squad',
+    };
+
+    it('should be able to update the body of a squad', (done) => {
+      chai.request(server)
+        .patch('/api/v1/squads/1')
+        .send(updateSquad)
+        .end((error, response) => {
+          response.should.have.status(204);
+          chai.request(server)
+            .get('/api/v1/squads/1')
+            .end((getError, getResponse) => {
+              getResponse.body.should.be.a('array');
+              getResponse.body.includes({ 'squad_name': updateSquad.squad_name });
+              done();
+            });
+        });
+    });
+
+    it('should throw a 422 if a squads body is not provided', (done) => {
+      chai.request(server)
+        .patch('/api/v1/squads/1')
+        .send()
+        .end((error, response) => {
+          response.should.have.status(422);
+          done();
+        });
+    });
+  });
+
+  describe('DELETE /api/v1/squads/:id', () => {
+    it('should delete a specific squad', (done) => {
+      chai.request(server)
+        .delete('/api/v1/squads/1')
+        .end((error, response) => {
+          response.should.have.status(204);
+          response.body.should.be.a('object');
+          chai.request(server)
+            .get('/api/v1/squads/1')
             .end((deleteError, deleteResponse) => {
               deleteResponse.should.have.status(404);
               done();
