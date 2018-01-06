@@ -9,10 +9,12 @@ class Welcome extends Component {
 
   checkForUser() {
     auth.onAuthStateChanged((user) => {
-      console.log('user', user);
       if (user) {
-        console.log('USERID', user.providerData[0].uid);
-
+        const { uid } = user.providerData[0].uid;
+        fetch(`/api/v1/users/${uid}`)
+          .then(response => response.json())
+          .then(parsedData => console.log('checkedUserData', parsedData))
+          .catch(error => console.error(error));
         // const cleanedUser = this.cleanUserData(user);
       }
     });
@@ -27,6 +29,24 @@ class Welcome extends Component {
     };
   }
 
+  signUp() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        const { uid } = user.providerData[0].uid;
+        fetch(`/api/v1/users/${uid}`, {
+          method: 'POST',
+          body: JSON.stringify(user),
+          headers: {
+            'content-type': 'application/json',
+          },
+        })
+          .then(response => response.json())
+          .then(parsedData => console.log('signUpData', parsedData))
+          .catch(error => console.error(error));
+      }
+    });
+  }
+
   firebaseLogin() {
     auth.signInWithPopup(provider)
       .then((result) => {
@@ -35,12 +55,11 @@ class Welcome extends Component {
       .catch(error => console.error(error));
   }
 
-  // logout() {
-  //   auth.signOut()
-  //     .then(() => {
-  //       this.props.activeUser({});
-  //     });
-  // }
+  logout(user) {
+    auth.signOut()
+      .then(() => console.log('use signed out'))
+      .catch(error => console.error(error));
+  }
 
   render() {
     return (
@@ -53,7 +72,11 @@ class Welcome extends Component {
               type="submit"
               value="Log In"
             />
-            <input type="submit" value="Sign Up" />
+            <input
+              onClick={() => this.signUp()}
+              type="submit"
+              value="Sign Up"
+            />
           </div>
           <div className="welcome-img" />
         </div>
