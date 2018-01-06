@@ -10,7 +10,7 @@ class Navigation extends Component {
             <Link to="/">Home</Link>
           </li>
           <li className="nav-links">
-            <Link to="/Dashboard">Dashboard</Link>
+            <Link to="/UserDashboard">Dashboard</Link>
           </li>
         </ul>
       </nav>
