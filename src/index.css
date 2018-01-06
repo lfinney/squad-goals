@@ -50,8 +50,8 @@
   margin: 10px; }
 
 .navigation {
-  background-color: lightgrey;
-  height: 40px; }
+  background-color: #0e5bd7;
+  height: 7vh; }
 
 .navigation ul {
   display: flex;
@@ -63,8 +63,8 @@
 
 .nav-links a {
   display: block;
-  font: bold 11px Arial;
-  font-size: 16px; }
+  font-size: 1.2em;
+  margin-top: 15px; }
 
 .welcome {
   background-image: url(./Components/Assets/up-arrows.jpg);
