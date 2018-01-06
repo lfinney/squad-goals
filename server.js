@@ -29,8 +29,9 @@ app.get('/api/v1/users', (request, response) => {
     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
 
-app.post('/api/v1/users/', (request, response) => {
+app.post('/api/v1/users', (request, response) => {
   const newUser = request.body;
+
   for (const requiredParameter of ['user_name', 'firebase_id', 'points']) {
     if (!newUser[requiredParameter]) {
       return response.status(422).json({
@@ -48,7 +49,7 @@ app.get('/api/v1/users/:uid', (request, response) => {
   const { uid } = request.params;
 
   database('users').where('firebase_id', uid).select()
-    .then(async (user) => {
+    .then((user) => {
       if (!user.length) {
         response.status(404).json({ error: `Could not find user with id: ${uid}` });
       }
@@ -59,7 +60,7 @@ app.get('/api/v1/users/:uid', (request, response) => {
         points,
       } = user[0];
 
-      const squads = await database('squads')
+      const squads = database('squads')
         .join('users_squads', 'users_squads.squad_id', '=', 'squads.id')
         .where('users_squads.user_id', id)
         .select('*')
@@ -75,7 +76,7 @@ app.get('/api/v1/users/:uid', (request, response) => {
         })
         .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 
-      const goals = await database('goals')
+      const goals = database('goals')
         .join('users_goals', 'users_goals.goal_id', '=', 'goals.id')
         .where('users_goals.user_id', id)
         .select('*')
