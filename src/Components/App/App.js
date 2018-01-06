@@ -22,7 +22,12 @@ class App extends Component {
           render={props => <GoalDashboard goal={props.location.state.goal} />}
         />
         <Route path="/CreateGoals" component={CreateGoals} />
-        <Route path="/Squad/" component={SquadDashboard} />
+        <Route
+          name="Squad"
+          path="/Squad/:id"
+          render={props => <SquadDashboard squad={props.location.state.squad} />
+        }
+        />
       </div>
     );
   }
