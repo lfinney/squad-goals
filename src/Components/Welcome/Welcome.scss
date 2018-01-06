@@ -18,6 +18,10 @@
   width: 45%;
 }
 
+.welcome-form input:focus {
+  outline: none;
+}
+
 .welcome-img {
   background-image: url(./Components/Assets/finish.jpg);
   background-repeat: no-repeat;
