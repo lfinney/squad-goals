@@ -61,9 +61,9 @@ class Welcome extends Component {
 
   firebaseLogin() {
     auth.signInWithPopup(provider)
-      .then((result) => {
-        // make call to get user/:fireid and take id that returns to pass to dashboard
-      })
+      .then(user => fetch(`/api/v1/users/${user.user.providerData[0].uid}`)
+        .then(result => result.json()))
+      .then(userId => this.nextPath(userId.user))
       .catch(error => console.error(error));
   }
 
