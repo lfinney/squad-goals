@@ -25,7 +25,6 @@ class CreateSquads extends Component {
           <h1>Create New Squad</h1>
           <div className="create-squads-form">
             <input className="squad-name" type="text" placeholder="Squad Name" />
-            <input type="text" placeholder="Squad Goal" />
             <input
               onClick={() => {
                 this.createNewSquad();
