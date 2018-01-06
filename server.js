@@ -45,10 +45,22 @@ app.post('/api/v1/users', (request, response) => {
     .catch(error => response.status(500).json({ error }));
 });
 
-app.get('/api/v1/users/:uid', (request, response) => {
+app.get('/api/v1/users/:fireId', (request, response) => {
+  const { fireId } = request.params;
+
+  database('users').where('firebase_id', fireId).select()
+    .then((user) => {
+      user.length ? response.status(200).json({ user: user[0].id })
+        :
+        response.status(404).json({ error: `Could not find user with firebase_id: ${fireId}` });
+    })
+    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+});
+
+app.get('/api/v1/dashboard/:uid', (request, response) => {
   const { uid } = request.params;
 
-  database('users').where('firebase_id', uid).select()
+  database('users').where('id', uid).select()
     .then((user) => {
       if (!user.length) {
         response.status(404).json({ error: `Could not find user with id: ${uid}` });
