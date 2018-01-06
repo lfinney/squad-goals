@@ -15,10 +15,10 @@ const GoalDashboard = ({ goal }) => {
             <h2>{goal.description}</h2>
           </div>
           <div>
-            <h2>{goal.time}</h2>
+            <h2>{goal.goal_time}</h2>
           </div>
           <div>
-            <h2>{goal.points}</h2>
+            <h2>{goal.goal_points}</h2>
           </div>
         </div>
         <div className="smack-talk">
