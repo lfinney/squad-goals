@@ -5,12 +5,8 @@ import PropTypes from 'prop-types';
 import { auth, provider } from '../../Utils/fire';
 
 class Welcome extends Component {
-  // constructor(props) {
-  //   super();
-  // }
-
   componentDidMount() {
-    // this.checkForUser();
+    this.checkForUser();
   }
 
   nextPath(path) {
@@ -27,15 +23,6 @@ class Welcome extends Component {
           .catch(error => console.error(error));
       }
     });
-  }
-
-  cleanUserData(user) {
-    return {
-      userId: user.uid,
-      displayName: user.displayName.split(' ')[0],
-      email: user.email,
-      competitions: [],
-    };
   }
 
   signUp() {
@@ -64,12 +51,6 @@ class Welcome extends Component {
       .then(user => fetch(`/api/v1/users/${user.user.providerData[0].uid}`)
         .then(result => result.json()))
       .then(userId => this.nextPath(userId.user))
-      .catch(error => console.error(error));
-  }
-
-  logout(user) {
-    auth.signOut()
-      .then(() => console.log('use signed out'))
       .catch(error => console.error(error));
   }
 

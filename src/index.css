@@ -50,8 +50,8 @@
   margin: 10px; }
 
 .navigation {
-  background-color: lightgrey;
-  height: 40px; }
+  background-color: #0e5bd7;
+  height: 7vh; }
 
 .navigation ul {
   display: flex;
