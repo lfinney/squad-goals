@@ -4,7 +4,7 @@ import { auth, provider } from '../../Utils/fire';
 
 class Welcome extends Component {
   componentDidMount() {
-    this.checkForUser();
+    // this.checkForUser();
   }
 
   checkForUser() {
@@ -13,7 +13,10 @@ class Welcome extends Component {
         const { uid } = user.providerData[0].uid;
         fetch(`/api/v1/users/${uid}`)
           .then(response => response.json())
-          .then(parsedData => console.log('checkedUserData', parsedData))
+          .then((parsedData) => {
+            // rip the id off of the parsedData and pass to user dashboard link
+            console.log('checkedUserData', parsedData);
+          })
           .catch(error => console.error(error));
         // const cleanedUser = this.cleanUserData(user);
       }
@@ -30,30 +33,33 @@ class Welcome extends Component {
   }
 
   signUp() {
-    auth.onAuthStateChanged((user) => {
-      console.log(user);
-      const postBody = {
-        'user_name': user.providerData[0].displayName,
-        'firebase_id': user.providerData[0].uid,
-        'points': 50,
-      };
-      fetch('/api/v1/users', {
-        method: 'POST',
-        body: JSON.stringify(postBody),
-        headers: {
-          'content-type': 'application/json',
-        },
-      })
-        .then(response => response.json())
-        .then(parsedData => console.log('signUpData', parsedData))
-        .catch(error => console.error(error));
-    });
+    auth.signInWithPopup(provider)
+      .then((newUser) => {
+        const postBody = {
+          'user_name': newUser.user.providerData[0].displayName,
+          'firebase_id': newUser.user.providerData[0].uid,
+          'points': 50,
+        };
+        fetch('/api/v1/users', {
+          method: 'POST',
+          body: JSON.stringify(postBody),
+          headers: {
+            'content-type': 'application/json',
+          },
+        })
+          .then(response => response.json())
+          .then((parsedData) => {
+            // rip the id off of the parsedData and pass to user dashboard link
+            console.log('signUpData', parsedData);
+          })
+          .catch(error => console.error(error));
+      });
   }
 
   firebaseLogin() {
     auth.signInWithPopup(provider)
       .then((result) => {
-
+        // make call to get user/:fireid and take id that returns to pass to dashboard
       })
       .catch(error => console.error(error));
   }
