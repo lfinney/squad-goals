@@ -3,8 +3,6 @@ import { Route } from 'react-router-dom';
 import Welcome from '../Welcome/Welcome';
 import Navigation from '../Navigation/Navigation';
 import UserDashboard from '../UserDashboard/UserDashboard';
-import SquadsContainer from '../SquadsContainer/SquadsContainer';
-import GoalsContainer from '../GoalsContainer/GoalsContainer';
 import CreateGoals from '../CreateGoals/CreateGoals';
 import CreateSquads from '../CreateSquads/CreateSquads';
 import GoalDashboard from '../GoalDashboard/GoalDashboard';
@@ -17,12 +15,19 @@ class App extends Component {
         <Navigation />
         <Route exact path="/" component={Welcome} />
         <Route path="/UserDashboard" component={UserDashboard} />
-        <Route path="/Squads" component={SquadsContainer} />
         <Route path="/CreateSquads" component={CreateSquads} />
-        <Route path="/Goal" component={GoalDashboard} />
-        <Route path="/Goals" component={GoalsContainer} />
+        <Route
+          name="Goal"
+          path="/Goal/:id"
+          render={props => <GoalDashboard goal={props.location.state.goal} />}
+        />
         <Route path="/CreateGoals" component={CreateGoals} />
-        <Route path="/Squad" component={SquadDashboard} />
+        <Route
+          name="Squad"
+          path="/Squad/:id"
+          render={props => <SquadDashboard squad={props.location.state.squad} />
+        }
+        />
       </div>
     );
   }

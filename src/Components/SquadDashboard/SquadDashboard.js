@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const SquadDashboard = ({ squadData }) => {
+const SquadDashboard = ({ squad }) => {
+  console.log(squad);
   return (
     <div className="dashboard-container">
       <div className="dashboard-body">
-        <h1 className="dashboard-body-title">Squad Name</h1>
+        <h1 className="dashboard-body-title">{squad.squad_name}</h1>
         <div className="dashboard-body-info">
+          <div>
+            <h2>{squad.squad_name}</h2>
+          </div>
           <div>
             <h2>Members</h2>
           </div>
@@ -27,7 +31,7 @@ const SquadDashboard = ({ squadData }) => {
 };
 
 SquadDashboard.propTypes = {
-  squadData: PropTypes.arrayOf(PropTypes.object),
+  squad: PropTypes.object,
 };
 
 export default SquadDashboard;
