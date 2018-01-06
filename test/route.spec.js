@@ -155,7 +155,7 @@ describe('API Routes', () => {
       user_name: 'Gaspard',
     };
 
-    it('should be able to update the body of a discussion', (done) => {
+    it('should be able to update the body of a user', (done) => {
       chai.request(server)
         .patch('/api/v1/users/1')
         .send(updateUser)
@@ -282,6 +282,38 @@ describe('API Routes', () => {
         .get('/api/v1/squads/50')
         .end((error, response) => {
           response.should.have.status(404);
+          done();
+        });
+    });
+  });
+
+  describe('PATCH /api/v1/squads/:id', () => {
+    const updateSquad = {
+      squad_name: 'Hiking Squad',
+    };
+
+    it('should be able to update the body of a squad', (done) => {
+      chai.request(server)
+        .patch('/api/v1/squads/1')
+        .send(updateSquad)
+        .end((error, response) => {
+          response.should.have.status(204);
+          chai.request(server)
+            .get('/api/v1/squads/1')
+            .end((getError, getResponse) => {
+              getResponse.body.should.be.a('array');
+              getResponse.body.includes({ 'squad_name': updateSquad.squad_name });
+              done();
+            });
+        });
+    });
+
+    it('should throw a 422 if a squads body is not provided', (done) => {
+      chai.request(server)
+        .patch('/api/v1/squads/1')
+        .send()
+        .end((error, response) => {
+          response.should.have.status(422);
           done();
         });
     });
