@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import GoalsContainer from '../GoalsContainer/GoalsContainer.js';
 import SquadsContainer from '../SquadsContainer/SquadsContainer.js';
@@ -15,6 +16,7 @@ class UserDashboard extends Component {
       goalData: [],
     };
     this.showContent = this.showContent.bind(this);
+    this.createNewSquad = this.createNewSquad.bind(this);
   }
 
   componentDidMount() {
@@ -57,6 +59,10 @@ class UserDashboard extends Component {
   //   }
   // }
 
+  createNewSquad() {
+    this.props.history.push('/CreateSquads');
+  }
+
   contentFetch(url) {
     return fetch(url)
       .then(result => result.json())
@@ -93,7 +99,10 @@ class UserDashboard extends Component {
         </div>
         {
           this.state.displayComponent === 'squads' &&
-          <SquadsContainer squadData={this.state.squadData} />
+          <SquadsContainer
+            createNewSquad={this.createNewSquad}
+            squadData={this.state.squadData}
+          />
         }
         {
           this.state.displayComponent === 'goals' &&
@@ -108,6 +117,8 @@ UserDashboard.propTypes = {
   match: PropTypes.object,
   params: PropTypes.object,
   id: PropTypes.string,
+  history: PropTypes.object,
+  location: PropTypes.object,
 };
 
-export default UserDashboard;
+export default withRouter(UserDashboard);

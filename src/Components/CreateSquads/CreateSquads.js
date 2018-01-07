@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
 class CreateSquads extends Component {
-  createNewSquad() {
+  postNewSquad() {
     const squadName = document.querySelector('.squad-name').value;
     const postBody = {
       squad_name: squadName,
     };
     fetch('/api/v1/squads', {
       headers: {
-        'Accept': 'application/json, text/plain, */*',
+        // 'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
       },
       method: 'POST',
@@ -27,7 +27,7 @@ class CreateSquads extends Component {
             <input className="squad-name" type="text" placeholder="Squad Name" />
             <input
               onClick={() => {
-                this.createNewSquad();
+                this.postNewSquad();
               }}
               type="button"
               value="Submit"

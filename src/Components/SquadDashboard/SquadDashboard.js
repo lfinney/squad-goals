@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 
 const SquadDashboard = ({ squad }) => {
-  console.log(squad);
   return (
     <div className="dashboard-container">
       <div className="dashboard-body">

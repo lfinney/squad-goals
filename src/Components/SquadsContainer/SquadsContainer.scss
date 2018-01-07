@@ -1,15 +1,18 @@
 @import '../../variables.scss';
 
 .squads-body {
-  text-align: center;
   background-color: $main;
   box-shadow: 2px 2px 4px $black;
   border-radius: 5px;
   color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 50vw;
   width: 50vw;
   margin: 10px auto 10px auto;
   opacity: .95;
+  text-align: center;
 }
 
 .squads-body-title {
@@ -19,20 +22,18 @@
 }
 
 .squads-body-info {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   font-size: .8em;
   margin: 10px;
 }
 
-.squads-body-info p {
-
-}
-
-.squads-body-info input {
+.squads-body input {
   background-color: $main-light;
   border: none;
   border-radius: 3px;
+  margin-bottom: 30px;
+  width: 45%;
+}
+
+.squads-body input:focus {
+  outline: none;
 }
