@@ -182,15 +182,43 @@ app.post('/api/v1/squads', (request, response) => {
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
 });
 
-app.get('/api/v1/squads/:id', (request, response) => {
-  const { id } = request.params;
+app.get('/api/v1/squads/:squadid', (request, response) => {
+  const { squadid } = request.params;
 
-  database('squads').where('id', id).select()
-    .then((squad) => {
-      squad.length ?
-        response.status(200).json(squad)
-        :
-        response.status(404).json({ error: `Could not find squad with id: ${id}` });
+  return database('squads').where('id', squadid).select()
+    .then(async (squad) => {
+      if (!squad.length) {
+        response.status(404).json({ error: `Could not find squad with id: ${squadid}` });
+      }
+      const {
+        id,
+        squad_name,
+        conversation_id,
+      } = squad[0];
+
+      const users = await database('users')
+        .join('users_squads', 'users_squads.user_id', '=', 'users.id')
+        .where('users_squads.squad_id', id)
+        .select('*')
+        .then((squadUsers) => {
+          return squadUsers.reduce((accu, user) => {
+            console.log(user);
+            squadUser = {
+              id: user.id,
+              user_name: user.user_name,
+              points: user.points,
+            };
+            return [...accu, squadUser];
+          }, []);
+        })
+        .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+
+      response.status(200).json({
+        id,
+        squad_name,
+        conversation_id,
+        users,
+      });
     })
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
