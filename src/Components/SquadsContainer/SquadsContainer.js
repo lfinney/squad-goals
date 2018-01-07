@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SquadCard from '../SquadCard/SquadCard';
 
-const SquadsContainer = ({ squadData, createNewSquad }) => {
+const SquadsContainer = ({ squadData, createNewSquad, leaveGroup }) => {
   const squadsInfo = squadData.map((squad) => {
     return (
       <SquadCard
+        leaveGroup={leaveGroup}
         squad={squad}
         key={`squad-${squad.id}`}
       />
@@ -42,6 +43,7 @@ const SquadsContainer = ({ squadData, createNewSquad }) => {
 SquadsContainer.propTypes = {
   squadData: PropTypes.arrayOf(PropTypes.object),
   createNewSquad: PropTypes.func,
+  leaveGroup: PropTypes.func,
 };
 
 export default SquadsContainer;

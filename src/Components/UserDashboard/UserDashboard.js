@@ -37,28 +37,6 @@ class UserDashboard extends Component {
     }
   }
 
-  // getSquads() {
-  //   if (!this.state.squadData.length) {
-  //     const url = '/api/v1/users/1/squads';
-  //     return this.contentFetch(url)
-  //       .then(parsedData => this.setState({
-  //         squadData: parsedData,
-  //       }))
-  //       .catch(error => console.error(error));
-  //   }
-  // }
-  //
-  // getGoals() {
-  //   if (!this.state.goalData.length) {
-  //     const url = '/api/v1/users/1/goals';
-  //     return this.contentFetch(url)
-  //       .then(parsedData => this.setState({
-  //         goalData: parsedData,
-  //       }))
-  //       .catch(error => console.error(error));
-  //   }
-  // }
-
   createNewSquad() {
     this.props.history.push('/CreateSquads');
   }
@@ -73,6 +51,16 @@ class UserDashboard extends Component {
     this.setState({
       displayComponent: type,
     });
+  }
+
+  leaveGroup(path, id) {
+    console.log(path);
+    console.log(id);
+    // return fetch(`api/v1/${path}/${id}`, {
+    //   method: 'DELETE',
+    // })
+    //   .then(response => console.log(response))
+    //   .catch(error => console.error(error));
   }
 
   render() {
@@ -100,6 +88,7 @@ class UserDashboard extends Component {
         {
           this.state.displayComponent === 'squads' &&
           <SquadsContainer
+            leaveGroup={this.leaveGroup}
             createNewSquad={this.createNewSquad}
             squadData={this.state.squadData}
           />
@@ -118,7 +107,6 @@ UserDashboard.propTypes = {
   params: PropTypes.object,
   id: PropTypes.string,
   history: PropTypes.object,
-  location: PropTypes.object,
 };
 
 export default withRouter(UserDashboard);
