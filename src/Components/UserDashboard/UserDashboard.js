@@ -16,6 +16,7 @@ class UserDashboard extends Component {
       goalData: [],
     };
     this.showContent = this.showContent.bind(this);
+    this.createNewSquad = this.createNewSquad.bind(this);
   }
 
   componentDidMount() {
@@ -58,12 +59,8 @@ class UserDashboard extends Component {
     }
   }
 
-  nextPath(path) {
-    this.props.history.push('/CreateSquads');
-  }
-
   createNewSquad() {
-    console.log('createNewSquad');
+    this.props.history.push('/CreateSquads');
   }
 
   contentFetch(url) {
@@ -122,6 +119,7 @@ UserDashboard.propTypes = {
   params: PropTypes.object,
   id: PropTypes.string,
   history: PropTypes.object,
+  location: PropTypes.object,
 };
 
 export default withRouter(UserDashboard);
