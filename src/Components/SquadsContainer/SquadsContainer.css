@@ -25,8 +25,7 @@
   background-color: #22affe;
   border: none;
   border-radius: 3px;
-  margin-bottom: 30px;
-  width: 45%; }
+  margin-bottom: 30px; }
 
 .squads-body input:focus {
   outline: none; }

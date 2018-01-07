@@ -11,6 +11,7 @@ class UserDashboard extends Component {
     this.state = {
       displayComponent: 'squads',
       activeUser: '',
+      activeUserId: 0,
       points: 0,
       squadData: [],
       goalData: [],
@@ -23,12 +24,17 @@ class UserDashboard extends Component {
     this.getUserData();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state !== nextState;
+  }
+
   getUserData() {
     if (!this.state.activeUser) {
       const url = `/api/v1/dashboard/${this.props.match.params.id}`;
       return this.contentFetch(url)
         .then(parsedData => this.setState({
           activeUser: parsedData.user_name,
+          activeUserId: parsedData.id,
           points: parsedData.points,
           squadData: parsedData.squads,
           goalData: parsedData.goals,
@@ -36,28 +42,6 @@ class UserDashboard extends Component {
         .catch(error => console.error(error));
     }
   }
-
-  // getSquads() {
-  //   if (!this.state.squadData.length) {
-  //     const url = '/api/v1/users/1/squads';
-  //     return this.contentFetch(url)
-  //       .then(parsedData => this.setState({
-  //         squadData: parsedData,
-  //       }))
-  //       .catch(error => console.error(error));
-  //   }
-  // }
-  //
-  // getGoals() {
-  //   if (!this.state.goalData.length) {
-  //     const url = '/api/v1/users/1/goals';
-  //     return this.contentFetch(url)
-  //       .then(parsedData => this.setState({
-  //         goalData: parsedData,
-  //       }))
-  //       .catch(error => console.error(error));
-  //   }
-  // }
 
   createNewSquad() {
     this.props.history.push('/CreateSquads');
@@ -73,6 +57,14 @@ class UserDashboard extends Component {
     this.setState({
       displayComponent: type,
     });
+  }
+
+  leaveGroup(path1, id1, path2, id2) {
+    return fetch(`/api/v1/${path1}/${id1}/${path2}/${id2}`, {
+      method: 'DELETE',
+    })
+      .then(response => console.log(response))
+      .catch(error => console.error(error));
   }
 
   render() {
@@ -100,6 +92,8 @@ class UserDashboard extends Component {
         {
           this.state.displayComponent === 'squads' &&
           <SquadsContainer
+            userId={this.state.activeUserId}
+            leaveGroup={this.leaveGroup}
             createNewSquad={this.createNewSquad}
             squadData={this.state.squadData}
           />

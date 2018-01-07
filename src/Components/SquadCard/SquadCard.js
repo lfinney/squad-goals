@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const SquadCard = ({ squad }) => {
+const SquadCard = ({ squad, leaveGroup, userId }) => {
   return (
     <tr className="squad-row">
       <td>
@@ -12,13 +12,21 @@ const SquadCard = ({ squad }) => {
       </td>
       <td>{squad.id}</td>
       <td>{squad.id}</td>
-      <td><input type="button" value="Leave" /></td>
+      <td>
+        <input
+          onClick={() => leaveGroup('users', userId, 'squads', squad.id)}
+          type="submit"
+          value="Leave"
+        />
+      </td>
     </tr>
   );
 };
 
 SquadCard.propTypes = {
   squad: PropTypes.object,
+  leaveGroup: PropTypes.func,
+  userId: PropTypes.number,
 };
 
 export default SquadCard;
