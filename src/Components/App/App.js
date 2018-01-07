@@ -29,8 +29,7 @@ class App extends Component {
         <Route
           name="Squad"
           path="/Squad/:id"
-          render={props => <SquadDashboard squad={props.location.state.squad} />
-        }
+          component={SquadDashboard}
         />
       </div>
     );
