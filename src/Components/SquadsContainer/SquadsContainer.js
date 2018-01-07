@@ -12,20 +12,33 @@ const SquadsContainer = ({ squadData }) => {
     );
   });
 
+  const createNewSquad = () => {
+    console.log('hello');
+  };
+
   return (
     <div className="squads-body">
-      <h2 className="squads-body-title">Squads</h2>
-      <table className="squads-body-info">
-        <tbody>
-          <tr className="squad-row">
-            <th>Squad Title</th>
-            <th>Competitors</th>
-            <th>Squad Goals</th>
-            <th />
-          </tr>
-          { squadsInfo }
-        </tbody>
-      </table>
+      <div>
+        <h2 className="squads-body-title">Squads</h2>
+        <table className="squads-body-info">
+          <tbody>
+            <tr className="squad-row">
+              <th>Squad Title</th>
+              <th>Competitors</th>
+              <th>Squad Goals</th>
+              <th />
+            </tr>
+            { squadsInfo }
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <input
+          onClick={() => createNewSquad()}
+          type="button"
+          value="New Squad"
+        />
+      </div>
     </div>
   );
 };

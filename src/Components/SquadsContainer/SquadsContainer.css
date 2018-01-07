@@ -1,13 +1,16 @@
 .squads-body {
-  text-align: center;
   background-color: #0e5bd7;
   box-shadow: 2px 2px 4px #282828;
   border-radius: 5px;
   color: #d2d3d3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 50vw;
   width: 50vw;
   margin: 10px auto 10px auto;
-  opacity: .95; }
+  opacity: .95;
+  text-align: center; }
 
 .squads-body-title {
   font-weight: lighter;
@@ -15,14 +18,15 @@
   margin: 10px 0 15px 0; }
 
 .squads-body-info {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   font-size: .8em;
   margin: 10px; }
 
-.squads-body-info input {
+.squads-body input {
   background-color: #22affe;
   border: none;
-  border-radius: 3px; }
+  border-radius: 3px;
+  margin-bottom: 30px;
+  width: 45%; }
+
+.squads-body input:focus {
+  outline: none; }

@@ -72,7 +72,6 @@ app.get('/api/v1/dashboard/:uid', (request, response) => {
         points,
       } = user[0];
 
-      console.log(id);
       const squads = await database('squads')
         .join('users_squads', 'users_squads.squad_id', '=', 'squads.id')
         .where('users_squads.user_id', id)

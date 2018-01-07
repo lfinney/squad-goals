@@ -17,15 +17,10 @@ class Navigation extends Component {
 
   checkForUser() {
     auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({
-          showMyComponent: true,
-        });
-      } else {
-        this.setState({
-          showMyComponent: false,
-        });
-      }
+      user ?
+        this.setState({ showMyComponent: true })
+        :
+        this.setState({ showMyComponent: false });
     });
   }
 
