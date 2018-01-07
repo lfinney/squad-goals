@@ -159,23 +159,32 @@ app.get('/api/v1/squads', (request, response) => {
 });
 
 app.post('/api/v1/squads', (request, response) => {
-  let newSquad = request.body;
+  const newSquad = request.body;
 
-  if (!newSquad.squad_name) {
-    return response.status(422).json({
-      error: 'you are missing the squad_name property',
-    });
+  for (const requiredParameter of ['squad_name', 'user_id']) {
+    if (!newSquad[requiredParameter]) {
+      return response.status(422).json({
+        error: 'you are missing the squad_name property',
+      });
+    }
   }
 
-  const convoTitle = { title: `${newSquad.title} Conversation` };
+  const convoTitle = { title: `${newSquad.squad_name} Conversation` };
 
   database('conversations').insert(convoTitle, 'id')
     .then((convoId) => {
-      newSquad = Object.assign({}, newSquad, {
+      const squadToPost = Object.assign({}, {
+        squad_name: newSquad.squad_name,
         conversation_id: convoId[0],
       });
-      database('squads').insert(newSquad, '*')
-        .then(insertedSquad => response.status(201).json(insertedSquad))
+      database('squads').insert(squadToPost, '*')
+        .then((insertedSquad) => {
+          database('users_squads').insert({
+            user_id: newSquad.user_id,
+            squad_id: insertedSquad[0].id,
+          });
+          return response.status(201).json(insertedSquad);
+        })
         .catch(error => response.status(500).json({ error }));
     })
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
@@ -271,47 +280,50 @@ app.delete('/api/v1/squads/:id', (request, response) => {
     .catch(error => response.status(422).json(error));
 });
 
-app.get('/api/v1/squads/:id/comments', (request, response) => {
-  const { id } = request.params;
+// app.get('/api/v1/squads/:id/comments', (request, response) => {
+//   const { id } = request.params;
+//
+//   database('squads').where('id', id).select()
+//     .then((squad) => {
+//       if (squad.length) {
+//         return database('comments').where('conversation_id', squad[0].conversation_id).select()
+//           .then((comments) => {
+//             comments.length ?
+//               response.status(200).json(comments)
+//               :
+//               response.status(404).json({
+//               error: `Could not find comments for squad with id: ${id}` });
+//           })
+//           .catch(error => response.status(500).json({
+//           error: `Internal server error ${error}` }));
+//       }
+//       return response.status(404).json({ error: `Could not find squad with id: ${id}` });
+//     })
+//     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+// });
 
-  database('squads').where('id', id).select()
-    .then((squad) => {
-      if (squad.length) {
-        return database('comments').where('conversation_id', squad[0].conversation_id).select()
-          .then((comments) => {
-            comments.length ?
-              response.status(200).json(comments)
-              :
-              response.status(404).json({ error: `Could not find comments for squad with id: ${id}` });
-          })
-          .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-      }
-      return response.status(404).json({ error: `Could not find squad with id: ${id}` });
-    })
-    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-});
-
-app.post('/api/v1/squads/:id/comments', (request, response) => {
-  let newComment = request.body;
-  const { id } = request.params;
-
-  if (!newComment.body) {
-    return response.status(422).json({
-      error: `you are missing the ${requiredParameter} property`,
-    });
-  }
-
-  database('squads').where('id', id).select('conversation_id')
-    .then((convoId) => {
-      newComment = Object.assign({}, newComment, {
-        conversation_id: convoId[0].conversation_id,
-      });
-      database('comments').insert(newComment, '*')
-        .then(insertedComment => response.status(201).json(insertedComment))
-        .catch(error => response.status(500).json({ error }));
-    })
-    .catch(error => response.status(500).json({ error: `Error creating new comment: ${error}` }));
-});
+// app.post('/api/v1/squads/:id/comments', (request, response) => {
+//   let newComment = request.body;
+//   const { id } = request.params;
+//
+//   if (!newComment.body) {
+//     return response.status(422).json({
+//       error: `you are missing the ${requiredParameter} property`,
+//     });
+//   }
+//
+//   database('squads').where('id', id).select('conversation_id')
+//     .then((convoId) => {
+//       newComment = Object.assign({}, newComment, {
+//         conversation_id: convoId[0].conversation_id,
+//       });
+//       database('comments').insert(newComment, '*')
+//         .then(insertedComment => response.status(201).json(insertedComment))
+//         .catch(error => response.status(500).json({ error }));
+//     })
+//     .catch(error => response.status(500).json({
+//     error: `Error creating new comment: ${error}` }));
+// });
 
 app.get('/api/v1/goals', (request, response) => {
   database('goals').select()
@@ -416,47 +428,50 @@ app.delete('/api/v1/goals/:id', (request, response) => {
     .catch(error => response.status(422).json(error));
 });
 
-app.get('/api/v1/goals/:id/comments', (request, response) => {
-  const { id } = request.params;
+// app.get('/api/v1/goals/:id/comments', (request, response) => {
+//   const { id } = request.params;
+//
+//   database('goals').where('id', id).select()
+//     .then((goal) => {
+//       if (goal.length) {
+//         return database('comments').where('conversation_id', goal[0].conversation_id).select()
+//           .then((comments) => {
+//             comments.length ?
+//               response.status(200).json(comments)
+//               :
+//               response.status(404).json({
+//               error: `Could not find comments for goal with id: ${id}` });
+//           })
+//           .catch(error => response.status(500).json({
+//           error: `Internal server error ${error}` }));
+//       }
+//       return response.status(404).json({ error: `Could not find goal with id: ${id}` });
+//     })
+//     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+// });
 
-  database('goals').where('id', id).select()
-    .then((goal) => {
-      if (goal.length) {
-        return database('comments').where('conversation_id', goal[0].conversation_id).select()
-          .then((comments) => {
-            comments.length ?
-              response.status(200).json(comments)
-              :
-              response.status(404).json({ error: `Could not find comments for goal with id: ${id}` });
-          })
-          .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-      }
-      return response.status(404).json({ error: `Could not find goal with id: ${id}` });
-    })
-    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-});
-
-app.post('/api/v1/goals/:id/comments', (request, response) => {
-  let newComment = request.body;
-  const { id } = request.params;
-
-  if (!newComment.body) {
-    return response.status(422).json({
-      error: `you are missing the ${requiredParameter} property`,
-    });
-  }
-
-  database('goals').where('id', id).select('conversation_id')
-    .then((convoId) => {
-      newComment = Object.assign({}, newComment, {
-        conversation_id: convoId[0].conversation_id,
-      });
-      database('comments').insert(newComment, '*')
-        .then(insertedComment => response.status(201).json(insertedComment))
-        .catch(error => response.status(500).json({ error }));
-    })
-    .catch(error => response.status(500).json({ error: `Error creating new comment: ${error}` }));
-});
+// app.post('/api/v1/goals/:id/comments', (request, response) => {
+//   let newComment = request.body;
+//   const { id } = request.params;
+//
+//   if (!newComment.body) {
+//     return response.status(422).json({
+//       error: `you are missing the ${requiredParameter} property`,
+//     });
+//   }
+//
+//   database('goals').where('id', id).select('conversation_id')
+//     .then((convoId) => {
+//       newComment = Object.assign({}, newComment, {
+//         conversation_id: convoId[0].conversation_id,
+//       });
+//       database('comments').insert(newComment, '*')
+//         .then(insertedComment => response.status(201).json(insertedComment))
+//         .catch(error => response.status(500).json({ error }));
+//     })
+//     .catch(error => response.status(500).json({
+//        error: `Error creating new comment: ${error}` }));
+// });
 
 app.post('/api/v1/users/:id/goals', (request, response) => {
   let newGoal = request.body;
@@ -485,17 +500,17 @@ app.post('/api/v1/users/:id/goals', (request, response) => {
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
 });
 
-app.get('/api/v1/users/:id/goals-created', (request, response) => {
-  const userId = request.params.id;
-
-  database('goals').where('creator_id', userId).select()
-    .then((user) => {
-      user.length ? response.status(200).json(user)
-        :
-        response.status(404).json({ error: `Could not find user with id: ${userId}` });
-    })
-    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-});
+// app.get('/api/v1/users/:id/goals-created', (request, response) => {
+//   const userId = request.params.id;
+//
+//   database('goals').where('creator_id', userId).select()
+//     .then((user) => {
+//       user.length ? response.status(200).json(user)
+//         :
+//         response.status(404).json({ error: `Could not find user with id: ${userId}` });
+//     })
+//     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+// });
 
 app.patch('/api/v1/comments/:id', (request, response) => {
   const { id } = request.params;
