@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const GoalCard = ({ goal }) => {
+
+const GoalCard = ({ goal, leaveGroup, userId }) => {
   return (
     <tr className="goal-row">
       <td>
@@ -12,13 +13,21 @@ const GoalCard = ({ goal }) => {
       </td>
       <td>{goal.goal_time}</td>
       <td>{goal.goal_points}</td>
-      <td><input type="button" value="Leave" /></td>
+      <td>
+        <input
+          onClick={() => leaveGroup('users', userId, 'goals', goal.id)}
+          type="button"
+          value="Leave"
+        />
+      </td>
     </tr>
   );
 };
 
 GoalCard.propTypes = {
   goal: PropTypes.object,
+  leaveGroup: PropTypes.func,
+  userId: PropTypes.number,
 };
 
 export default GoalCard;

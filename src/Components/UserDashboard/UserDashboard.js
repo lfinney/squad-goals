@@ -100,7 +100,11 @@ class UserDashboard extends Component {
         }
         {
           this.state.displayComponent === 'goals' &&
-          <GoalsContainer goalData={this.state.goalData} />
+          <GoalsContainer
+            userId={this.state.activeUserId}
+            leaveGroup={this.leaveGroup}
+            goalData={this.state.goalData}
+          />
         }
       </div>
     );
