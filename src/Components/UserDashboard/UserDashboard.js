@@ -11,6 +11,7 @@ class UserDashboard extends Component {
     this.state = {
       displayComponent: 'squads',
       activeUser: '',
+      activeUserId: 0,
       points: 0,
       squadData: [],
       goalData: [],
@@ -23,12 +24,17 @@ class UserDashboard extends Component {
     this.getUserData();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state !== nextState;
+  }
+
   getUserData() {
     if (!this.state.activeUser) {
       const url = `/api/v1/dashboard/${this.props.match.params.id}`;
       return this.contentFetch(url)
         .then(parsedData => this.setState({
           activeUser: parsedData.user_name,
+          activeUserId: parsedData.id,
           points: parsedData.points,
           squadData: parsedData.squads,
           goalData: parsedData.goals,
@@ -53,14 +59,12 @@ class UserDashboard extends Component {
     });
   }
 
-  leaveGroup(path, id) {
-    console.log(path);
-    console.log(id);
-    // return fetch(`api/v1/${path}/${id}`, {
-    //   method: 'DELETE',
-    // })
-    //   .then(response => console.log(response))
-    //   .catch(error => console.error(error));
+  leaveGroup(path1, id1, path2, id2) {
+    return fetch(`/api/v1/${path1}/${id1}/${path2}/${id2}`, {
+      method: 'DELETE',
+    })
+      .then(response => console.log(response))
+      .catch(error => console.error(error));
   }
 
   render() {
@@ -88,6 +92,7 @@ class UserDashboard extends Component {
         {
           this.state.displayComponent === 'squads' &&
           <SquadsContainer
+            userId={this.state.activeUserId}
             leaveGroup={this.leaveGroup}
             createNewSquad={this.createNewSquad}
             squadData={this.state.squadData}
