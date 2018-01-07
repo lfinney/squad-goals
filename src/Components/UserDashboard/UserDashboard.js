@@ -57,6 +57,10 @@ class UserDashboard extends Component {
     }
   }
 
+  createNewSquad() {
+    console.log('createNewSquad');
+  }
+
   contentFetch(url) {
     return fetch(url)
       .then(result => result.json())
@@ -94,7 +98,10 @@ class UserDashboard extends Component {
         </div>
         {
           this.state.displayComponent === 'squads' &&
-          <SquadsContainer squadData={this.state.squadData} />
+          <SquadsContainer
+            createNewSquad={this.createNewSquad}
+            squadData={this.state.squadData}
+          />
         }
         {
           this.state.displayComponent === 'goals' &&
