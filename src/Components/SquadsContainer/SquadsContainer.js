@@ -30,7 +30,7 @@ const SquadsContainer = ({ squadData, createNewSquad }) => {
       </div>
       <div>
         <input
-          onClick={() => createNewSquad()}
+          onClick={() => { createNewSquad(); }}
           type="button"
           value="New Squad"
         />

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import GoalsContainer from '../GoalsContainer/GoalsContainer.js';
 import SquadsContainer from '../SquadsContainer/SquadsContainer.js';
@@ -55,6 +56,10 @@ class UserDashboard extends Component {
         }))
         .catch(error => console.error(error));
     }
+  }
+
+  nextPath(path) {
+    this.props.history.push('/CreateSquads');
   }
 
   createNewSquad() {
@@ -116,6 +121,7 @@ UserDashboard.propTypes = {
   match: PropTypes.object,
   params: PropTypes.object,
   id: PropTypes.string,
+  history: PropTypes.object,
 };
 
-export default UserDashboard;
+export default withRouter(UserDashboard);
