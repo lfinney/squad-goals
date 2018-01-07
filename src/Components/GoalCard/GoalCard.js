@@ -3,15 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const GoalCard = ({ goal }) => {
-  console.log(goal);
   return (
     <tr className="goal-row">
       <td>
-        <Link to={{
-          pathname: `/Goal/${goal.id}`,
-          state: { goal },
-        }}
-        >
+        <Link to={`/Goal/${goal.id}`}>
           {goal.title}
         </Link>
       </td>

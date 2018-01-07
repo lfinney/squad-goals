@@ -118,7 +118,6 @@ UserDashboard.propTypes = {
   params: PropTypes.object,
   id: PropTypes.string,
   history: PropTypes.object,
-  location: PropTypes.object,
 };
 
 export default withRouter(UserDashboard);
