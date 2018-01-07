@@ -164,7 +164,7 @@ app.post('/api/v1/squads', (request, response) => {
   for (const requiredParameter of ['squad_name', 'user_id']) {
     if (!newSquad[requiredParameter]) {
       return response.status(422).json({
-        error: 'you are missing the squad_name property',
+        error: `you are missing the ${requiredParameter} property`,
       });
     }
   }
@@ -473,11 +473,10 @@ app.delete('/api/v1/goals/:id', (request, response) => {
 //        error: `Error creating new comment: ${error}` }));
 // });
 
-app.post('/api/v1/users/:id/goals', (request, response) => {
-  let newGoal = request.body;
-  const { id } = request.params;
+app.post('/api/v1/goals', (request, response) => {
+  const newGoal = request.body;
 
-  for (const requiredParameter of ['title', 'description', 'goal_time', 'goal_points']) {
+  for (const requiredParameter of ['title', 'description', 'goal_time', 'goal_points', 'user_id']) {
     if (!newGoal[requiredParameter]) {
       return response.status(422).json({
         error: `you are missing the ${requiredParameter} property`,
@@ -489,12 +488,23 @@ app.post('/api/v1/users/:id/goals', (request, response) => {
 
   database('conversations').insert(convoTitle, 'id')
     .then((convoId) => {
-      newGoal = Object.assign({}, newGoal, {
-        creator_id: id,
+      const goalToPost = Object.assign({}, {
+        title: newGoal.title,
+        description: newGoal.description,
+        goal_time: newGoal.goal_time,
+        goal_points: newGoal.goal_points,
+        creator_id: newGoal.user_id,
         conversation_id: convoId[0],
       });
-      database('goals').insert(newGoal, '*')
-        .then(insertedGoal => response.status(201).json(insertedGoal))
+      database('goals').insert(goalToPost, '*')
+        .then((insertedGoal) => {
+          console.log(insertedGoal);
+          database('users_goals').insert({
+            user_id: newGoal.user_id,
+            goal_id: insertedGoal[0].id,
+          });
+          return response.status(201).json(insertedGoal);
+        })
         .catch(error => response.status(500).json({ error }));
     })
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
