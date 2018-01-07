@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const GoalCard = ({ goal }) => {
+  console.log(goal);
   return (
     <tr className="goal-row">
       <td>

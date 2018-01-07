@@ -226,7 +226,7 @@ app.get('/api/v1/squads/:squadid', (request, response) => {
         })
         .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 
-      response.status(200).json({
+      return response.status(200).json({
         id,
         squad_name,
         conversation_id,
@@ -319,14 +319,64 @@ app.get('/api/v1/goals', (request, response) => {
     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
 
-app.get('/api/v1/goals/:id', (request, response) => {
-  const { id } = request.params;
+app.get('/api/v1/goals/:goalId', (request, response) => {
+  const { goalId } = request.params;
 
-  database('goals').where('id', id).select()
-    .then((goal) => {
-      goal.length ? response.status(200).json(goal)
-        :
-        response.status(404).json({ error: `Could not find goal with id: ${id}` });
+  return database('goals').where('id', goalId).select()
+    .then(async (goal) => {
+      if (!goal.length) {
+        response.status(404).json({ error: `Could not find goal with id: ${goalId}` });
+      }
+      const {
+        id,
+        title,
+        description,
+        goal_time,
+        creator_id,
+        conversation_id,
+      } = goal[0];
+
+      const users = await database('users')
+        .join('users_goals', 'users_goals.user_id', '=', 'users.id')
+        .where('users_goals.goal_id', id)
+        .select('*')
+        .then((goalUsers) => {
+          return goalUsers.reduce((accu, user) => {
+            const goalUser = {
+              id: user.id,
+              user_name: user.user_name,
+              points: user.points,
+            };
+            return [...accu, goalUser];
+          }, []);
+        })
+        .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+
+      const conversation = await database('comments')
+        .where('conversation_id', conversation_id)
+        .select('*')
+        .then((userComments) => {
+          return userComments.reduce((accu, comment) => {
+            const userComment = {
+              id: comment.id,
+              body: comment.body,
+              timestamp: comment.created_at,
+            };
+            return [...accu, userComment];
+          }, []);
+        })
+        .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+
+      return response.status(200).json({
+        id,
+        title,
+        description,
+        goal_time,
+        creator_id,
+        conversation_id,
+        users,
+        conversation,
+      });
     })
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
