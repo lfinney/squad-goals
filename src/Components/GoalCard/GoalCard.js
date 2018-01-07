@@ -2,15 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+
 const GoalCard = ({ goal, leaveGroup, userId }) => {
   return (
     <tr className="goal-row">
       <td>
-        <Link to={{
-          pathname: `/Goal/${goal.id}`,
-          state: { goal },
-        }}
-        >
+        <Link to={`/Goal/${goal.id}`}>
           {goal.title}
         </Link>
       </td>
