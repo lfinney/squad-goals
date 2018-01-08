@@ -23,7 +23,6 @@ class SubmitComment extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="submit-comment">
         <div className="submit-comment-form">

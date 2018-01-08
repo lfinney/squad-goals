@@ -16,13 +16,13 @@ const SquadCard = ({ squad, leaveGroup, userId }) => {
       </td>
       <td>{squad.id}</td>
       <td>{squad.id}</td>
-      <td>
+      {/* <td>
         <input
           onClick={() => leaveGroup('users', userId, 'squads', squad.id)}
           type="submit"
           value="Leave"
         />
-      </td>
+      </td> */}
     </tr>
   );
 };

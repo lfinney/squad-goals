@@ -571,6 +571,17 @@ app.delete('/api/v1/users/:userId/goals/:goalId', (request, response) => {
     .catch(error => response.status(422).json(error));
 });
 
+// GET user_squad confirmation
+app.get('/api/v1/users/:userId/squads/:squadId', (request, response) => {
+  const { userId, squadId } = request.params;
+  database('users_squads').where({ user_id: userId, squad_id: squadId })
+    .select('*')
+    // .then(res => console.log(res))
+    .then(user =>
+      response.status(200).json(user))
+    .catch(error => response.status(422).json(error));
+});
+
 // POST new user to a squad
 app.post('/api/v1/users/:userId/squads/:squadId', (request, response) => {
   const { userId, squadId } = request.params;
