@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 
 class SquadDashboard extends Component {
   constructor() {
@@ -45,6 +45,13 @@ class SquadDashboard extends Component {
             <div>
               <h2>Upcoming Goals</h2>
             </div>
+            <Link to={{
+              pathname: '/CreateGoals',
+              state: { userId: this.props.location.state.userId },
+            }}
+            >
+            New Goal
+            </Link>
           </div>
           <div className="smack-talk">
             <h1>Smack Talk Board</h1>
@@ -58,6 +65,8 @@ class SquadDashboard extends Component {
 SquadDashboard.propTypes = {
   match: PropTypes.object,
   params: PropTypes.object,
+  location: PropTypes.object,
+  state: PropTypes.object,
   id: PropTypes.string,
 };
 

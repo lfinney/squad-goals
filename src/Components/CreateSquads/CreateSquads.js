@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CreateSquads extends Component {
   postNewSquad() {
     const squadName = document.querySelector('.squad-name').value;
     const postBody = {
       squad_name: squadName,
+      user_id: this.props.userId,
     };
     fetch('/api/v1/squads', {
       headers: {
-        // 'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
       },
       method: 'POST',
@@ -19,6 +20,7 @@ class CreateSquads extends Component {
   }
 
   render() {
+    console.log(this.props.userId);
     return (
       <div className="create-squads">
         <div className="create-squads-body">
@@ -38,5 +40,9 @@ class CreateSquads extends Component {
     );
   }
 }
+
+CreateSquads.propTypes = {
+  userId: PropTypes.number,
+};
 
 export default CreateSquads;

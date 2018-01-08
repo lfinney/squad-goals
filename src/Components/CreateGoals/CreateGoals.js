@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CreateGoals extends Component {
   constructor(props, context) {
@@ -18,20 +19,20 @@ class CreateGoals extends Component {
   }
 
   postGoal(goal) {
-    fetch('/api/v1/users/1/goals', {
+    console.log(goal);
+    fetch('/api/v1/goals', {
       method: 'POST',
       body: JSON.stringify(goal),
       headers: {
         'content-type': 'application/json',
       },
     })
-      .then(response => response.json())
       .then(res => console.log(res))
       .catch(error => console.log(error));
   }
 
   handleSubmit() {
-    const goal = Object.assign({}, this.state);
+    const goal = Object.assign({}, this.state, { user_id: this.props.userId });
     this.postGoal(goal);
   }
 
@@ -79,5 +80,9 @@ class CreateGoals extends Component {
     );
   }
 }
+
+CreateGoals.propTypes = {
+  userId: PropTypes.number,
+};
 
 export default CreateGoals;

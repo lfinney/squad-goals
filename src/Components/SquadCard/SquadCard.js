@@ -6,7 +6,11 @@ const SquadCard = ({ squad, leaveGroup, userId }) => {
   return (
     <tr className="squad-row">
       <td>
-        <Link to={`/Squad/${squad.id}`}>
+        <Link to={{
+          pathname: `/Squad/${squad.id}`,
+          state: { userId },
+        }}
+        >
           {squad.squad_name}
         </Link>
       </td>
