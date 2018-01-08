@@ -7,7 +7,7 @@ class GoalDashboard extends Component {
   constructor() {
     super();
     this.state = {
-      goal: {},
+      goal: {users: []},
       activeUser: false,
     };
   }
@@ -75,7 +75,17 @@ class GoalDashboard extends Component {
       .catch(error => console.error(error));
   }
 
+  renderUsers(user, index) {
+    return (
+      <div key={index}>
+        <h2>{user.user_name}</h2>
+        <h2>{user.points}</h2>
+      </div>
+    );
+  }
+
   render() {
+    console.log(this.state.goal);
     return (
       <div className="dashboard-container">
         <div className="dashboard-body">
@@ -93,6 +103,7 @@ class GoalDashboard extends Component {
             <div>
               <h2>{this.state.goal.goal_points}</h2>
             </div>
+<<<<<<< HEAD
             { this.state.activeUser ?
               <div>
                 <input
@@ -110,6 +121,14 @@ class GoalDashboard extends Component {
                 />
               </div>
             }
+||||||| merged common ancestors
+=======
+            <div>
+              { this.state.goal.users.map((user, index) => {
+                return this.renderUsers(user, index);
+              })}
+            </div>
+>>>>>>> user information is displaying in squad dashboard
           </div>
           { this.state.goal.conversation !== undefined &&
             <div className="conversation-container">
