@@ -5,7 +5,7 @@ import { auth, provider } from '../../Utils/fire';
 
 class Welcome extends Component {
   componentDidMount() {
-    this.checkForUser();
+    // this.checkForUser();
   }
 
   nextPath(path) {

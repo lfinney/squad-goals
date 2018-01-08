@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { auth } from '../../Utils/fire';
 import GoalsContainer from '../GoalsContainer/GoalsContainer.js';
 import SquadsContainer from '../SquadsContainer/SquadsContainer.js';
 
@@ -55,12 +56,17 @@ class UserDashboard extends Component {
   }
 
   deleteAccount(id) {
-    console.log(id);
-    return fetch(`/api/v1/users/${id}`, {
+    fetch(`/api/v1/users/${id}`, {
       method: 'DELETE',
     })
       .then(response => console.log(response))
       .catch(error => console.error(error));
+
+    auth.signOut()
+      .then(() => console.log('signed out user'))
+      .catch(error => console.error('log out error', error));
+
+    this.props.history.push('/');
   }
 
   leaveGroup(path1, id1, path2, id2) {
@@ -133,7 +139,9 @@ class UserDashboard extends Component {
 UserDashboard.propTypes = {
   match: PropTypes.object,
   params: PropTypes.object,
+  history: PropTypes.object,
+  push: PropTypes.func,
   id: PropTypes.string,
 };
 
-export default UserDashboard;
+export default withRouter(UserDashboard);
