@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class CreateSquads extends Component {
@@ -17,6 +18,8 @@ class CreateSquads extends Component {
     })
       .then(response => response)
       .catch(error => console.error(error));
+
+    this.props.history.push(`/UserDashboard/${this.props.userId}`);
   }
 
   render() {
@@ -27,9 +30,7 @@ class CreateSquads extends Component {
           <div className="create-squads-form">
             <input className="squad-name" type="text" placeholder="Squad Name" />
             <input
-              onClick={() => {
-                this.postNewSquad();
-              }}
+              onClick={() => this.postNewSquad()}
               type="button"
               value="Submit"
             />
@@ -42,6 +43,7 @@ class CreateSquads extends Component {
 
 CreateSquads.propTypes = {
   userId: PropTypes.number,
+  history: PropTypes.object,
 };
 
-export default CreateSquads;
+export default withRouter(CreateSquads);

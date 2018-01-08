@@ -10,7 +10,7 @@ class UserDashboard extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      displayComponent: 'user-squads',
+      displayComponent: 'all-squads',
       activeUser: '',
       activeUserId: 0,
       points: 0,
