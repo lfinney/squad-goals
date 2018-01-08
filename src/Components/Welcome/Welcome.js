@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { auth, provider } from '../../Utils/fire';

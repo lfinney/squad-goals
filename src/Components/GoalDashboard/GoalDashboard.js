@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import Conversation from '../Conversation/Conversation';
+import SubmitComment from '../SubmitComment/SubmitComment';
 
 class GoalDashboard extends Component {
   constructor() {
@@ -48,9 +49,12 @@ class GoalDashboard extends Component {
               <h2>{this.state.goal.goal_points}</h2>
             </div>
           </div>
-          <div className="smack-talk">
-            <h1>Smack Talk Board</h1>
-          </div>
+          { this.state.goal.conversation !== undefined &&
+            <div className="conversation-container">
+              <Conversation comments={this.state.goal.conversation} />
+              <SubmitComment conversationId={this.state.goal.conversation_id} />
+            </div>
+          }
         </div>
       </div>
     );

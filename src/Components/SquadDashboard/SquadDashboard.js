@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Conversation from '../Conversation/Conversation';
+import SubmitComment from '../SubmitComment/SubmitComment';
 
 class SquadDashboard extends Component {
   constructor() {
@@ -53,9 +55,12 @@ class SquadDashboard extends Component {
             New Goal
             </Link>
           </div>
-          <div className="smack-talk">
-            <h1>Smack Talk Board</h1>
-          </div>
+          { this.state.squad.conversation !== undefined &&
+            <div className="conversation-container">
+              <Conversation comments={this.state.squad.conversation} />
+              <SubmitComment conversationId={this.state.squad.conversation_id} />
+            </div>
+          }
         </div>
       </div>
     );
