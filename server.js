@@ -182,9 +182,11 @@ app.post('/api/v1/squads', (request, response) => {
           database('users_squads').insert({
             user_id: newSquad.user_id,
             squad_id: insertedSquad[0].id,
-          });
-          return response.status(201).json(insertedSquad);
+          }, '*')
+            .then(joinsObj => joinsObj)
+            .catch(error => response.status(422).json(error));
         })
+        .then(squad => response.status(204).json(squad))
         .catch(error => response.status(500).json({ error }));
     })
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));

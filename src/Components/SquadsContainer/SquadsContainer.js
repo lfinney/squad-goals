@@ -35,13 +35,6 @@ const SquadsContainer = ({
           </tbody>
         </table>
       </div>
-      <div>
-        <input
-          onClick={() => { createNewSquad(); }}
-          type="button"
-          value="New Squad"
-        />
-      </div>
     </div>
   );
 };

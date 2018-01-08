@@ -19,13 +19,19 @@ class App extends Component {
           path="/UserDashboard/:id"
           component={UserDashboard}
         />
-        <Route path="/CreateSquads" component={CreateSquads} />
+        <Route
+          path="/CreateSquads"
+          render={props => <CreateSquads userId={props.location.state.userId} />}
+        />
         <Route
           name="Goal"
           path="/Goal/:id"
           component={GoalDashboard}
         />
-        <Route path="/CreateGoals" component={CreateGoals} />
+        <Route
+          path="/CreateGoals"
+          render={props => <CreateGoals userId={props.location.state.userId} />}
+        />
         <Route
           name="Squad"
           path="/Squad/:id"
