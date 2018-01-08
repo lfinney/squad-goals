@@ -20,6 +20,7 @@ class App extends Component {
           component={UserDashboard}
         />
         <Route
+          name="CreateSquads"
           path="/CreateSquads"
           render={props => <CreateSquads userId={props.location.state.userId} />}
         />
@@ -29,6 +30,7 @@ class App extends Component {
           component={GoalDashboard}
         />
         <Route
+          name="CreateGoals"
           path="/CreateGoals"
           render={props => <CreateGoals userId={props.location.state.userId} />}
         />

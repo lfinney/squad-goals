@@ -96,7 +96,6 @@ class UserDashboard extends Component {
           <SquadsContainer
             userId={this.state.activeUserId}
             leaveGroup={this.leaveGroup}
-            // createNewSquad={this.createNewSquad}
             squadData={this.state.squadData}
           />
         }
