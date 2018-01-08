@@ -85,7 +85,6 @@ class GoalDashboard extends Component {
   }
 
   render() {
-    console.log(this.state.goal);
     return (
       <div className="dashboard-container">
         <div className="dashboard-body">
@@ -124,9 +123,10 @@ class GoalDashboard extends Component {
 ||||||| merged common ancestors
 =======
             <div>
-              { this.state.goal.users.map((user, index) => {
+              {this.state.goal.users.map((user, index) => {
                 return this.renderUsers(user, index);
-              })}
+              })
+            }
             </div>
 >>>>>>> user information is displaying in squad dashboard
           </div>
