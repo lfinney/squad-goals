@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class CreateGoals extends Component {
@@ -26,8 +27,9 @@ class CreateGoals extends Component {
         'content-type': 'application/json',
       },
     })
-      .then(res => res)
-      .catch(error => console.error(error));
+      .then(res => console.log(res))
+      .catch(error => console.log(error));
+    this.props.history.push(`/UserDashboard/${this.props.userId}`);
   }
 
   handleSubmit() {
@@ -82,6 +84,7 @@ class CreateGoals extends Component {
 
 CreateGoals.propTypes = {
   userId: PropTypes.number,
+  history: PropTypes.object,
 };
 
-export default CreateGoals;
+export default withRouter(CreateGoals);
