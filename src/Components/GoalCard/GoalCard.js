@@ -7,7 +7,11 @@ const GoalCard = ({ goal, leaveGroup, userId }) => {
   return (
     <tr className="goal-row">
       <td>
-        <Link to={`/Goal/${goal.id}`}>
+        <Link to={{
+          pathname: `/Goal/${goal.id}`,
+          state: { userId },
+        }}
+        >
           {goal.title}
         </Link>
       </td>

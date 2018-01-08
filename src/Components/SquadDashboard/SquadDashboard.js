@@ -59,7 +59,7 @@ class SquadDashboard extends Component {
       .catch(error => console.error(error));
   }
 
-  leaveSquad(path1, id1) {
+  leaveSquad() {
     const { userId } = this.props.location.state;
     const squadId = parseInt(this.props.match.params.id);
     fetch(`/api/v1/users/${userId}/squads/${squadId}`, {
