@@ -525,6 +525,22 @@ app.post('/api/v1/goals', (request, response) => {
 //     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 // });
 
+app.post('/api/v1/comments', (request, response) => {
+  const newComment = request.body;
+  console.log(newComment);
+  for (const requiredParameter of ['body', 'conversation_id']) {
+    if (!newComment[requiredParameter]) {
+      return response.status(422).json({
+        error: `you are missing the ${requiredParameter} property`,
+      });
+    }
+  }
+
+  database('comments').insert(newComment, '*')
+    .then(insertedComment => response.status(201).json(insertedComment))
+    .catch(error => response.status(500).json({ error }));
+});
+
 app.patch('/api/v1/comments/:id', (request, response) => {
   const { id } = request.params;
   const updateComment = request.body;
