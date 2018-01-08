@@ -20,7 +20,6 @@ class CreateSquads extends Component {
   }
 
   render() {
-    console.log(this.props.userId);
     return (
       <div className="create-squads">
         <div className="create-squads-body">

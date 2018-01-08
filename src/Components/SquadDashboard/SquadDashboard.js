@@ -41,6 +41,34 @@ class SquadDashboard extends Component {
       .catch(error => console.error(error));
   }
 
+  joinSquad() {
+    const { userId } = this.props.location.state;
+    const squadId = parseInt(this.props.match.params.id);
+    const postBody = {
+      user_id: userId,
+      squad_id: squadId,
+    };
+    fetch(`/api/v1/users/${userId}/squads/${squadId}`, {
+      method: 'POST',
+      body: JSON.stringify(postBody),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => console.log(response))
+      .catch(error => console.error(error));
+  }
+
+  leaveSquad(path1, id1) {
+    const { userId } = this.props.location.state;
+    const squadId = parseInt(this.props.match.params.id);
+    fetch(`/api/v1/users/${userId}/squads/${squadId}`, {
+      method: 'DELETE',
+    })
+      .then(response => console.log(response))
+      .catch(error => console.error(error));
+  }
+
   contentFetch(url) {
     return fetch(url)
       .then(result => result.json())
@@ -73,9 +101,21 @@ class SquadDashboard extends Component {
             New Goal
             </Link>
             { this.state.activeUser ?
-              <div>Leave</div>
+              <div>
+                <input
+                  onClick={() => this.leaveSquad()}
+                  type="submit"
+                  value="Leave"
+                />
+              </div>
               :
-              <div>Join</div>
+              <div>
+                <input
+                  onClick={() => this.joinSquad()}
+                  type="submit"
+                  value="Join"
+                />
+              </div>
             }
           </div>
           { this.state.squad.conversation !== undefined &&
