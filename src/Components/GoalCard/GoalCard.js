@@ -17,13 +17,6 @@ const GoalCard = ({ goal, leaveGroup, userId }) => {
       </td>
       <td>{goal.goal_time}</td>
       <td>{goal.goal_points}</td>
-      <td>
-        <input
-          onClick={() => leaveGroup('users', userId, 'goals', goal.id)}
-          type="button"
-          value="Leave"
-        />
-      </td>
     </tr>
   );
 };

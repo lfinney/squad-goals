@@ -33,7 +33,6 @@ class GoalDashboard extends Component {
     return fetch(url)
       .then(result => result.json())
       .then((response) => {
-        console.log(response);
         if (response.length === 1) {
           this.setState({ activeUser: true });
         }
