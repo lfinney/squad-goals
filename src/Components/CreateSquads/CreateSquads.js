@@ -15,12 +15,11 @@ class CreateSquads extends Component {
       method: 'POST',
       body: JSON.stringify(postBody),
     })
-      .then(response => console.log(response))
+      .then(response => response)
       .catch(error => console.error(error));
   }
 
   render() {
-    console.log(this.props.userId);
     return (
       <div className="create-squads">
         <div className="create-squads-body">

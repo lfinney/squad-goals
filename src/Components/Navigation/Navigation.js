@@ -25,7 +25,7 @@ class Navigation extends Component {
 
   logout() {
     auth.signOut()
-      .then(() => console.log('signed out user'))
+      .then(res => res)
       .catch(error => console.error('log out error', error));
   }
 

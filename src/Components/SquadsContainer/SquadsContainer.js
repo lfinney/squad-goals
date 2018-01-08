@@ -8,7 +8,6 @@ const SquadsContainer = ({
   leaveGroup,
   userId,
 }) => {
-  console.log(squadData);
   const squadsInfo = squadData.map((squad) => {
     return (
       <SquadCard

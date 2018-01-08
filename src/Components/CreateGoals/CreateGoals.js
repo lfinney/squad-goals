@@ -19,7 +19,6 @@ class CreateGoals extends Component {
   }
 
   postGoal(goal) {
-    console.log(goal);
     fetch('/api/v1/goals', {
       method: 'POST',
       body: JSON.stringify(goal),
@@ -27,8 +26,8 @@ class CreateGoals extends Component {
         'content-type': 'application/json',
       },
     })
-      .then(res => console.log(res))
-      .catch(error => console.log(error));
+      .then(res => res)
+      .catch(error => console.error(error));
   }
 
   handleSubmit() {

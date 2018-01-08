@@ -548,6 +548,17 @@ app.get('/api/v1/goals/:goalId/users', (request, response) => {
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
+
+// GET user_goal confirmation
+app.get('/api/v1/users/:userId/goals/:goalId', (request, response) => {
+  const { userId, goalId } = request.params;
+  database('users_goals').where({ user_id: userId, goal_id: goalId })
+    .select('*')
+    .then(user =>
+      response.status(200).json(user))
+    .catch(error => response.status(422).json(error));
+});
+
 // POST user to a goal
 app.post('/api/v1/users/:userId/goals/:goalId', (request, response) => {
   const { userId, goalId } = request.params;
@@ -568,6 +579,16 @@ app.delete('/api/v1/users/:userId/goals/:goalId', (request, response) => {
         :
         response.sendStatus(204);
     })
+    .catch(error => response.status(422).json(error));
+});
+
+// GET user_squad confirmation
+app.get('/api/v1/users/:userId/squads/:squadId', (request, response) => {
+  const { userId, squadId } = request.params;
+  database('users_squads').where({ user_id: userId, squad_id: squadId })
+    .select('*')
+    .then(user =>
+      response.status(200).json(user))
     .catch(error => response.status(422).json(error));
 });
 

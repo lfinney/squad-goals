@@ -7,19 +7,16 @@ const GoalCard = ({ goal, leaveGroup, userId }) => {
   return (
     <tr className="goal-row">
       <td>
-        <Link to={`/Goal/${goal.id}`}>
+        <Link to={{
+          pathname: `/Goal/${goal.id}`,
+          state: { userId },
+        }}
+        >
           {goal.title}
         </Link>
       </td>
       <td>{goal.goal_time}</td>
       <td>{goal.goal_points}</td>
-      <td>
-        <input
-          onClick={() => leaveGroup('users', userId, 'goals', goal.id)}
-          type="button"
-          value="Leave"
-        />
-      </td>
     </tr>
   );
 };
