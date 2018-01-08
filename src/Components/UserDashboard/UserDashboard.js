@@ -85,11 +85,11 @@ class UserDashboard extends Component {
     fetch(`/api/v1/users/${id}`, {
       method: 'DELETE',
     })
-      .then(response => console.log(response))
+      .then(response => response)
       .catch(error => console.error(error));
 
     auth.signOut()
-      .then(() => console.log('signed out user'))
+      .then(res => res)
       .catch(error => console.error('log out error', error));
 
     this.props.history.push('/');
@@ -99,7 +99,7 @@ class UserDashboard extends Component {
     return fetch(`/api/v1/${path1}/${id1}/${path2}/${id2}`, {
       method: 'DELETE',
     })
-      .then(response => console.log(response))
+      .then(response => response)
       .catch(error => console.error(error));
   }
 

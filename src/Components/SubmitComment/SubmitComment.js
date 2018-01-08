@@ -18,7 +18,7 @@ class SubmitComment extends Component {
       method: 'POST',
       body: JSON.stringify(postBody),
     })
-      .then(response => console.log(response))
+      .then(response => response)
       .catch(error => console.error(error));
   }
 

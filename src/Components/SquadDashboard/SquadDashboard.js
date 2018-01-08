@@ -55,7 +55,7 @@ class SquadDashboard extends Component {
         'Content-Type': 'application/json',
       },
     })
-      .then(response => console.log(response))
+      .then(response => response)
       .catch(error => console.error(error));
   }
 
@@ -65,7 +65,7 @@ class SquadDashboard extends Component {
     fetch(`/api/v1/users/${userId}/squads/${squadId}`, {
       method: 'DELETE',
     })
-      .then(response => console.log(response))
+      .then(response => response)
       .catch(error => console.error(error));
   }
 
