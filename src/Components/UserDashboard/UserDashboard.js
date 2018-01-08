@@ -10,18 +10,22 @@ class UserDashboard extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      displayComponent: 'squads',
+      displayComponent: 'user-squads',
       activeUser: '',
       activeUserId: 0,
       points: 0,
-      squadData: [],
-      goalData: [],
+      userSquadData: [],
+      userGoalData: [],
+      allSquadData: [],
+      allGoalData: [],
     };
     this.showContent = this.showContent.bind(this);
   }
 
   componentDidMount() {
     this.getUserData();
+    this.getSquadData();
+    this.getGoalsData();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -36,8 +40,30 @@ class UserDashboard extends Component {
           activeUser: parsedData.user_name,
           activeUserId: parsedData.id,
           points: parsedData.points,
-          squadData: parsedData.squads,
-          goalData: parsedData.goals,
+          userSquadData: parsedData.squads,
+          userGoalData: parsedData.goals,
+        }))
+        .catch(error => console.error(error));
+    }
+  }
+
+  getSquadData() {
+    if (!this.state.activeUser) {
+      const url = '/api/v1/squads';
+      return this.contentFetch(url)
+        .then(parsedData => this.setState({
+          allSquadData: parsedData,
+        }))
+        .catch(error => console.error(error));
+    }
+  }
+
+  getGoalsData() {
+    if (!this.state.activeUser) {
+      const url = '/api/v1/goals';
+      return this.contentFetch(url)
+        .then(parsedData => this.setState({
+          allGoalData: parsedData,
         }))
         .catch(error => console.error(error));
     }
@@ -78,6 +104,7 @@ class UserDashboard extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="dashboard-container">
         <h1>Squad Goals</h1>
@@ -95,17 +122,31 @@ class UserDashboard extends Component {
         <div className="dashboard-header">
           <input
             onClick={() => {
-            this.showContent('squads');
+            this.showContent('user-squads');
           }}
             type="button"
-            value="Squads"
+            value="My Squads"
           />
           <input
             onClick={() => {
-            this.showContent('goals');
+            this.showContent('user-goals');
           }}
             type="button"
-            value="Goals"
+            value="My Goals"
+          />
+          <input
+            onClick={() => {
+            this.showContent('all-squads');
+          }}
+            type="button"
+            value="All Squads"
+          />
+          <input
+            onClick={() => {
+            this.showContent('all-goals');
+          }}
+            type="button"
+            value="All Goals"
           />
           <Link to={{
             pathname: '/CreateSquads',
@@ -116,19 +157,35 @@ class UserDashboard extends Component {
           </Link>
         </div>
         {
-          this.state.displayComponent === 'squads' &&
+          this.state.displayComponent === 'user-squads' &&
           <SquadsContainer
             userId={this.state.activeUserId}
             leaveGroup={this.leaveGroup}
-            squadData={this.state.squadData}
+            squadData={this.state.userSquadData}
           />
         }
         {
-          this.state.displayComponent === 'goals' &&
+          this.state.displayComponent === 'all-squads' &&
+          <SquadsContainer
+            userId={this.state.activeUserId}
+            leaveGroup={this.leaveGroup}
+            squadData={this.state.allSquadData}
+          />
+        }
+        {
+          this.state.displayComponent === 'user-goals' &&
           <GoalsContainer
             userId={this.state.activeUserId}
             leaveGroup={this.leaveGroup}
-            goalData={this.state.goalData}
+            goalData={this.state.userGoalData}
+          />
+        }
+        {
+          this.state.displayComponent === 'all-goals' &&
+          <GoalsContainer
+            userId={this.state.activeUserId}
+            leaveGroup={this.leaveGroup}
+            goalData={this.state.allGoalData}
           />
         }
       </div>
