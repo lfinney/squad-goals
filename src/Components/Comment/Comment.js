@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Comment = ({ commentData }) => {
   return (
     <div className="smack-talk">
-      <h1>{commentData.body}</h1>
+      <p>{commentData.body}</p>
     </div>
   );
 };

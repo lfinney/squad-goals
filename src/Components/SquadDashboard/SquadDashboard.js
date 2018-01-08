@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Conversation from '../Conversation/Conversation';
 
 class SquadDashboard extends Component {
   constructor() {
@@ -53,9 +54,9 @@ class SquadDashboard extends Component {
             New Goal
             </Link>
           </div>
-          <div className="smack-talk">
-            <h1>Smack Talk Board</h1>
-          </div>
+          { this.state.squad.conversation !== undefined &&
+          <Conversation comments={this.state.squad.conversation} />
+          }
         </div>
       </div>
     );
