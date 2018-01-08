@@ -30,6 +30,7 @@ class SquadDashboard extends Component {
   }
 
   render() {
+    console.log(this.state.squad);
     return (
       <div className="dashboard-container">
         <div className="dashboard-body">

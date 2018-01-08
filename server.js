@@ -437,7 +437,6 @@ app.post('/api/v1/goals', (request, response) => {
 
 app.post('/api/v1/comments', (request, response) => {
   const newComment = request.body;
-  console.log(newComment);
   for (const requiredParameter of ['body', 'conversation_id']) {
     if (!newComment[requiredParameter]) {
       return response.status(422).json({
