@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Conversation from '../Conversation/Conversation';
-
+import SubmitComment from '../SubmitComment/SubmitComment';
 
 class GoalDashboard extends Component {
   constructor() {
@@ -50,7 +50,10 @@ class GoalDashboard extends Component {
             </div>
           </div>
           { this.state.goal.conversation !== undefined &&
-          <Conversation comments={this.state.goal.conversation} />
+            <div className="conversation-container">
+              <Conversation comments={this.state.goal.conversation} />
+              <SubmitComment conversationId={this.state.goal.conversation_id} />
+            </div>
           }
         </div>
       </div>
