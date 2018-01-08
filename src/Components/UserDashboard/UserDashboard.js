@@ -54,6 +54,15 @@ class UserDashboard extends Component {
     });
   }
 
+  deleteAccount(id) {
+    console.log(id);
+    return fetch(`/api/v1/users/${id}`, {
+      method: 'DELETE',
+    })
+      .then(response => console.log(response))
+      .catch(error => console.error(error));
+  }
+
   leaveGroup(path1, id1, path2, id2) {
     return fetch(`/api/v1/${path1}/${id1}/${path2}/${id2}`, {
       method: 'DELETE',
@@ -66,6 +75,17 @@ class UserDashboard extends Component {
     return (
       <div className="dashboard-container">
         <h1>Squad Goals</h1>
+        <div className="user-info">
+          <h2 className="user-name">{this.state.activeUser}</h2>
+          <h2 className="user-points">{this.state.points}</h2>
+          <input
+            onClick={() => {
+            this.deleteAccount(this.state.activeUserId);
+          }}
+            type="button"
+            value="Delete Account"
+          />
+        </div>
         <div className="dashboard-header">
           <input
             onClick={() => {
@@ -81,8 +101,6 @@ class UserDashboard extends Component {
             type="button"
             value="Goals"
           />
-          <h2>{this.state.activeUser}</h2>
-          <h2>{this.state.points}</h2>
           <Link to={{
             pathname: '/CreateSquads',
             state: { userId: this.state.activeUserId },
