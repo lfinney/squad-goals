@@ -500,13 +500,14 @@ app.post('/api/v1/goals', (request, response) => {
       });
       database('goals').insert(goalToPost, '*')
         .then((insertedGoal) => {
-          console.log(insertedGoal);
           database('users_goals').insert({
             user_id: newGoal.user_id,
             goal_id: insertedGoal[0].id,
-          });
-          return response.status(201).json(insertedGoal);
+          }, '*')
+            .then(joinsObj => joinsObj)
+            .catch(error => response.status(422).json(error));
         })
+        .then(goal => response.status(204).json(goal))
         .catch(error => response.status(500).json({ error }));
     })
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
