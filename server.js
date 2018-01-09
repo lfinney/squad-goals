@@ -148,7 +148,6 @@ app.post('/api/v1/squads', (request, response) => {
   }
 
   const convoTitle = { title: `${newSquad.squad_name} Conversation` };
-
   database('conversations').insert(convoTitle, 'id')
     .then((convoId) => {
       const squadToPost = Object.assign({}, {
@@ -253,7 +252,6 @@ app.post('/api/v1/goals', (request, response) => {
       });
     }
   }
-
   const convoTitle = { title: `${newGoal.title} Conversation` };
 
   database('conversations').insert(convoTitle, 'id')

@@ -126,6 +126,12 @@
   font-weight: lighter;
   text-decoration: none; }
 
+.user-name,
+.user-points {
+  color: #d2d3d3;
+  font-size: 1.5em;
+  font-weight: lighter; }
+
 .squads-body {
   background-color: #0e5bd7;
   box-shadow: 2px 2px 4px #282828;
