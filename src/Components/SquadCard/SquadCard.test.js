@@ -15,7 +15,7 @@ describe('SquadCard snapshot', () => {
   });
 
   it('renders without crashing', () => {
-    const tbody = document.createElement('tbody');
-    ReactDOM.render(<BrowserRouter><SquadCard squad={squad[0]} /></BrowserRouter>, tbody);
+    const div = document.createElement('div');
+    ReactDOM.render(<BrowserRouter><SquadCard squad={squad[0]} /></BrowserRouter>, div);
   });
 });

@@ -11,8 +11,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 7vw;
-  width: 60vw;
+  height: 100px;
+  width: 100%;
+  min-width: 300px;
   margin: 10px auto 10px auto;
   opacity: .95; }
 
@@ -30,3 +31,21 @@
   color: #d2d3d3;
   font-size: 1.5em;
   font-weight: lighter; }
+
+.squad-row, .goal-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%; }
+
+.row-header {
+  font-weight: bold;
+  font-size: 1.4em;
+  text-decoration: underline; }
+
+.squad-row h3, .goal-row h3 {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px; }

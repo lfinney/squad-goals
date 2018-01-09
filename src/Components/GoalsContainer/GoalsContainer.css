@@ -4,7 +4,7 @@
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   color: #fff;
-  width: 60vw;
+  width: 100%;
   margin: 10px auto 10px auto;
   opacity: .95; }
 
@@ -15,7 +15,7 @@
 
 .goal-body-info {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: .8em; }
 
 .goal-body-info p {

@@ -3,7 +3,12 @@
 
 .dashboard-container {
   background-image: url(./Components/Assets/up-arrows.jpg);
-  background-size: cover; }
+  background-size: cover;
+  display: flex;
+  justify-content: center; }
+
+.content-container {
+  width: 65%; }
 
 .smack-talk {
   background-color: #22affe;
@@ -21,8 +26,8 @@
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   color: #fff;
-  height: 65vw;
-  width: 50vw;
+  width: 100%;
+  min-width: 350px;
   margin: 10px auto 10px auto;
   opacity: .95; }
 
@@ -51,7 +56,7 @@
 .squads-body-info {
   align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   font-size: .8em;
   margin: 10px; }

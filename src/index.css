@@ -3,7 +3,12 @@
 
 .dashboard-container {
   background-image: url(./Components/Assets/up-arrows.jpg);
-  background-size: cover; }
+  background-size: cover;
+  display: flex;
+  justify-content: center; }
+
+.content-container {
+  width: 65%; }
 
 .smack-talk {
   background-color: #22affe;
@@ -21,8 +26,8 @@
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   color: #fff;
-  height: 65vw;
-  width: 50vw;
+  width: 100%;
+  min-width: 350px;
   margin: 10px auto 10px auto;
   opacity: .95; }
 
@@ -51,7 +56,7 @@
 .squads-body-info {
   align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   font-size: .8em;
   margin: 10px; }
@@ -73,20 +78,21 @@
   align-items: center; }
 
 .navigation h1 {
-  color: #d2d3d3;
-  margin: 0;
-  width: 30%;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 2.5em; }
+  color: #d2d3d3;
+  display: flex;
+  font-size: 2.5em;
+  justify-content: center;
+  margin: 0;
+  margin-left: 40px;
+  width: 35%; }
 
 .navigation ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  width: 70%; }
+  width: 65%; }
 
 .nav-links {
   list-style: none; }
@@ -98,8 +104,7 @@
 
 .welcome {
   background-image: url(./Components/Assets/up-arrows.jpg);
-  background-size: cover;
-  height: 100vh; }
+  background-size: cover; }
 
 .welcome-form {
   display: flex;
@@ -135,8 +140,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 7vw;
-  width: 60vw;
+  height: 100px;
+  width: 100%;
+  min-width: 300px;
   margin: 10px auto 10px auto;
   opacity: .95; }
 
@@ -155,6 +161,24 @@
   font-size: 1.5em;
   font-weight: lighter; }
 
+.squad-row, .goal-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%; }
+
+.row-header {
+  font-weight: bold;
+  font-size: 1.4em;
+  text-decoration: underline; }
+
+.squad-row h3, .goal-row h3 {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px; }
+
 .squads-body {
   background-color: #0e5bd7;
   box-shadow: 2px 2px 4px #282828;
@@ -163,7 +187,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 60vw;
+  width: 100%;
   margin: 10px auto 10px auto;
   opacity: .95;
   text-align: center; }
@@ -200,7 +224,7 @@
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   color: #fff;
-  width: 60vw;
+  width: 100%;
   margin: 10px auto 10px auto;
   opacity: .95; }
 
@@ -211,7 +235,7 @@
 
 .goal-body-info {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: .8em; }
 
 .goal-body-info p {
@@ -230,8 +254,7 @@
 
 .create-squads {
   background-image: url(./Components/Assets/up-arrows.jpg);
-  background-size: cover;
-  height: 100vh; }
+  background-size: cover; }
 
 .create-squads-body {
   text-align: center;
@@ -239,8 +262,7 @@
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   color: #fff;
-  height: 50vw;
-  width: 50vw;
+  width: 100%;
   margin: 40px auto;
   opacity: .95; }
 
@@ -271,4 +293,5 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  height: 100%; }

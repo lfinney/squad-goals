@@ -15,9 +15,9 @@ describe('MainApp snapshot', () => {
 
 
   it('renders without crashing', () => {
-    const tbody = document.createElement('tbody');
+    const div = document.createElement('div');
     ReactDOM.render(<GoalCard
       goal={goal[0]}
-    />, tbody);
+    />, div);
   });
 });

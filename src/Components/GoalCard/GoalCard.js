@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 
 const GoalCard = ({ goal, leaveGroup, userId }) => {
+  console.log(goal);
   return (
-    <tr className="goal-row">
-      <td>
+    <div className="goal-row">
+      <h3>
         <a href={{
           pathname: `/Goal/${goal.id}`,
           state: { userId },
@@ -13,10 +14,10 @@ const GoalCard = ({ goal, leaveGroup, userId }) => {
         >
           {goal.title}
         </a>
-      </td>
-      <td>{goal.goal_time}</td>
-      <td>{goal.goal_points}</td>
-    </tr>
+      </h3>
+      <h3>{goal.goal_time}</h3>
+      <h3>{goal.goal_points}</h3>
+    </div>
   );
 };
 
