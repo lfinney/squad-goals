@@ -81,17 +81,19 @@ class SquadDashboard extends Component {
         <div className="dashboard-body">
           <h1 className="dashboard-body-title">{this.state.squad.squad_name}</h1>
           <div className="dashboard-body-info">
-            <div>
-              <h2>{this.state.squad.squad_name}</h2>
-            </div>
-            <div>
-              <h2>Members</h2>
-            </div>
-            <div>
-              <h2>Leaderboard</h2>
-            </div>
-            <div>
-              <h2>Upcoming Goals</h2>
+            <div className="squad-dashbord-body-titles">
+              <div>
+                <h2>{this.state.squad.squad_name}</h2>
+              </div>
+              <div>
+                <h2>Members</h2>
+              </div>
+              <div>
+                <h2>Leaderboard</h2>
+              </div>
+              <div>
+                <h2>Upcoming Goals</h2>
+              </div>
             </div>
             <div className="squad-dashboard-button">
               <div>
