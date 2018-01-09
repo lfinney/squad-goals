@@ -49,6 +49,14 @@
   font-weight: lighter;
   margin: 10px; }
 
+.squads-body-info {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: .8em;
+  margin: 10px; }
+
 .navigation {
   background-color: #0e5bd7;
   height: 7vh; }
@@ -151,9 +159,8 @@
   font-size: 1.5em;
   margin: 10px 0 15px 0; }
 
-.squads-body-info {
-  font-size: .8em;
-  margin: 10px; }
+.squads-body-info tbody {
+  width: 100%; }
 
 .squads-body input {
   background-color: #22affe;
@@ -163,6 +170,15 @@
 
 .squads-body input:focus {
   outline: none; }
+
+.squad-row a {
+  color: #d2d3d3;
+  display: flex;
+  text-decoration: none; }
+
+.squad-row th {
+  font-size: 1.4em;
+  font-weight: lighter; }
 
 .goal-body {
   text-align: center;

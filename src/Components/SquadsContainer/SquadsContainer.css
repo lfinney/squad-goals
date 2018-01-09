@@ -17,9 +17,8 @@
   font-size: 1.5em;
   margin: 10px 0 15px 0; }
 
-.squads-body-info {
-  font-size: .8em;
-  margin: 10px; }
+.squads-body-info tbody {
+  width: 100%; }
 
 .squads-body input {
   background-color: #22affe;
@@ -29,3 +28,12 @@
 
 .squads-body input:focus {
   outline: none; }
+
+.squad-row a {
+  color: #d2d3d3;
+  display: flex;
+  text-decoration: none; }
+
+.squad-row th {
+  font-size: 1.4em;
+  font-weight: lighter; }
