@@ -443,4 +443,34 @@ describe('API Routes', () => {
         });
     });
   });
+
+  describe('POST /api/v1/comments', () => {
+    const newComment = {
+      body: 'Say something funny!',
+      conversation_id: '3',
+    };
+
+    it('should add a new comment', (done) => {
+      chai.request(server)
+        .post('/api/v1/comments')
+        .send(newComment)
+        .end((error, response) => {
+          response.should.have.status(201);
+          response.body.includes({ id: 8 });
+          response.body.includes({ conversation_id: 3 });
+          response.body.includes({ body: 'Say something funny!' });
+          done();
+        });
+    });
+
+    it('should not be able to add a new comment if a property is missing', (done) => {
+      chai.request(server)
+        .post('/api/v1/comments/')
+        .send({})
+        .end((error, response) => {
+          response.should.have.status(422);
+          done();
+        });
+    });
+  });
 });
