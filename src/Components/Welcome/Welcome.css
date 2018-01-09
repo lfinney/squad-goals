@@ -4,7 +4,8 @@
 
 .welcome-form {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  height: 200px; }
 
 .welcome-form input {
   border-radius: 5px;
@@ -12,7 +13,8 @@
   color: #0e5bd7;
   font-weight: lighter;
   font-size: 1em;
-  width: 45%; }
+  width: 45%;
+  height: 40px; }
 
 .welcome-form input:focus {
   outline: none; }
@@ -21,4 +23,5 @@
   background-image: url(./Components/Assets/finish.jpg);
   background-repeat: no-repeat;
   height: 30%;
-  margin: 60px; }
+  width: 400px;
+  margin: auto; }

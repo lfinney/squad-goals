@@ -9,7 +9,8 @@
   width: 100%;
   margin: 10px auto 10px auto;
   opacity: .95;
-  text-align: center; }
+  text-align: center;
+  height: auto; }
 
 .squads-body-title {
   font-weight: lighter;

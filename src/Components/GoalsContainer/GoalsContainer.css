@@ -6,7 +6,8 @@
   color: #fff;
   width: 100%;
   margin: 10px auto 10px auto;
-  opacity: .95; }
+  opacity: .95;
+  height: auto; }
 
 .goal-body-title {
   color: #d2d3d3;
