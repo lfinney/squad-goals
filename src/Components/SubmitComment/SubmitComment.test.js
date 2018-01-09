@@ -2,7 +2,6 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SubmitComment from './SubmitComment';
-// import goal from '../../../data/test/goals_data_test';
 
 describe('SubmitComment snapshot', () => {
   it('should always match the snapshot', () => {
