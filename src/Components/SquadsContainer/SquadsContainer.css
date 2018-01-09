@@ -10,7 +10,8 @@
   margin: 10px auto 10px auto;
   opacity: .95;
   text-align: center;
-  height: auto; }
+  height: auto;
+  border-radius: 25px; }
 
 .squads-body-title {
   font-weight: lighter;

@@ -3,9 +3,13 @@
   box-sizing: border-box;
   height: 100%; }
 
+::-webkit-scrollbar {
+  display: none; }
+
 .App {
   background-image: url(./Components/Assets/sunshine.jpg);
-  background-size: cover; }
+  background-size: cover;
+  overflow: scroll; }
 
 .dashboard-container {
   display: flex;
@@ -16,7 +20,9 @@
 
 .smack-talk {
   width: 100%;
-  height: 300px; }
+  height: 300px;
+  border: #282828 2px solid;
+  border-radius: 25px; }
 
 .smack-talk h1 {
   font-size: 1.3em;
@@ -24,16 +30,19 @@
 
 .dashboard-body {
   text-align: center;
-  background-color: #0e5bd7;
+  background-color: #4169AF;
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   color: #d2d3d3;
+  display: block;
+  overflow: auto;
   height: auto;
   min-height: 400px;
   width: 60%;
   min-width: 350px;
   margin: 10px auto 10px auto;
-  opacity: .95; }
+  opacity: .95;
+  border-radius: 25px; }
 
 .dashboard-body-title {
   font-weight: lighter;
@@ -50,10 +59,11 @@
   width: 100%; }
 
 .dashboard-body-info {
-  background-color: #57a2cd;
+  background-color: #83A0D3;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 25px;
   font-size: .8em;
   height: auto;
   width: 80%;
@@ -82,16 +92,18 @@ h2 {
   background-color: #637F35;
   color: #d2d3d3;
   box-shadow: 2px 2px 3px 0px #282828;
-  height: auto; }
+  height: auto;
+  border-radius: 10px; }
 
 .single-button-container {
   height: auto; }
 
 .conversation-container {
-  background-color: #57a2cd;
+  background-color: #83A0D3;
   margin: auto;
   height: 40%;
-  width: 80%; }
+  width: 80%;
+  border-radius: 25px; }
 
 .group-dash {
   height: auto; }

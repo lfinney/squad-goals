@@ -40,7 +40,6 @@ class CreateGoals extends Component {
   render() {
     return (
       <div className="dashboard-container">
-        <h1>CreateGoals</h1>
         <form className="dashboard-body create-goals-body">
           <input
             className="goal-input"

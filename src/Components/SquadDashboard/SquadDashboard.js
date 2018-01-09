@@ -122,7 +122,7 @@ class SquadDashboard extends Component {
                     className="nav-button"
                     onClick={() => this.joinSquad()}
                     type="submit"
-                    value="Join A Squad"
+                    value="Join Squad"
                   />
                 </div>
             }

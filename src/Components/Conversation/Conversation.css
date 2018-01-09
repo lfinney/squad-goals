@@ -12,6 +12,9 @@
   align-items: center;
   justify-content: center;
   background-color: #d2d3d3;
-  border: #282828 10px solid;
+  border-top: #282828 2px solid;
+  border-bottom: #282828 2px solid;
   height: 250px;
-  overflow: scroll; }
+  overflow: scroll;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px; }

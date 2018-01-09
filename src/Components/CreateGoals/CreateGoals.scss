@@ -1,6 +1,8 @@
 .create-goals-body {
   display: flex;
   flex-direction: column;
+  width: 50%;
+  height: 50%;
 }
 
 .goal-input,
@@ -9,4 +11,5 @@
 .create-goals-button {
   border-radius: 5px;
   margin: 25px;
+  height: 50px;
 }

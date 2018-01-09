@@ -16,7 +16,10 @@
   align-items: center;
   justify-content: center;
   background-color: $white;
-  border: $black 10px solid;
+  border-top: $black 2px solid;
+  border-bottom: $black 2px solid;
   height: 250px;
   overflow: scroll;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
 }
