@@ -3,8 +3,7 @@
 
 .dashboard-container {
   background-image: url(./Components/Assets/up-arrows.jpg);
-  background-size: cover;
-  height: 100vh; }
+  background-size: cover; }
 
 .smack-talk {
   background-color: #22affe;
