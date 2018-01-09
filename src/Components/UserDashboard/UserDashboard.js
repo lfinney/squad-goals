@@ -28,10 +28,6 @@ class UserDashboard extends Component {
     this.getGoalsData();
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state !== nextState;
-  }
-
   getUserData() {
     if (!this.state.activeUser) {
       const url = `/api/v1/dashboard/${this.props.match.params.id}`;
