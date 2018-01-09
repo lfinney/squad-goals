@@ -90,13 +90,10 @@ class GoalDashboard extends Component {
     return (
       <div className="dashboard-container">
         <div className="dashboard-body">
-          <h1 className="dashboard-body-title">Goal Name</h1>
+          <h1 className="dashboard-body-title">{this.state.goal.title}</h1>
           <div className="dashboard-body-info">
-            <div>
-              <h2>{this.state.goal.title}</h2>
-            </div>
-            <div>
-              <h2>{this.state.goal.description}</h2>
+            <div className="dashboard-body-info">
+              <p>{this.state.goal.description}</p>
             </div>
             <div>
               <h2>{this.state.goal.goal_time}</h2>
@@ -104,28 +101,31 @@ class GoalDashboard extends Component {
             <div>
               <h2>{this.state.goal.goal_points}</h2>
             </div>
-            { this.state.activeUser ?
-              <div>
-                <input
-                  onClick={() => this.leaveGoal()}
-                  type="submit"
-                  value="Leave"
-                />
-              </div>
-              :
-              <div>
-                <input
-                  onClick={() => this.joinGoal()}
-                  type="submit"
-                  value="Join"
-                />
-              </div>
-            }
             <div>
               {this.state.goal.users.map((user, index) => {
                 return this.renderUsers(user, index);
               })
             }
+            </div>
+            <div className="squad-dashboard-button">
+              {
+              this.state.activeUser ?
+                <div>
+                  <input
+                    onClick={() => this.leaveGoal()}
+                    type="submit"
+                    value="Leave"
+                  />
+                </div>
+                :
+                <div>
+                  <input
+                    onClick={() => this.joinGoal()}
+                    type="submit"
+                    value="Join"
+                  />
+                </div>
+              }
             </div>
           </div>
           { this.state.goal.conversation !== undefined &&

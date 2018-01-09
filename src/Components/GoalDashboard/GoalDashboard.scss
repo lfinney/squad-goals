@@ -1,6 +1,14 @@
 @import '../../variables.scss';
 
 
-.dashboard-body {
-  
+.dashboard-body-title {
+  color: $white;
+  font-size: 2em;
+  font-weight: lighter;``
+}
+
+.dashboard-body-info p {
+  color: $white;
+  font-size: 2em;
+  font-weight: lighter;``
 }
