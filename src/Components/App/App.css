@@ -10,9 +10,6 @@
   justify-content: center;
   overflow: scroll; }
 
-.dashboard-container .nav-button {
-  height: 50px; }
-
 .content-container {
   width: 65%; }
 
@@ -43,6 +40,13 @@
   padding-top: 20px;
   height: 20px; }
 
+.squad-dashboard-body-titles {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%; }
+
 .dashboard-body-info {
   background-color: #22affe;
   display: flex;
@@ -50,7 +54,7 @@
   justify-content: space-between;
   align-items: flex-start;
   font-size: .8em;
-  height: 50%;
+  height: auto;
   width: 80%;
   margin: auto auto 50px auto; }
 
@@ -77,6 +81,9 @@ h2 {
   background-color: #001197;
   color: #d2d3d3;
   box-shadow: 2px 2px 3px 0px #282828; }
+
+.single-button-container {
+  height: auto; }
 
 .conversation-container {
   background-color: #22affe;

@@ -14,10 +14,6 @@
   overflow: scroll;
 }
 
-.dashboard-container .nav-button {
-  height: 50px;
-}
-
 .content-container {
   width: 65%;
 }
@@ -53,6 +49,14 @@
   height: 20px;
 }
 
+.squad-dashboard-body-titles {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
 .dashboard-body-info {
   background-color: $main-light;
   display: flex;
@@ -60,7 +64,7 @@
   justify-content: space-between;
   align-items: flex-start;
   font-size: .8em;
-  height: 50%;
+  height: auto;
   width: 80%;
   margin: auto auto 50px auto;
 }
@@ -92,6 +96,10 @@ h2 {
   background-color: $main-dark;
   color: $white;
   box-shadow: 2px 2px 3px 0px $black;
+}
+
+.single-button-container {
+  height: auto;
 }
 
 .conversation-container {

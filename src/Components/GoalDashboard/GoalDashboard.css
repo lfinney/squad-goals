@@ -1,7 +1,9 @@
-.dashboard-body-title {
+h1.goal-body-title {
   color: #d2d3d3;
   font-size: 2em;
-  font-weight: lighter; }
+  font-weight: lighter;
+  margin: 0;
+  height: 75px; }
 
 .dashboard-body-info p {
   color: #d2d3d3;

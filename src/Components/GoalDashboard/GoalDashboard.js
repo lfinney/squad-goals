@@ -90,7 +90,7 @@ class GoalDashboard extends Component {
     return (
       <div className="dashboard-container">
         <div className="dashboard-body">
-          <h1 className="dashboard-body-title">{this.state.goal.title}</h1>
+          <h1 className="dashboard-body-title goal-body-title">{this.state.goal.title}</h1>
           <div className="dashboard-body-info">
             <div className="dashboard-body-info">
               <p>{this.state.goal.description}</p>
@@ -111,16 +111,18 @@ class GoalDashboard extends Component {
             <div className="squad-dashboard-button">
               {
               this.state.activeUser ?
-                <div>
+                <div className="single-button-container">
                   <input
+                    className="nav-button"
                     onClick={() => this.leaveGoal()}
                     type="submit"
                     value="Leave"
                   />
                 </div>
                 :
-                <div>
+                <div className="single-button-container">
                   <input
+                    className="nav-button"
                     onClick={() => this.joinGoal()}
                     type="submit"
                     value="Join"

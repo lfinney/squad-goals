@@ -10,9 +10,6 @@
   justify-content: center;
   overflow: scroll; }
 
-.dashboard-container .nav-button {
-  height: 50px; }
-
 .content-container {
   width: 65%; }
 
@@ -43,6 +40,13 @@
   padding-top: 20px;
   height: 20px; }
 
+.squad-dashboard-body-titles {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%; }
+
 .dashboard-body-info {
   background-color: #22affe;
   display: flex;
@@ -50,7 +54,7 @@
   justify-content: space-between;
   align-items: flex-start;
   font-size: .8em;
-  height: 50%;
+  height: auto;
   width: 80%;
   margin: auto auto 50px auto; }
 
@@ -77,6 +81,9 @@ h2 {
   background-color: #001197;
   color: #d2d3d3;
   box-shadow: 2px 2px 3px 0px #282828; }
+
+.single-button-container {
+  height: auto; }
 
 .conversation-container {
   background-color: #22affe;
@@ -151,10 +158,6 @@ h2 {
   height: 30%;
   width: 400px;
   margin: auto; }
-
-.dashboard-container h1 {
-  display: inline-block;
-  margin: 10px 0 20px 30px; }
 
 .dashboard-header {
   align-items: center;
@@ -333,21 +336,19 @@ h3 a {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: auto;
   margin-bottom: 8px; }
 
 .squad-dashboard-button input {
-  background: none;
-  border: none;
-  color: #d2d3d3;
   font-size: 1.3em;
   font-weight: lighter;
   text-decoration: none; }
 
 .squad-dashboard-button a {
-  color: #d2d3d3;
   font-size: 1.4em;
-  font-weight: lighter;
-  text-decoration: none; }
+  font-weight: lighter; }
 
 .squad-dashbord-body-titles {
   display: flex;
@@ -355,10 +356,12 @@ h3 a {
   justify-content: space-around;
   width: 100%; }
 
-.dashboard-body-title {
+h1.goal-body-title {
   color: #d2d3d3;
   font-size: 2em;
-  font-weight: lighter; }
+  font-weight: lighter;
+  margin: 0;
+  height: 75px; }
 
 .dashboard-body-info p {
   color: #d2d3d3;

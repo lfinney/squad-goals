@@ -79,9 +79,9 @@ class SquadDashboard extends Component {
     return (
       <div className="dashboard-container">
         <div className="dashboard-body">
-          <h1 className="dashboard-body-title">{this.state.squad.squad_name}</h1>
+          <h1 className="dashboard-body-title goal-body-title">{this.state.squad.squad_name}</h1>
           <div className="dashboard-body-info">
-            <div className="squad-dashbord-body-titles">
+            <div className="squad-dashboard-body-titles">
               <div>
                 <h2>{this.state.squad.squad_name}</h2>
               </div>
@@ -96,8 +96,10 @@ class SquadDashboard extends Component {
               </div>
             </div>
             <div className="squad-dashboard-button">
-              <div>
-                <Link to={{
+              <div className="single-button-container">
+                <Link
+                  className="nav-button"
+                  to={{
                   pathname: '/CreateGoals',
                   state: { userId: this.props.location.state.userId },
                 }}
@@ -106,16 +108,18 @@ class SquadDashboard extends Component {
                 </Link>
               </div>
               { this.state.activeUser ?
-                <div>
+                <div className="single-button-container">
                   <input
+                    className="nav-button"
                     onClick={() => this.leaveSquad()}
                     type="submit"
                     value="Leave Squad"
                   />
                 </div>
                 :
-                <div>
+                <div className="single-button-container">
                   <input
+                    className="nav-button"
                     onClick={() => this.joinSquad()}
                     type="submit"
                     value="Join A Squad"
