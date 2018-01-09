@@ -1,9 +1,14 @@
 @import '../../variables.scss';
 
 .comment {
-  margin: 10px auto 10px 20px;
+  margin: 10px 20px;
+  height: 250px;
+  width: 95%;
 }
 
 .comment p {
   color: $black;
+  height: auto;
+  margin-right: auto;
+  text-align: left;
 }
