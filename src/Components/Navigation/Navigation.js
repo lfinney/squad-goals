@@ -30,13 +30,13 @@ class Navigation extends Component {
   }
 
   render() {
-    console.log(this);
     return (
       <nav className="navigation">
         <h1>Squad Goals</h1>
         <ul className="">
           <li className="nav-links">
             <Link
+              className="nav-button"
               style={this.state.showMyComponent ? { display: 'block' } : { display: 'none' }}
               onClick={() => {
               this.logout();
@@ -50,7 +50,12 @@ class Navigation extends Component {
             style={this.state.showMyComponent ? { display: 'block' } : { display: 'none' }}
             className="nav-links"
           >
-            <Link to="/UserDashboard">Dashboard</Link>
+            <Link
+              className="nav-button"
+              to="/UserDashboard"
+            >
+              Dashboard
+            </Link>
           </li>
         </ul>
       </nav>

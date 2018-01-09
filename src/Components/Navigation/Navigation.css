@@ -28,10 +28,4 @@
 .nav-links a {
   display: block;
   font-size: 1.2em;
-  padding: 10px;
-  margin-right: 40px;
-  text-decoration: none;
-  border: none;
-  background-color: #001197;
-  color: #d2d3d3;
-  box-shadow: 2px 2px 3px 0px #282828; }
+  margin-right: 40px; }

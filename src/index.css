@@ -56,6 +56,14 @@
   font-size: .8em;
   margin: 10px; }
 
+.nav-button {
+  padding: 10px;
+  text-decoration: none;
+  border: none;
+  background-color: #001197;
+  color: #d2d3d3;
+  box-shadow: 2px 2px 3px 0px #282828; }
+
 .navigation {
   background-color: #0e5bd7;
   height: 100px;
@@ -86,13 +94,7 @@
 .nav-links a {
   display: block;
   font-size: 1.2em;
-  padding: 10px;
-  margin-right: 40px;
-  text-decoration: none;
-  border: none;
-  background-color: #001197;
-  color: #d2d3d3;
-  box-shadow: 2px 2px 3px 0px #282828; }
+  margin-right: 40px; }
 
 .welcome {
   background-image: url(./Components/Assets/up-arrows.jpg);
@@ -137,13 +139,6 @@
   width: 60vw;
   margin: 10px auto 10px auto;
   opacity: .95; }
-
-.dashboard-header input {
-  color: #d2d3d3;
-  background-color: #0e5bd7;
-  border: none;
-  font-weight: lighter;
-  font-size: 1.5em; }
 
 .dashboard-header input:focus {
   outline: none; }
