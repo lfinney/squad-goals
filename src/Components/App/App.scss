@@ -14,16 +14,13 @@
   overflow: scroll;
 }
 
-.dashboard-container .nav-button {
-  height: 50px;
-}
-
 .content-container {
   width: 65%;
 }
 
 .smack-talk {
   width: 100%;
+  height: 300px;
 }
 
 .smack-talk h1 {
@@ -37,7 +34,7 @@
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   color: $white;
-  height: 75%;
+  height: auto;
   min-height: 400px;
   width: 60%;
   min-width: 350px;
@@ -53,14 +50,22 @@
   height: 20px;
 }
 
+.squad-dashboard-body-titles {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
 .dashboard-body-info {
   background-color: $main-light;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
+  // align-items: flex-start;
   font-size: .8em;
-  height: 50%;
+  height: auto;
   width: 80%;
   margin: auto auto 50px auto;
 }
@@ -92,6 +97,11 @@ h2 {
   background-color: $main-dark;
   color: $white;
   box-shadow: 2px 2px 3px 0px $black;
+  height: auto;
+}
+
+.single-button-container {
+  height: auto;
 }
 
 .conversation-container {

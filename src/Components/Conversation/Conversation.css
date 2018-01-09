@@ -3,7 +3,8 @@
   font-weight: bold;
   font-size: 2em;
   line-height: 2em;
-  margin: 0; }
+  margin: 0;
+  height: 50px; }
 
 .comment-container {
   display: flex;
@@ -11,4 +12,6 @@
   align-items: center;
   justify-content: center;
   background-color: #d2d3d3;
-  border: #282828 10px solid; }
+  border: #282828 10px solid;
+  height: 250px;
+  overflow: scroll; }

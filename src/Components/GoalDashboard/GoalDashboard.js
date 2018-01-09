@@ -77,50 +77,38 @@ class GoalDashboard extends Component {
       .catch(error => console.error(error));
   }
 
-  renderUsers(user, index) {
-    return (
-      <div key={index}>
-        <h2>{user.user_name}</h2>
-        <h2>{user.points}</h2>
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className="dashboard-container">
         <div className="dashboard-body">
-          <h1 className="dashboard-body-title">{this.state.goal.title}</h1>
+          <h1 className="dashboard-body-title goal-body-title">{this.state.goal.title}</h1>
           <div className="dashboard-body-info">
-            <div className="dashboard-body-info">
+            <div className="squad-dashboard-body-titles">
               <p>{this.state.goal.description}</p>
             </div>
-            <div>
-              <h2>Start Time</h2>
-              <h2>{this.state.goal.goal_time}</h2>
-            </div>
-            <div>
-              <h2>{this.state.goal.goal_points}</h2>
-            </div>
-            <div className="creator-info">
-              {this.state.goal.users.map((user, index) => {
-                return this.renderUsers(user, index);
-              })
-            }
+            <div className="goal-dash-content">
+              <div>
+                <h2>Starts at {this.state.goal.goal_time}</h2>
+              </div>
+              <div>
+                <h2>{this.state.goal.goal_points}</h2>
+              </div>
             </div>
             <div className="squad-dashboard-button">
               {
               this.state.activeUser ?
-                <div>
+                <div className="single-button-container">
                   <input
+                    className="nav-button"
                     onClick={() => this.leaveGoal()}
                     type="submit"
                     value="Leave"
                   />
                 </div>
                 :
-                <div>
+                <div className="single-button-container">
                   <input
+                    className="nav-button"
                     onClick={() => this.joinGoal()}
                     type="submit"
                     value="Join"

@@ -46,7 +46,9 @@ ShallowWrapper {
         <h1>
           Smack Talk Board
         </h1>,
-        Array [
+        <div
+          className="comment-container"
+        >
           <Comment
             commentData={
               Object {
@@ -55,7 +57,7 @@ ShallowWrapper {
                 "id": 1,
               }
             }
-          />,
+          />
           <Comment
             commentData={
               Object {
@@ -64,7 +66,7 @@ ShallowWrapper {
                 "id": 2,
               }
             }
-          />,
+          />
           <Comment
             commentData={
               Object {
@@ -73,7 +75,7 @@ ShallowWrapper {
                 "id": 3,
               }
             }
-          />,
+          />
           <Comment
             commentData={
               Object {
@@ -82,8 +84,8 @@ ShallowWrapper {
                 "id": 4,
               }
             }
-          />,
-        ],
+          />
+        </div>,
       ],
       "className": "smack-talk",
     },
@@ -102,78 +104,10 @@ ShallowWrapper {
       },
       Object {
         "instance": null,
-        "key": "comment-1",
-        "nodeType": "function",
+        "key": undefined,
+        "nodeType": "host",
         "props": Object {
-          "commentData": Object {
-            "body": "this is the comments body",
-            "conversation_id": 1,
-            "id": 1,
-          },
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": "comment-2",
-        "nodeType": "function",
-        "props": Object {
-          "commentData": Object {
-            "body": "this is the comments body 2",
-            "conversation_id": 1,
-            "id": 2,
-          },
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": "comment-3",
-        "nodeType": "function",
-        "props": Object {
-          "commentData": Object {
-            "body": "this is the comments body 3",
-            "conversation_id": 3,
-            "id": 3,
-          },
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": "comment-4",
-        "nodeType": "function",
-        "props": Object {
-          "commentData": Object {
-            "body": "this is the comments body 4",
-            "conversation_id": 4,
-            "id": 4,
-          },
-        },
-        "ref": null,
-        "rendered": null,
-        "type": [Function],
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <h1>
-            Smack Talk Board
-          </h1>,
-          Array [
+          "children": Array [
             <Comment
               commentData={
                 Object {
@@ -211,6 +145,126 @@ ShallowWrapper {
               }
             />,
           ],
+          "className": "comment-container",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "comment-1",
+            "nodeType": "function",
+            "props": Object {
+              "commentData": Object {
+                "body": "this is the comments body",
+                "conversation_id": 1,
+                "id": 1,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "comment-2",
+            "nodeType": "function",
+            "props": Object {
+              "commentData": Object {
+                "body": "this is the comments body 2",
+                "conversation_id": 1,
+                "id": 2,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "comment-3",
+            "nodeType": "function",
+            "props": Object {
+              "commentData": Object {
+                "body": "this is the comments body 3",
+                "conversation_id": 3,
+                "id": 3,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "comment-4",
+            "nodeType": "function",
+            "props": Object {
+              "commentData": Object {
+                "body": "this is the comments body 4",
+                "conversation_id": 4,
+                "id": 4,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1>
+            Smack Talk Board
+          </h1>,
+          <div
+            className="comment-container"
+          >
+            <Comment
+              commentData={
+                Object {
+                  "body": "this is the comments body",
+                  "conversation_id": 1,
+                  "id": 1,
+                }
+              }
+            />
+            <Comment
+              commentData={
+                Object {
+                  "body": "this is the comments body 2",
+                  "conversation_id": 1,
+                  "id": 2,
+                }
+              }
+            />
+            <Comment
+              commentData={
+                Object {
+                  "body": "this is the comments body 3",
+                  "conversation_id": 3,
+                  "id": 3,
+                }
+              }
+            />
+            <Comment
+              commentData={
+                Object {
+                  "body": "this is the comments body 4",
+                  "conversation_id": 4,
+                  "id": 4,
+                }
+              }
+            />
+          </div>,
         ],
         "className": "smack-talk",
       },
@@ -229,63 +283,113 @@ ShallowWrapper {
         },
         Object {
           "instance": null,
-          "key": "comment-1",
-          "nodeType": "function",
+          "key": undefined,
+          "nodeType": "host",
           "props": Object {
-            "commentData": Object {
-              "body": "this is the comments body",
-              "conversation_id": 1,
-              "id": 1,
-            },
+            "children": Array [
+              <Comment
+                commentData={
+                  Object {
+                    "body": "this is the comments body",
+                    "conversation_id": 1,
+                    "id": 1,
+                  }
+                }
+              />,
+              <Comment
+                commentData={
+                  Object {
+                    "body": "this is the comments body 2",
+                    "conversation_id": 1,
+                    "id": 2,
+                  }
+                }
+              />,
+              <Comment
+                commentData={
+                  Object {
+                    "body": "this is the comments body 3",
+                    "conversation_id": 3,
+                    "id": 3,
+                  }
+                }
+              />,
+              <Comment
+                commentData={
+                  Object {
+                    "body": "this is the comments body 4",
+                    "conversation_id": 4,
+                    "id": 4,
+                  }
+                }
+              />,
+            ],
+            "className": "comment-container",
           },
           "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": "comment-2",
-          "nodeType": "function",
-          "props": Object {
-            "commentData": Object {
-              "body": "this is the comments body 2",
-              "conversation_id": 1,
-              "id": 2,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "comment-1",
+              "nodeType": "function",
+              "props": Object {
+                "commentData": Object {
+                  "body": "this is the comments body",
+                  "conversation_id": 1,
+                  "id": 1,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
             },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": "comment-3",
-          "nodeType": "function",
-          "props": Object {
-            "commentData": Object {
-              "body": "this is the comments body 3",
-              "conversation_id": 3,
-              "id": 3,
+            Object {
+              "instance": null,
+              "key": "comment-2",
+              "nodeType": "function",
+              "props": Object {
+                "commentData": Object {
+                  "body": "this is the comments body 2",
+                  "conversation_id": 1,
+                  "id": 2,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
             },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": "comment-4",
-          "nodeType": "function",
-          "props": Object {
-            "commentData": Object {
-              "body": "this is the comments body 4",
-              "conversation_id": 4,
-              "id": 4,
+            Object {
+              "instance": null,
+              "key": "comment-3",
+              "nodeType": "function",
+              "props": Object {
+                "commentData": Object {
+                  "body": "this is the comments body 3",
+                  "conversation_id": 3,
+                  "id": 3,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
             },
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
+            Object {
+              "instance": null,
+              "key": "comment-4",
+              "nodeType": "function",
+              "props": Object {
+                "commentData": Object {
+                  "body": "this is the comments body 4",
+                  "conversation_id": 4,
+                  "id": 4,
+                },
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
         },
       ],
       "type": "div",

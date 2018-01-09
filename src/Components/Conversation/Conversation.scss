@@ -7,6 +7,7 @@
   font-size: 2em;
   line-height: 2em;
   margin: 0;
+  height: 50px;
 }
 
 .comment-container {
@@ -16,4 +17,6 @@
   justify-content: center;
   background-color: $white;
   border: $black 10px solid;
+  height: 250px;
+  overflow: scroll;
 }

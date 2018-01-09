@@ -28,7 +28,7 @@ ShallowWrapper {
       "children": <p>
         this is the comments body
       </p>,
-      "className": "smack-talk",
+      "className": "comment",
     },
     "ref": null,
     "rendered": Object {
@@ -53,7 +53,7 @@ ShallowWrapper {
         "children": <p>
           this is the comments body
         </p>,
-        "className": "smack-talk",
+        "className": "comment",
       },
       "ref": null,
       "rendered": Object {

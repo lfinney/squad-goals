@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 class SubmitComment extends Component {
   postNewComment() {
-    const commentBody = document.querySelector('.squad-name').value;
+    const commentBody = document.querySelector('.submit-comment-input').value;
     const postBody = {
       body: commentBody,
-      conversation_id: this.props.conversation_id,
+      conversation_id: this.props.conversationId,
     };
     fetch('/api/v1/comments', {
       headers: {
@@ -43,7 +43,7 @@ class SubmitComment extends Component {
 }
 
 SubmitComment.propTypes = {
-  conversation_id: PropTypes.number,
+  conversationId: PropTypes.number,
 };
 
 export default SubmitComment;
