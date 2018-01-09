@@ -491,7 +491,33 @@ describe('API Routes', () => {
     });
   });
 
-  describe.only('GET /api/v1/squads', () => {
+  describe('GET /api/v1/users/:userId/goals/:goalId', () => {
+    it('should find a user in the users_goals joins table', (done) => {
+      chai.request(server)
+        .get('/api/v1/users/1/goals/1')
+        .end((error, response) => {
+          response.should.have.status(200);
+          response.should.be.json;
+          response.body.should.be.a('array');
+          response.body.length.should.equal(1);
+          response.body.includes({ 'user_id': 1 });
+          response.body.includes({ 'goal_id': '1' });
+          done();
+        });
+    });
+
+    it('should return an empty array if the user relationship doesn\'t exist', (done) => {
+      chai.request(server)
+        .get('/api/v1/users/100/goals/200')
+        .end((error, response) => {
+          response.body.should.be.a('array');
+          response.body.length.should.equal(0);
+          done();
+        });
+    });
+  });
+
+  describe('GET /api/v1/users/:userId/squads/:squadId', () => {
     it('should find a user in the users_squads joins table', (done) => {
       chai.request(server)
         .get('/api/v1/users/1/squads/1')
