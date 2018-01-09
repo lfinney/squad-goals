@@ -1,6 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import CreateSquads from './CreateSquads';
 
 describe('MainApp snapshot', () => {
@@ -11,8 +12,8 @@ describe('MainApp snapshot', () => {
   });
 
 
-  // it('renders without crashing', () => {
-  //   const div = document.createElement('div');
-  //   ReactDOM.render(<CreateSquads />, div);
-  // });
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<BrowserRouter><CreateSquads /></BrowserRouter>, div);
+  });
 });
