@@ -81,42 +81,50 @@ class SquadDashboard extends Component {
         <div className="dashboard-body">
           <h1 className="dashboard-body-title">{this.state.squad.squad_name}</h1>
           <div className="dashboard-body-info">
-            <div>
-              <h2>{this.state.squad.squad_name}</h2>
-            </div>
-            <div>
-              <h2>Members</h2>
-            </div>
-            <div>
-              <h2>Leaderboard</h2>
-            </div>
-            <div>
-              <h2>Upcoming Goals</h2>
-            </div>
-            <Link to={{
-              pathname: '/CreateGoals',
-              state: { userId: this.props.location.state.userId },
-            }}
-            >
-            New Goal
-            </Link>
-            { this.state.activeUser ?
+            <div className="squad-dashbord-body-titles">
               <div>
-                <input
-                  onClick={() => this.leaveSquad()}
-                  type="submit"
-                  value="Leave"
-                />
+                <h2>{this.state.squad.squad_name}</h2>
               </div>
-              :
               <div>
-                <input
-                  onClick={() => this.joinSquad()}
-                  type="submit"
-                  value="Join"
-                />
+                <h2>Members</h2>
               </div>
+              <div>
+                <h2>Leaderboard</h2>
+              </div>
+              <div>
+                <h2>Upcoming Goals</h2>
+              </div>
+            </div>
+            <div className="squad-dashboard-button">
+              <div>
+                <Link to={{
+                  pathname: '/CreateGoals',
+                  state: { userId: this.props.location.state.userId },
+                }}
+                >
+                New Goal
+                </Link>
+              </div>
+              { this.state.activeUser ?
+                <div>
+                  <input
+                    className=""
+                    onClick={() => this.leaveSquad()}
+                    type="submit"
+                    value="Leave Squad"
+                  />
+                </div>
+                :
+                <div>
+                  <input
+                    className=""
+                    onClick={() => this.joinSquad()}
+                    type="submit"
+                    value="Join A Squad"
+                  />
+                </div>
             }
+            </div>
           </div>
           { this.state.squad.conversation !== undefined &&
             <div className="conversation-container">

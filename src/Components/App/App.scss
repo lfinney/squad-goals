@@ -4,8 +4,6 @@
   margin: 0;
 }
 
-
-
 .dashboard-container {
   background-image: url(./Components/Assets/up-arrows.jpg);
   background-size: cover;
@@ -34,7 +32,7 @@
   background-color: #0e5bd7;
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
-  color: #fff;
+  color: $white;
   width: 100%;
   min-width: 350px;
   margin: 10px auto 10px auto;
@@ -55,7 +53,7 @@
   justify-content: space-between;
   align-items: flex-start;
   font-size: .8em;
-  height: 40%;
+  height: 50%;
   width: 80%;
   margin: auto auto 50px auto;
 }

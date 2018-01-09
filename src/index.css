@@ -25,7 +25,7 @@
   background-color: #0e5bd7;
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
-  color: #fff;
+  color: #d2d3d3;
   width: 100%;
   min-width: 350px;
   margin: 10px auto 10px auto;
@@ -44,7 +44,7 @@
   justify-content: space-between;
   align-items: flex-start;
   font-size: .8em;
-  height: 40%;
+  height: 50%;
   width: 80%;
   margin: auto auto 50px auto; }
 
@@ -296,6 +296,33 @@
   font-size: .8em;
   width: 35%;
   margin: 15px auto; }
+
+.squad-dashboard-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 8px; }
+
+.squad-dashboard-button input {
+  background: none;
+  border: none;
+  color: #d2d3d3;
+  font-size: 1.3em;
+  font-weight: lighter;
+  text-decoration: none; }
+
+.squad-dashboard-button a {
+  color: #d2d3d3;
+  font-size: 1.4em;
+  font-weight: lighter;
+  text-decoration: none; }
+
+.squad-dashbord-body-titles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%; }
 
 body {
   margin: 0;
