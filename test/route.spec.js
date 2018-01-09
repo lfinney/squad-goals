@@ -400,8 +400,6 @@ describe('API Routes', () => {
           response.body.id.should.equal(1);
           response.body.should.have.property('title');
           response.body.title.should.equal('chess tourney');
-          response.body.should.have.property('goal_time');
-          response.body.goal_time.should.equal('2018-01-12T22:00:00.000Z');
           response.body.should.have.property('creator_id');
           response.body.creator_id.should.equal(1);
           response.body.should.have.property('conversation_id');
