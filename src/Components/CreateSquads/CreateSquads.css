@@ -1,37 +1,39 @@
-.create-squads {
-  background-image: url(./Components/Assets/sunshine.jpg);
-  background-size: cover; }
-
 .create-squads-body {
   text-align: center;
   background-color: #0e5bd7;
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   color: #fff;
-  width: 100%;
+  width: 60%;
   margin: 40px auto;
-  opacity: .95; }
+  opacity: .95;
+  height: auto; }
 
 .create-squads-body h1 {
   margin-bottom: 15px;
-  padding-top: 10px; }
+  padding-top: 10px;
+  height: auto; }
 
 .create-squads-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: auto;
-  width: 40%; }
+  width: 40%;
+  height: auto; }
 
 .create-squads-form input {
   border: none;
   margin: 10px;
-  border-radius: 3px; }
+  border-radius: 3px;
+  height: auto; }
 
 .create-squads-form input:focus {
-  outline: none; }
+  outline: none;
+  height: auto; }
 
 .create-squads-form input[type=button] {
   font-size: .8em;
   width: 35%;
-  margin: 15px auto; }
+  margin: 15px auto;
+  height: auto; }
