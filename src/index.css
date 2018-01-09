@@ -58,12 +58,27 @@
 
 .navigation {
   background-color: #0e5bd7;
-  height: 7vh; }
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+.navigation h1 {
+  color: #d2d3d3;
+  margin: 0;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em; }
 
 .navigation ul {
   display: flex;
   flex-direction: row;
-  justify-content: space-around; }
+  justify-content: flex-end;
+  align-items: center;
+  width: 70%; }
 
 .nav-links {
   list-style: none; }
@@ -71,7 +86,13 @@
 .nav-links a {
   display: block;
   font-size: 1.2em;
-  margin-top: 15px; }
+  padding: 10px;
+  margin-right: 40px;
+  text-decoration: none;
+  border: none;
+  background-color: #001197;
+  color: #d2d3d3;
+  box-shadow: 2px 2px 3px 0px #282828; }
 
 .welcome {
   background-image: url(./Components/Assets/up-arrows.jpg);
