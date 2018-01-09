@@ -229,17 +229,24 @@
   opacity: .95; }
 
 .goal-body-title {
+  color: #d2d3d3;
   font-weight: lighter;
   font-size: 1.5em;
   margin: 10px 0 15px 0; }
 
 .goal-body-info {
+  color: #d2d3d3;
   display: flex;
   flex-direction: column;
   font-size: .8em; }
 
 .goal-body-info p {
   margin: 10px 0 10px 0; }
+
+.goal-row a {
+  color: #d2d3d3;
+  display: flex;
+  text-decoration: none; }
 
 .create-goals-body {
   display: flex;

@@ -10,12 +10,14 @@
 }
 
 .goal-body-title {
+  color: $white;
   font-weight: lighter;
   font-size: 1.5em;
   margin: 10px 0 15px 0;
 }
 
 .goal-body-info {
+  color: $white;
   display: flex;
   flex-direction: column;
   font-size: .8em
@@ -23,4 +25,10 @@
 
 .goal-body-info p {
   margin: 10px 0 10px 0;
+}
+
+.goal-row a {
+  color: $white;
+  display: flex;
+  text-decoration: none;
 }
