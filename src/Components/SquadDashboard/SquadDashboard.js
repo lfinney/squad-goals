@@ -93,30 +93,36 @@ class SquadDashboard extends Component {
             <div>
               <h2>Upcoming Goals</h2>
             </div>
-            <Link to={{
-              pathname: '/CreateGoals',
-              state: { userId: this.props.location.state.userId },
-            }}
-            >
-            New Goal
-            </Link>
-            { this.state.activeUser ?
+            <div className="squad-dashboard-button">
               <div>
-                <input
-                  onClick={() => this.leaveSquad()}
-                  type="submit"
-                  value="Leave"
-                />
+                <Link to={{
+                  pathname: '/CreateGoals',
+                  state: { userId: this.props.location.state.userId },
+                }}
+                >
+                New Goal
+                </Link>
               </div>
-              :
-              <div>
-                <input
-                  onClick={() => this.joinSquad()}
-                  type="submit"
-                  value="Join"
-                />
-              </div>
+              { this.state.activeUser ?
+                <div>
+                  <input
+                    className=""
+                    onClick={() => this.leaveSquad()}
+                    type="submit"
+                    value="Leave Squad"
+                  />
+                </div>
+                :
+                <div>
+                  <input
+                    className=""
+                    onClick={() => this.joinSquad()}
+                    type="submit"
+                    value="Join A Squad"
+                  />
+                </div>
             }
+            </div>
           </div>
           { this.state.squad.conversation !== undefined &&
             <div className="conversation-container">

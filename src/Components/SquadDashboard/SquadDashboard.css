@@ -1,0 +1,19 @@
+.squad-dashboard-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%; }
+
+.squad-dashboard-button input {
+  background: none;
+  border: none;
+  color: #d2d3d3;
+  font-size: 1.3em;
+  font-weight: lighter;
+  text-decoration: none; }
+
+.squad-dashboard-button a {
+  color: #d2d3d3;
+  font-size: 1.4em;
+  font-weight: lighter;
+  text-decoration: none; }
