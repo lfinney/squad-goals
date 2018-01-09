@@ -1,0 +1,595 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SquadsContainer snapshot should always match the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SquadsContainer
+    squadData={
+      Array [
+        Object {
+          "conversation_id": 15,
+          "created_at": "2018-01-08",
+          "id": 9,
+          "squad_name": "El Squadro",
+          "updated_at": "2018-01-08T20:56:36.8072",
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div>
+        <h2
+          className="squads-body-title"
+        >
+          Squads
+        </h2>
+        <table
+          className="squads-body-info"
+        >
+          <tbody>
+            <tr
+              className="squad-row"
+            >
+              <th>
+                Squad Title
+              </th>
+              <th>
+                Competitors
+              </th>
+              <th>
+                Squad Goals
+              </th>
+              <th />
+            </tr>
+            <SquadCard
+              leaveGroup={undefined}
+              squad={
+                Object {
+                  "conversation_id": 15,
+                  "created_at": "2018-01-08",
+                  "id": 9,
+                  "squad_name": "El Squadro",
+                  "updated_at": "2018-01-08T20:56:36.8072",
+                }
+              }
+              userId={undefined}
+            />
+          </tbody>
+        </table>
+      </div>,
+      "className": "squads-body",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h2
+            className="squads-body-title"
+          >
+            Squads
+          </h2>,
+          <table
+            className="squads-body-info"
+          >
+            <tbody>
+              <tr
+                className="squad-row"
+              >
+                <th>
+                  Squad Title
+                </th>
+                <th>
+                  Competitors
+                </th>
+                <th>
+                  Squad Goals
+                </th>
+                <th />
+              </tr>
+              <SquadCard
+                leaveGroup={undefined}
+                squad={
+                  Object {
+                    "conversation_id": 15,
+                    "created_at": "2018-01-08",
+                    "id": 9,
+                    "squad_name": "El Squadro",
+                    "updated_at": "2018-01-08T20:56:36.8072",
+                  }
+                }
+                userId={undefined}
+              />
+            </tbody>
+          </table>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Squads",
+            "className": "squads-body-title",
+          },
+          "ref": null,
+          "rendered": "Squads",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <tbody>
+              <tr
+                className="squad-row"
+              >
+                <th>
+                  Squad Title
+                </th>
+                <th>
+                  Competitors
+                </th>
+                <th>
+                  Squad Goals
+                </th>
+                <th />
+              </tr>
+              <SquadCard
+                leaveGroup={undefined}
+                squad={
+                  Object {
+                    "conversation_id": 15,
+                    "created_at": "2018-01-08",
+                    "id": 9,
+                    "squad_name": "El Squadro",
+                    "updated_at": "2018-01-08T20:56:36.8072",
+                  }
+                }
+                userId={undefined}
+              />
+            </tbody>,
+            "className": "squads-body-info",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <tr
+                  className="squad-row"
+                >
+                  <th>
+                    Squad Title
+                  </th>
+                  <th>
+                    Competitors
+                  </th>
+                  <th>
+                    Squad Goals
+                  </th>
+                  <th />
+                </tr>,
+                Array [
+                  <SquadCard
+                    leaveGroup={undefined}
+                    squad={
+                      Object {
+                        "conversation_id": 15,
+                        "created_at": "2018-01-08",
+                        "id": 9,
+                        "squad_name": "El Squadro",
+                        "updated_at": "2018-01-08T20:56:36.8072",
+                      }
+                    }
+                    userId={undefined}
+                  />,
+                ],
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    <th>
+                      Squad Title
+                    </th>,
+                    <th>
+                      Competitors
+                    </th>,
+                    <th>
+                      Squad Goals
+                    </th>,
+                    <th />,
+                  ],
+                  "className": "squad-row",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Squad Title",
+                    },
+                    "ref": null,
+                    "rendered": "Squad Title",
+                    "type": "th",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Competitors",
+                    },
+                    "ref": null,
+                    "rendered": "Competitors",
+                    "type": "th",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": "Squad Goals",
+                    },
+                    "ref": null,
+                    "rendered": "Squad Goals",
+                    "type": "th",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {},
+                    "ref": null,
+                    "rendered": null,
+                    "type": "th",
+                  },
+                ],
+                "type": "tr",
+              },
+              Object {
+                "instance": null,
+                "key": "squad-9",
+                "nodeType": "function",
+                "props": Object {
+                  "leaveGroup": undefined,
+                  "squad": Object {
+                    "conversation_id": 15,
+                    "created_at": "2018-01-08",
+                    "id": 9,
+                    "squad_name": "El Squadro",
+                    "updated_at": "2018-01-08T20:56:36.8072",
+                  },
+                  "userId": undefined,
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": "tbody",
+          },
+          "type": "table",
+        },
+      ],
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div>
+          <h2
+            className="squads-body-title"
+          >
+            Squads
+          </h2>
+          <table
+            className="squads-body-info"
+          >
+            <tbody>
+              <tr
+                className="squad-row"
+              >
+                <th>
+                  Squad Title
+                </th>
+                <th>
+                  Competitors
+                </th>
+                <th>
+                  Squad Goals
+                </th>
+                <th />
+              </tr>
+              <SquadCard
+                leaveGroup={undefined}
+                squad={
+                  Object {
+                    "conversation_id": 15,
+                    "created_at": "2018-01-08",
+                    "id": 9,
+                    "squad_name": "El Squadro",
+                    "updated_at": "2018-01-08T20:56:36.8072",
+                  }
+                }
+                userId={undefined}
+              />
+            </tbody>
+          </table>
+        </div>,
+        "className": "squads-body",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h2
+              className="squads-body-title"
+            >
+              Squads
+            </h2>,
+            <table
+              className="squads-body-info"
+            >
+              <tbody>
+                <tr
+                  className="squad-row"
+                >
+                  <th>
+                    Squad Title
+                  </th>
+                  <th>
+                    Competitors
+                  </th>
+                  <th>
+                    Squad Goals
+                  </th>
+                  <th />
+                </tr>
+                <SquadCard
+                  leaveGroup={undefined}
+                  squad={
+                    Object {
+                      "conversation_id": 15,
+                      "created_at": "2018-01-08",
+                      "id": 9,
+                      "squad_name": "El Squadro",
+                      "updated_at": "2018-01-08T20:56:36.8072",
+                    }
+                  }
+                  userId={undefined}
+                />
+              </tbody>
+            </table>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Squads",
+              "className": "squads-body-title",
+            },
+            "ref": null,
+            "rendered": "Squads",
+            "type": "h2",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <tbody>
+                <tr
+                  className="squad-row"
+                >
+                  <th>
+                    Squad Title
+                  </th>
+                  <th>
+                    Competitors
+                  </th>
+                  <th>
+                    Squad Goals
+                  </th>
+                  <th />
+                </tr>
+                <SquadCard
+                  leaveGroup={undefined}
+                  squad={
+                    Object {
+                      "conversation_id": 15,
+                      "created_at": "2018-01-08",
+                      "id": 9,
+                      "squad_name": "El Squadro",
+                      "updated_at": "2018-01-08T20:56:36.8072",
+                    }
+                  }
+                  userId={undefined}
+                />
+              </tbody>,
+              "className": "squads-body-info",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <tr
+                    className="squad-row"
+                  >
+                    <th>
+                      Squad Title
+                    </th>
+                    <th>
+                      Competitors
+                    </th>
+                    <th>
+                      Squad Goals
+                    </th>
+                    <th />
+                  </tr>,
+                  Array [
+                    <SquadCard
+                      leaveGroup={undefined}
+                      squad={
+                        Object {
+                          "conversation_id": 15,
+                          "created_at": "2018-01-08",
+                          "id": 9,
+                          "squad_name": "El Squadro",
+                          "updated_at": "2018-01-08T20:56:36.8072",
+                        }
+                      }
+                      userId={undefined}
+                    />,
+                  ],
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      <th>
+                        Squad Title
+                      </th>,
+                      <th>
+                        Competitors
+                      </th>,
+                      <th>
+                        Squad Goals
+                      </th>,
+                      <th />,
+                    ],
+                    "className": "squad-row",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Squad Title",
+                      },
+                      "ref": null,
+                      "rendered": "Squad Title",
+                      "type": "th",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Competitors",
+                      },
+                      "ref": null,
+                      "rendered": "Competitors",
+                      "type": "th",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": "Squad Goals",
+                      },
+                      "ref": null,
+                      "rendered": "Squad Goals",
+                      "type": "th",
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {},
+                      "ref": null,
+                      "rendered": null,
+                      "type": "th",
+                    },
+                  ],
+                  "type": "tr",
+                },
+                Object {
+                  "instance": null,
+                  "key": "squad-9",
+                  "nodeType": "function",
+                  "props": Object {
+                    "leaveGroup": undefined,
+                    "squad": Object {
+                      "conversation_id": 15,
+                      "created_at": "2018-01-08",
+                      "id": 9,
+                      "squad_name": "El Squadro",
+                      "updated_at": "2018-01-08T20:56:36.8072",
+                    },
+                    "userId": undefined,
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": "tbody",
+            },
+            "type": "table",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

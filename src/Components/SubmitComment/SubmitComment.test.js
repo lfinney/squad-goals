@@ -1,10 +1,18 @@
-/* eslint-disable */
-
+import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Welcome from './Welcome';
+import SubmitComment from './SubmitComment';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Welcome />, div);
+describe('SubmitComment snapshot', () => {
+  it('should always match the snapshot', () => {
+    const wrapper = shallow(<SubmitComment />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<SubmitComment />, div);
+  });
 });

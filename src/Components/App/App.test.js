@@ -1,10 +1,18 @@
-/* eslint-disable */
-
+import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import MainApp from './App.js';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+describe('MainApp snapshot', () => {
+  it('should always match the snapshot', () => {
+    const wrapper = shallow(<MainApp />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<BrowserRouter><MainApp /></BrowserRouter>, div);
+  });
 });

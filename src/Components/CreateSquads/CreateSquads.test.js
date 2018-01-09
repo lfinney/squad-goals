@@ -1,10 +1,19 @@
-/* eslint-disable */
-
+import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Welcome from './Welcome';
+import { BrowserRouter } from 'react-router-dom';
+import CreateSquads from './CreateSquads';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Welcome />, div);
+describe('MainApp snapshot', () => {
+  it('should always match the snapshot', () => {
+    const wrapper = shallow(<CreateSquads />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<BrowserRouter><CreateSquads /></BrowserRouter>, div);
+  });
 });
