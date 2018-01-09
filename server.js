@@ -244,6 +244,42 @@ app.get('/api/v1/goals', (request, response) => {
     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
 
+app.post('/api/v1/goals', (request, response) => {
+  const newGoal = request.body;
+  for (const requiredParameter of ['title', 'description', 'goal_time', 'goal_points', 'user_id']) {
+    if (!newGoal[requiredParameter]) {
+      return response.status(422).json({
+        error: `you are missing the ${requiredParameter} property`,
+      });
+    }
+  }
+
+  const convoTitle = { title: `${newGoal.title} Conversation` };
+
+  database('conversations').insert(convoTitle, 'id')
+    .then((convoId) => {
+      const goalToPost = Object.assign({}, {
+        title: newGoal.title,
+        description: newGoal.description,
+        goal_time: newGoal.goal_time,
+        goal_points: newGoal.goal_points,
+        creator_id: newGoal.user_id,
+        conversation_id: convoId[0],
+      });
+      database('goals').insert(goalToPost, '*')
+        .then((insertedGoal) => {
+          database('users_goals').insert({
+            user_id: newGoal.user_id,
+            goal_id: insertedGoal[0].id,
+          }, '*')
+            .then(goal => response.status(201).json(goal))
+            .catch(error => response.status(422).json(error));
+        })
+        .catch(error => response.status(500).json({ error }));
+    })
+    .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
+});
+
 app.get('/api/v1/goals/:goalId', (request, response) => {
   const { goalId } = request.params;
 
@@ -315,44 +351,6 @@ app.delete('/api/v1/goals/:id', (request, response) => {
         response.status(422).json({ error: `No goal with id ${id}` });
     })
     .catch(error => response.status(422).json(error));
-});
-
-app.post('/api/v1/goals', (request, response) => {
-  const newGoal = request.body;
-
-  for (const requiredParameter of ['title', 'description', 'goal_time', 'goal_points', 'user_id']) {
-    if (!newGoal[requiredParameter]) {
-      return response.status(422).json({
-        error: `you are missing the ${requiredParameter} property`,
-      });
-    }
-  }
-
-  const convoTitle = { title: `${newGoal.title} Conversation` };
-
-  database('conversations').insert(convoTitle, 'id')
-    .then((convoId) => {
-      const goalToPost = Object.assign({}, {
-        title: newGoal.title,
-        description: newGoal.description,
-        goal_time: newGoal.goal_time,
-        goal_points: newGoal.goal_points,
-        creator_id: newGoal.user_id,
-        conversation_id: convoId[0],
-      });
-      database('goals').insert(goalToPost, '*')
-        .then((insertedGoal) => {
-          database('users_goals').insert({
-            user_id: newGoal.user_id,
-            goal_id: insertedGoal[0].id,
-          }, '*')
-            .then(joinsObj => joinsObj)
-            .catch(error => response.status(422).json(error));
-        })
-        .then(goal => response.status(204).json(goal))
-        .catch(error => response.status(500).json({ error }));
-    })
-    .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
 });
 
 app.post('/api/v1/comments', (request, response) => {

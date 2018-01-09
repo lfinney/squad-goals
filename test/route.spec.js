@@ -348,6 +348,46 @@ describe('API Routes', () => {
     });
   });
 
+  describe('POST /api/v1/goals', () => {
+    const newGoal = {
+      // id: 5,
+      title: 'Run 5 miles',
+      description: 'Go for a 5 mile run',
+      goal_time: '2018-01-14T17:00:00.000Z',
+      goal_points: 1000,
+      user_id: 1,
+    };
+
+    it('should add a new squad', (done) => {
+      chai.request(server)
+        .post('/api/v1/goals')
+        .send(newGoal)
+        .end((error, response) => {
+          response.should.have.status(201);
+          response.body.includes({ user_id: 1 });
+          response.body.includes({ goal_id: 8 });
+          chai.request(server)
+            .get('/api/v1/goals')
+            .end((postError, postResponse) => {
+              postResponse.body.should.be.a('array');
+              postResponse.body.length.should.equal(5);
+              postResponse.body.includes(newGoal);
+              done();
+            });
+        });
+    });
+
+    it('should not be able to add a new squad if a property is missing', (done) => {
+      chai.request(server)
+        .post('/api/v1/goals/')
+        .send({})
+        .end((error, response) => {
+          response.should.have.status(422);
+          done();
+        });
+    });
+  });
+
   describe('GET /api/v1/goals/:goalid', () => {
     it('should retrieve detailed information about a specific squad', (done) => {
       chai.request(server)
