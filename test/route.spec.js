@@ -556,7 +556,6 @@ describe('API Routes', () => {
     });
   });
 
-
   describe('GET /api/v1/users/:userId/squads/:squadId', () => {
     it('should find a user in the users_squads joins table', (done) => {
       chai.request(server)
@@ -598,6 +597,24 @@ describe('API Routes', () => {
               getResponse.body.length.should.equal(1);
               getResponse.body.includes({ 'user_id': 1 });
               getResponse.body.includes({ 'squad_id': 2 });
+              done();
+            });
+        });
+    });
+  });
+
+  describe('DELETE /api/v1/users/:userId/squads/:squadId', () => {
+    it('should delete a specific squad', (done) => {
+      chai.request(server)
+        .delete('/api/v1/users/3/squads/2')
+        .end((error, response) => {
+          response.should.have.status(204);
+          response.body.should.be.a('object');
+          chai.request(server)
+            .get('/api/v1/users/3/squads/2')
+            .end((deleteError, deleteResponse) => {
+              deleteResponse.body.should.be.a('array');
+              deleteResponse.body.length.should.equal(0);
               done();
             });
         });
