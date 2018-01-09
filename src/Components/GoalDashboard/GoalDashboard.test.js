@@ -1,6 +1,5 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import GoalDashboard from './GoalDashboard';
 
 describe('GoalDashboard snapshot', () => {

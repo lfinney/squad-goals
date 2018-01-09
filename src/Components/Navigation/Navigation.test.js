@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Navigation from './Navigation';
-// import goal from '../../../data/test/goals_data_test';
 
 describe('Navigation snapshot', () => {
   it('should always match the snapshot', () => {
@@ -12,8 +12,8 @@ describe('Navigation snapshot', () => {
   });
 
 
-  // it('renders without crashing', () => {
-  //   const div = document.createElement('div');
-  //   ReactDOM.render(<Navigation />, div);
-  // });
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<BrowserRouter><Navigation /></BrowserRouter>, div);
+  });
 });
