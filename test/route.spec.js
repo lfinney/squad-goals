@@ -347,4 +347,43 @@ describe('API Routes', () => {
         });
     });
   });
+
+  describe('GET /api/v1/goals/:goalid', () => {
+    it('should retrieve detailed information about a specific squad', (done) => {
+      chai.request(server)
+        .get('/api/v1/goals/1')
+        .end((error, response) => {
+          response.should.have.status(200);
+          response.should.be.json;
+          response.body.should.be.a('object');
+          response.body.should.have.property('id');
+          response.body.id.should.equal(1);
+          response.body.should.have.property('title');
+          response.body.title.should.equal('chess tourney');
+          response.body.should.have.property('goal_time');
+          response.body.goal_time.should.equal('2018-01-12T22:00:00.000Z');
+          response.body.should.have.property('creator_id');
+          response.body.creator_id.should.equal(1);
+          response.body.should.have.property('conversation_id');
+          response.body.conversation_id.should.equal(1);
+          response.body.users.length.should.equal(2);
+          response.body.users.includes({ 'id': 1 });
+          response.body.users.includes({ 'user_name': 'jm' });
+          response.body.users.includes({ 'points': 10000 });
+          response.body.conversation.length.should.equal(2);
+          response.body.conversation.includes({ 'id': 1 });
+          response.body.conversation.includes({ 'body': 'this is the comments body' });
+          done();
+        });
+    });
+
+    it('should return a 404 if path does not exist', (done) => {
+      chai.request(server)
+        .get('/api/v1/goals/50')
+        .end((error, response) => {
+          response.should.have.status(404);
+          done();
+        });
+    });
+  });
 });
