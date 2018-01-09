@@ -7,7 +7,9 @@ class GoalDashboard extends Component {
   constructor() {
     super();
     this.state = {
-      goal: { users: [] },
+      goal: {
+        users: [],
+      },
       activeUser: false,
     };
   }
