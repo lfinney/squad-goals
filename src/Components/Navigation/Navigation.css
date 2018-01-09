@@ -6,6 +6,9 @@
   justify-content: center;
   align-items: center; }
 
+.navigation .nav-button {
+  height: 40px; }
+
 .navigation h1 {
   align-items: center;
   color: #d2d3d3;
@@ -21,7 +24,8 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  width: 65%; }
+  width: 65%;
+  height: 40px; }
 
 .nav-links {
   list-style: none; }

@@ -9,6 +9,7 @@
 .welcome-form {
   display: flex;
   flex-direction: column;
+  height: 200px;
 }
 
 .welcome-form input {
@@ -18,6 +19,7 @@
   font-weight: lighter;
   font-size: 1em;
   width: 45%;
+  height: 40px;
 }
 
 .welcome-form input:focus {
@@ -28,5 +30,6 @@
   background-image: url(./Components/Assets/finish.jpg);
   background-repeat: no-repeat;
   height: 30%;
-  margin: 60px;
+  width: 400px;
+  margin: auto;
 }
