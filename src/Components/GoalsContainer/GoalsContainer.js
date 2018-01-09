@@ -17,17 +17,14 @@ const GoalsContainer = ({ goalData, leaveGroup, userId }) => {
   return (
     <div className="goal-body">
       <h2 className="goal-body-title">Goals</h2>
-      <table className="goal-body-info">
-        <tbody>
-          <tr className="goal-row">
-            <th>Goal Title</th>
-            <th>Goal Time </th>
-            <th>Goal Points </th>
-            <th />
-          </tr>
-          { goalInfo }
-        </tbody>
-      </table>
+      <div className="goal-body-info">
+        <div className="goal-row">
+          <h3>Goal Title</h3>
+          <h3>Goal Time </h3>
+          <h3>Goal Points </h3>
+        </div>
+        { goalInfo }
+      </div>
     </div>
   );
 };

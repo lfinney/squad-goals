@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const SquadCard = ({ squad, leaveGroup, userId }) => {
   return (
-    <tr className="squad-row">
-      <td>
+    <div className="squad-row">
+      <h3>
         <Link to={{
           pathname: `/Squad/${squad.id}`,
           state: { userId },
@@ -13,10 +13,10 @@ const SquadCard = ({ squad, leaveGroup, userId }) => {
         >
           {squad.squad_name}
         </Link>
-      </td>
-      <td>{squad.id}</td>
-      <td>{squad.id}</td>
-    </tr>
+      </h3>
+      <h3>{squad.id}</h3>
+      <h3>{squad.id}</h3>
+    </div>
   );
 };
 

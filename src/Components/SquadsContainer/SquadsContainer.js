@@ -23,17 +23,14 @@ const SquadsContainer = ({
     <div className="squads-body">
       <div>
         <h2 className="squads-body-title">Squads</h2>
-        <table className="squads-body-info">
-          <tbody>
-            <tr className="squad-row">
-              <th>Squad Title</th>
-              <th>Competitors</th>
-              <th>Squad Goals</th>
-              <th />
-            </tr>
-            { squadsInfo }
-          </tbody>
-        </table>
+        <div className="squads-body-info">
+          <div className="squad-row">
+            <h3>Squad Title</h3>
+            <h3>Competitors</h3>
+            <h3>Squad Goals</h3>
+          </div>
+          { squadsInfo }
+        </div>
       </div>
     </div>
   );

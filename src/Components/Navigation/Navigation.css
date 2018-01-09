@@ -7,20 +7,21 @@
   align-items: center; }
 
 .navigation h1 {
-  color: #d2d3d3;
-  margin: 0;
-  width: 30%;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 2.5em; }
+  color: #d2d3d3;
+  display: flex;
+  font-size: 2.5em;
+  justify-content: center;
+  margin: 0;
+  margin-left: 40px;
+  width: 35%; }
 
 .navigation ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  width: 70%; }
+  width: 65%; }
 
 .nav-links {
   list-style: none; }

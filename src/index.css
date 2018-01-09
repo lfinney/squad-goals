@@ -8,7 +8,7 @@
   justify-content: center; }
 
 .content-container {
-  width: 50%; }
+  width: 65%; }
 
 .smack-talk {
   background-color: #22affe;
@@ -78,20 +78,21 @@
   align-items: center; }
 
 .navigation h1 {
-  color: #d2d3d3;
-  margin: 0;
-  width: 30%;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 2.5em; }
+  color: #d2d3d3;
+  display: flex;
+  font-size: 2.5em;
+  justify-content: center;
+  margin: 0;
+  margin-left: 40px;
+  width: 35%; }
 
 .navigation ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  width: 70%; }
+  width: 65%; }
 
 .nav-links {
   list-style: none; }
@@ -103,8 +104,7 @@
 
 .welcome {
   background-image: url(./Components/Assets/up-arrows.jpg);
-  background-size: cover;
-  height: 100vh; }
+  background-size: cover; }
 
 .welcome-form {
   display: flex;
@@ -140,7 +140,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 50px;
+  height: 100px;
   width: 100%;
   min-width: 300px;
   margin: 10px auto 10px auto;
@@ -236,8 +236,7 @@
 
 .create-squads {
   background-image: url(./Components/Assets/up-arrows.jpg);
-  background-size: cover;
-  height: 100vh; }
+  background-size: cover; }
 
 .create-squads-body {
   text-align: center;
@@ -245,7 +244,6 @@
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   color: #fff;
-  height: 50vw;
   width: 100%;
   margin: 40px auto;
   opacity: .95; }
@@ -277,4 +275,5 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  height: 100%; }
