@@ -30,8 +30,10 @@ class Navigation extends Component {
   }
 
   render() {
+    console.log(this);
     return (
       <nav className="navigation">
+        <h1>Squad Goals</h1>
         <ul className="">
           <li className="nav-links">
             <Link
@@ -44,7 +46,10 @@ class Navigation extends Component {
             >Log Out
             </Link>
           </li>
-          <li className="nav-links">
+          <li
+            style={this.state.showMyComponent ? { display: 'block' } : { display: 'none' }}
+            className="nav-links"
+          >
             <Link to="/UserDashboard">Dashboard</Link>
           </li>
         </ul>
