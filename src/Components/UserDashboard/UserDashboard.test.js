@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import UserDashboard from './UserDashboard';
-// import goal from '../../../data/test/goals_data_test';
 
 describe('UserDashboard snapshot', () => {
   it('should always match the snapshot', () => {
