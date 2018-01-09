@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const SquadCard = ({ squad, leaveGroup, userId }) => {
+  console.log(squad);
   return (
     <div className="squad-row">
       <h3>

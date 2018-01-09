@@ -19,9 +19,9 @@ const GoalsContainer = ({ goalData, leaveGroup, userId }) => {
       <h2 className="goal-body-title">Goals</h2>
       <div className="goal-body-info">
         <div className="goal-row">
-          <h3>Goal Title</h3>
-          <h3>Goal Time </h3>
-          <h3>Goal Points </h3>
+          <h3 className="row-header">Goal Title</h3>
+          <h3 className="row-header">Goal Time </h3>
+          <h3 className="row-header">Goal Points </h3>
         </div>
         { goalInfo }
       </div>

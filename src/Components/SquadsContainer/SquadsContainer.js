@@ -25,9 +25,9 @@ const SquadsContainer = ({
         <h2 className="squads-body-title">Squads</h2>
         <div className="squads-body-info">
           <div className="squad-row">
-            <h3>Squad Title</h3>
-            <h3>Competitors</h3>
-            <h3>Squad Goals</h3>
+            <h3 className="row-header">Squad Title</h3>
+            <h3 className="row-header">Competitors</h3>
+            <h3 className="row-header">Squad Goals</h3>
           </div>
           { squadsInfo }
         </div>

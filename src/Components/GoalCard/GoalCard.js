@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 
 const GoalCard = ({ goal, leaveGroup, userId }) => {
+  console.log(goal);
   return (
     <div className="goal-row">
       <h3>

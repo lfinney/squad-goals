@@ -56,7 +56,7 @@
 .squads-body-info {
   align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   font-size: .8em;
   margin: 10px; }
@@ -161,6 +161,24 @@
   font-size: 1.5em;
   font-weight: lighter; }
 
+.squad-row, .goal-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%; }
+
+.row-header {
+  font-weight: bold;
+  font-size: 1.4em;
+  text-decoration: underline; }
+
+.squad-row h3, .goal-row h3 {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px; }
+
 .squads-body {
   background-color: #0e5bd7;
   box-shadow: 2px 2px 4px #282828;
@@ -217,7 +235,7 @@
 
 .goal-body-info {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: .8em; }
 
 .goal-body-info p {

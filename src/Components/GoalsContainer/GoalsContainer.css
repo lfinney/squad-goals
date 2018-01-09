@@ -15,7 +15,7 @@
 
 .goal-body-info {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: .8em; }
 
 .goal-body-info p {

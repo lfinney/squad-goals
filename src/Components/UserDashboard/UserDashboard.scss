@@ -38,3 +38,24 @@
   font-size: 1.5em;
   font-weight: lighter;
 }
+
+.squad-row, .goal-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.row-header {
+  font-weight: bold;
+  font-size: 1.4em;
+  text-decoration: underline;
+}
+
+.squad-row h3, .goal-row h3 {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
