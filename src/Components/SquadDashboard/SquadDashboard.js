@@ -108,7 +108,6 @@ class SquadDashboard extends Component {
               { this.state.activeUser ?
                 <div>
                   <input
-                    className=""
                     onClick={() => this.leaveSquad()}
                     type="submit"
                     value="Leave Squad"
@@ -117,7 +116,6 @@ class SquadDashboard extends Component {
                 :
                 <div>
                   <input
-                    className=""
                     onClick={() => this.joinSquad()}
                     type="submit"
                     value="Join A Squad"

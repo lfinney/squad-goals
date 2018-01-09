@@ -133,7 +133,6 @@
 
 .dashboard-container h1 {
   display: inline-block;
-  color: #0e5bd7;
   margin: 10px 0 20px 30px; }
 
 .dashboard-header {
@@ -305,7 +304,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100%;
   margin-bottom: 8px; }
 
 .squad-dashboard-button input {
