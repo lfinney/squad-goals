@@ -563,4 +563,25 @@ describe('API Routes', () => {
         });
     });
   });
+
+  describe.only('POST /api/v1/users/:userId/squads/:squadId', () => {
+    it('should add a new user-squad pair to the joins table', (done) => {
+      chai.request(server)
+        .post('/api/v1/users/1/squads/2')
+        .end((error, response) => {
+          response.should.have.status(204);
+          chai.request(server)
+            .get('/api/v1/users/1/squads/2')
+            .end((getError, getResponse) => {
+              getResponse.should.have.status(200);
+              getResponse.should.be.json;
+              getResponse.body.should.be.a('array');
+              getResponse.body.length.should.equal(1);
+              getResponse.body.includes({ 'user_id': 1 });
+              getResponse.body.includes({ 'squad_id': 2 });
+              done();
+            });
+        });
+    });
+  });
 });
