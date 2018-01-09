@@ -124,18 +124,15 @@ describe('API Routes', () => {
   });
 
   describe('GET /api/v1/users/:id', () => {
-    it('should retrieve a specific user', (done) => {
+    it.only('should retrieve a specific user', (done) => {
       chai.request(server)
-        .get('/api/v1/users/1')
+        .get('/api/v1/users/gqye6482kjsj')
         .end((error, response) => {
           response.should.have.status(200);
           response.should.be.json;
-          response.body.should.be.a('array');
-          response.body.length.should.equal(1);
-          response.body.includes({ 'id': 1 });
-          response.body.includes({ 'user_name': 'Luke' });
-          response.body.includes({ 'points': '1000' });
-          response.body.includes({ 'firebase_id': 'gqye6482kjsj' });
+          response.body.should.be.a('object');
+          response.body.should.have.property('user');
+          response.body.user.should.equal(1);
           done();
         });
     });
