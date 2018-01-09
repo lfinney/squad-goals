@@ -96,12 +96,13 @@ class GoalDashboard extends Component {
               <p>{this.state.goal.description}</p>
             </div>
             <div>
+              <h2>Start Time</h2>
               <h2>{this.state.goal.goal_time}</h2>
             </div>
             <div>
               <h2>{this.state.goal.goal_points}</h2>
             </div>
-            <div>
+            <div className="creator-info">
               {this.state.goal.users.map((user, index) => {
                 return this.renderUsers(user, index);
               })
