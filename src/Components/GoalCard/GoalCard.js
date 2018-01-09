@@ -22,7 +22,7 @@ const GoalCard = ({ goal, leaveGroup, userId }) => {
 };
 
 GoalCard.propTypes = {
-  goal: PropTypes.array,
+  goal: PropTypes.object,
   leaveGroup: PropTypes.func,
   userId: PropTypes.number,
 };

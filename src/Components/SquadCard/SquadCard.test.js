@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -13,12 +12,4 @@ describe('SquadCard snapshot', () => {
 
     expect(wrapper).toMatchSnapshot();
   });
-
-
-  // it('renders without crashing', () => {
-  //   const div = document.createElement('div');
-  //   ReactDOM.render(<SquadCard
-  //     squad={squad}
-  //   />, div);
-  // });
 });
