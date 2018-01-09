@@ -9,6 +9,14 @@
 
 .dashboard-body-info p {
   color: $white;
+  text-align: center;
   font-size: 2em;
   font-weight: lighter;
+  width: 100%
+}
+
+.creator-info {
+  // display: flex;
+  // flex-direction: row;
+  height: 40px;
 }
