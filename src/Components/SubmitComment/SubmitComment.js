@@ -43,7 +43,7 @@ class SubmitComment extends Component {
 }
 
 SubmitComment.propTypes = {
-  conversation_id: PropTypes.number,
+  conversationId: PropTypes.number,
 };
 
 export default SubmitComment;
