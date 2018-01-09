@@ -64,86 +64,89 @@ ShallowWrapper {
         >
           Goals
         </h2>,
-        <table
+        <div
           className="goal-body-info"
         >
-          <tbody>
-            <tr
-              className="goal-row"
+          <div
+            className="goal-row"
+          >
+            <h3
+              className="row-header"
             >
-              <th>
-                Goal Title
-              </th>
-              <th>
-                Goal Time 
-              </th>
-              <th>
-                Goal Points 
-              </th>
-              <th />
-            </tr>
-            <GoalCard
-              goal={
-                Object {
-                  "conversation_id": 1,
-                  "creator_id": 1,
-                  "description": "to rule them all",
-                  "goal_points": 2300,
-                  "goal_time": "2018-01-12 15:00:00",
-                  "id": 1,
-                  "title": "chess tourney",
-                }
+              Goal Title
+            </h3>
+            <h3
+              className="row-header"
+            >
+              Goal Time 
+            </h3>
+            <h3
+              className="row-header"
+            >
+              Goal Points 
+            </h3>
+          </div>
+          <GoalCard
+            goal={
+              Object {
+                "conversation_id": 1,
+                "creator_id": 1,
+                "description": "to rule them all",
+                "goal_points": 2300,
+                "goal_time": "2018-01-12 15:00:00",
+                "id": 1,
+                "title": "chess tourney",
               }
-              leaveGroup={undefined}
-              userId={undefined}
-            />
-            <GoalCard
-              goal={
-                Object {
-                  "conversation_id": 2,
-                  "creator_id": 2,
-                  "description": "to skewer them all",
-                  "goal_points": 23000,
-                  "goal_time": "2018-01-13 16:00:00",
-                  "id": 2,
-                  "title": "darts tourney",
-                }
+            }
+            leaveGroup={undefined}
+            userId={undefined}
+          />
+          <GoalCard
+            goal={
+              Object {
+                "conversation_id": 2,
+                "creator_id": 2,
+                "description": "to skewer them all",
+                "goal_points": 23000,
+                "goal_time": "2018-01-13 16:00:00",
+                "id": 2,
+                "title": "darts tourney",
               }
-              leaveGroup={undefined}
-              userId={undefined}
-            />
-            <GoalCard
-              goal={
-                Object {
-                  "conversation_id": 3,
-                  "creator_id": 2,
-                  "description": "to pool them all",
-                  "goal_points": 230000,
-                  "goal_time": "2018-01-14 17:00:00",
-                  "id": 3,
-                  "title": "pool tourney",
-                }
+            }
+            leaveGroup={undefined}
+            userId={undefined}
+          />
+          <GoalCard
+            goal={
+              Object {
+                "conversation_id": 3,
+                "creator_id": 2,
+                "description": "to pool them all",
+                "goal_points": 230000,
+                "goal_time": "2018-01-14 17:00:00",
+                "id": 3,
+                "title": "pool tourney",
               }
-              leaveGroup={undefined}
-              userId={undefined}
-            />
-            <GoalCard
-              goal={
-                Object {
-                  "conversation_id": 4,
-                  "creator_id": 3,
-                  "description": "to drink them all",
-                  "goal_points": 2300000,
-                  "goal_time": "2018-01-14 18:00:00",
-                  "id": 4,
-                  "title": "drinking tourney",
-                }
+            }
+            leaveGroup={undefined}
+            userId={undefined}
+          />
+          <GoalCard
+            goal={
+              Object {
+                "conversation_id": 4,
+                "creator_id": 3,
+                "description": "to drink them all",
+                "goal_points": 2300000,
+                "goal_time": "2018-01-14 18:00:00",
+                "id": 4,
+                "title": "drinking tourney",
               }
-              leaveGroup={undefined}
-              userId={undefined}
-            />
-          </tbody>
-        </table>,
+            }
+            leaveGroup={undefined}
+            userId={undefined}
+          />
+        </div>,
       ],
       "className": "goal-body",
     },
@@ -166,21 +169,282 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <tbody>
-            <tr
+          "children": Array [
+            <div
               className="goal-row"
             >
-              <th>
+              <h3
+                className="row-header"
+              >
                 Goal Title
-              </th>
-              <th>
+              </h3>
+              <h3
+                className="row-header"
+              >
                 Goal Time 
-              </th>
-              <th>
+              </h3>
+              <h3
+                className="row-header"
+              >
                 Goal Points 
-              </th>
-              <th />
-            </tr>
+              </h3>
+            </div>,
+            Array [
+              <GoalCard
+                goal={
+                  Object {
+                    "conversation_id": 1,
+                    "creator_id": 1,
+                    "description": "to rule them all",
+                    "goal_points": 2300,
+                    "goal_time": "2018-01-12 15:00:00",
+                    "id": 1,
+                    "title": "chess tourney",
+                  }
+                }
+                leaveGroup={undefined}
+                userId={undefined}
+              />,
+              <GoalCard
+                goal={
+                  Object {
+                    "conversation_id": 2,
+                    "creator_id": 2,
+                    "description": "to skewer them all",
+                    "goal_points": 23000,
+                    "goal_time": "2018-01-13 16:00:00",
+                    "id": 2,
+                    "title": "darts tourney",
+                  }
+                }
+                leaveGroup={undefined}
+                userId={undefined}
+              />,
+              <GoalCard
+                goal={
+                  Object {
+                    "conversation_id": 3,
+                    "creator_id": 2,
+                    "description": "to pool them all",
+                    "goal_points": 230000,
+                    "goal_time": "2018-01-14 17:00:00",
+                    "id": 3,
+                    "title": "pool tourney",
+                  }
+                }
+                leaveGroup={undefined}
+                userId={undefined}
+              />,
+              <GoalCard
+                goal={
+                  Object {
+                    "conversation_id": 4,
+                    "creator_id": 3,
+                    "description": "to drink them all",
+                    "goal_points": 2300000,
+                    "goal_time": "2018-01-14 18:00:00",
+                    "id": 4,
+                    "title": "drinking tourney",
+                  }
+                }
+                leaveGroup={undefined}
+                userId={undefined}
+              />,
+            ],
+          ],
+          "className": "goal-body-info",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <h3
+                  className="row-header"
+                >
+                  Goal Title
+                </h3>,
+                <h3
+                  className="row-header"
+                >
+                  Goal Time 
+                </h3>,
+                <h3
+                  className="row-header"
+                >
+                  Goal Points 
+                </h3>,
+              ],
+              "className": "goal-row",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Goal Title",
+                  "className": "row-header",
+                },
+                "ref": null,
+                "rendered": "Goal Title",
+                "type": "h3",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Goal Time ",
+                  "className": "row-header",
+                },
+                "ref": null,
+                "rendered": "Goal Time ",
+                "type": "h3",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Goal Points ",
+                  "className": "row-header",
+                },
+                "ref": null,
+                "rendered": "Goal Points ",
+                "type": "h3",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "goal-1",
+            "nodeType": "function",
+            "props": Object {
+              "goal": Object {
+                "conversation_id": 1,
+                "creator_id": 1,
+                "description": "to rule them all",
+                "goal_points": 2300,
+                "goal_time": "2018-01-12 15:00:00",
+                "id": 1,
+                "title": "chess tourney",
+              },
+              "leaveGroup": undefined,
+              "userId": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "goal-2",
+            "nodeType": "function",
+            "props": Object {
+              "goal": Object {
+                "conversation_id": 2,
+                "creator_id": 2,
+                "description": "to skewer them all",
+                "goal_points": 23000,
+                "goal_time": "2018-01-13 16:00:00",
+                "id": 2,
+                "title": "darts tourney",
+              },
+              "leaveGroup": undefined,
+              "userId": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "goal-3",
+            "nodeType": "function",
+            "props": Object {
+              "goal": Object {
+                "conversation_id": 3,
+                "creator_id": 2,
+                "description": "to pool them all",
+                "goal_points": 230000,
+                "goal_time": "2018-01-14 17:00:00",
+                "id": 3,
+                "title": "pool tourney",
+              },
+              "leaveGroup": undefined,
+              "userId": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "goal-4",
+            "nodeType": "function",
+            "props": Object {
+              "goal": Object {
+                "conversation_id": 4,
+                "creator_id": 3,
+                "description": "to drink them all",
+                "goal_points": 2300000,
+                "goal_time": "2018-01-14 18:00:00",
+                "id": 4,
+                "title": "drinking tourney",
+              },
+              "leaveGroup": undefined,
+              "userId": undefined,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h2
+            className="goal-body-title"
+          >
+            Goals
+          </h2>,
+          <div
+            className="goal-body-info"
+          >
+            <div
+              className="goal-row"
+            >
+              <h3
+                className="row-header"
+              >
+                Goal Title
+              </h3>
+              <h3
+                className="row-header"
+              >
+                Goal Time 
+              </h3>
+              <h3
+                className="row-header"
+              >
+                Goal Points 
+              </h3>
+            </div>
             <GoalCard
               goal={
                 Object {
@@ -241,30 +505,49 @@ ShallowWrapper {
               leaveGroup={undefined}
               userId={undefined}
             />
-          </tbody>,
-          "className": "goal-body-info",
+          </div>,
+        ],
+        "className": "goal-body",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Goals",
+            "className": "goal-body-title",
+          },
+          "ref": null,
+          "rendered": "Goals",
+          "type": "h2",
         },
-        "ref": null,
-        "rendered": Object {
+        Object {
           "instance": null,
           "key": undefined,
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <tr
+              <div
                 className="goal-row"
               >
-                <th>
+                <h3
+                  className="row-header"
+                >
                   Goal Title
-                </th>
-                <th>
+                </h3>
+                <h3
+                  className="row-header"
+                >
                   Goal Time 
-                </th>
-                <th>
+                </h3>
+                <h3
+                  className="row-header"
+                >
                   Goal Points 
-                </th>
-                <th />
-              </tr>,
+                </h3>
+              </div>,
               Array [
                 <GoalCard
                   goal={
@@ -328,6 +611,7 @@ ShallowWrapper {
                 />,
               ],
             ],
+            "className": "goal-body-info",
           },
           "ref": null,
           "rendered": Array [
@@ -337,16 +621,21 @@ ShallowWrapper {
               "nodeType": "host",
               "props": Object {
                 "children": Array [
-                  <th>
+                  <h3
+                    className="row-header"
+                  >
                     Goal Title
-                  </th>,
-                  <th>
+                  </h3>,
+                  <h3
+                    className="row-header"
+                  >
                     Goal Time 
-                  </th>,
-                  <th>
+                  </h3>,
+                  <h3
+                    className="row-header"
+                  >
                     Goal Points 
-                  </th>,
-                  <th />,
+                  </h3>,
                 ],
                 "className": "goal-row",
               },
@@ -358,10 +647,11 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": "Goal Title",
+                    "className": "row-header",
                   },
                   "ref": null,
                   "rendered": "Goal Title",
-                  "type": "th",
+                  "type": "h3",
                 },
                 Object {
                   "instance": null,
@@ -369,10 +659,11 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": "Goal Time ",
+                    "className": "row-header",
                   },
                   "ref": null,
                   "rendered": "Goal Time ",
-                  "type": "th",
+                  "type": "h3",
                 },
                 Object {
                   "instance": null,
@@ -380,22 +671,14 @@ ShallowWrapper {
                   "nodeType": "host",
                   "props": Object {
                     "children": "Goal Points ",
+                    "className": "row-header",
                   },
                   "ref": null,
                   "rendered": "Goal Points ",
-                  "type": "th",
-                },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {},
-                  "ref": null,
-                  "rendered": null,
-                  "type": "th",
+                  "type": "h3",
                 },
               ],
-              "type": "tr",
+              "type": "div",
             },
             Object {
               "instance": null,
@@ -482,446 +765,7 @@ ShallowWrapper {
               "type": [Function],
             },
           ],
-          "type": "tbody",
-        },
-        "type": "table",
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <h2
-            className="goal-body-title"
-          >
-            Goals
-          </h2>,
-          <table
-            className="goal-body-info"
-          >
-            <tbody>
-              <tr
-                className="goal-row"
-              >
-                <th>
-                  Goal Title
-                </th>
-                <th>
-                  Goal Time 
-                </th>
-                <th>
-                  Goal Points 
-                </th>
-                <th />
-              </tr>
-              <GoalCard
-                goal={
-                  Object {
-                    "conversation_id": 1,
-                    "creator_id": 1,
-                    "description": "to rule them all",
-                    "goal_points": 2300,
-                    "goal_time": "2018-01-12 15:00:00",
-                    "id": 1,
-                    "title": "chess tourney",
-                  }
-                }
-                leaveGroup={undefined}
-                userId={undefined}
-              />
-              <GoalCard
-                goal={
-                  Object {
-                    "conversation_id": 2,
-                    "creator_id": 2,
-                    "description": "to skewer them all",
-                    "goal_points": 23000,
-                    "goal_time": "2018-01-13 16:00:00",
-                    "id": 2,
-                    "title": "darts tourney",
-                  }
-                }
-                leaveGroup={undefined}
-                userId={undefined}
-              />
-              <GoalCard
-                goal={
-                  Object {
-                    "conversation_id": 3,
-                    "creator_id": 2,
-                    "description": "to pool them all",
-                    "goal_points": 230000,
-                    "goal_time": "2018-01-14 17:00:00",
-                    "id": 3,
-                    "title": "pool tourney",
-                  }
-                }
-                leaveGroup={undefined}
-                userId={undefined}
-              />
-              <GoalCard
-                goal={
-                  Object {
-                    "conversation_id": 4,
-                    "creator_id": 3,
-                    "description": "to drink them all",
-                    "goal_points": 2300000,
-                    "goal_time": "2018-01-14 18:00:00",
-                    "id": 4,
-                    "title": "drinking tourney",
-                  }
-                }
-                leaveGroup={undefined}
-                userId={undefined}
-              />
-            </tbody>
-          </table>,
-        ],
-        "className": "goal-body",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Goals",
-            "className": "goal-body-title",
-          },
-          "ref": null,
-          "rendered": "Goals",
-          "type": "h2",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <tbody>
-              <tr
-                className="goal-row"
-              >
-                <th>
-                  Goal Title
-                </th>
-                <th>
-                  Goal Time 
-                </th>
-                <th>
-                  Goal Points 
-                </th>
-                <th />
-              </tr>
-              <GoalCard
-                goal={
-                  Object {
-                    "conversation_id": 1,
-                    "creator_id": 1,
-                    "description": "to rule them all",
-                    "goal_points": 2300,
-                    "goal_time": "2018-01-12 15:00:00",
-                    "id": 1,
-                    "title": "chess tourney",
-                  }
-                }
-                leaveGroup={undefined}
-                userId={undefined}
-              />
-              <GoalCard
-                goal={
-                  Object {
-                    "conversation_id": 2,
-                    "creator_id": 2,
-                    "description": "to skewer them all",
-                    "goal_points": 23000,
-                    "goal_time": "2018-01-13 16:00:00",
-                    "id": 2,
-                    "title": "darts tourney",
-                  }
-                }
-                leaveGroup={undefined}
-                userId={undefined}
-              />
-              <GoalCard
-                goal={
-                  Object {
-                    "conversation_id": 3,
-                    "creator_id": 2,
-                    "description": "to pool them all",
-                    "goal_points": 230000,
-                    "goal_time": "2018-01-14 17:00:00",
-                    "id": 3,
-                    "title": "pool tourney",
-                  }
-                }
-                leaveGroup={undefined}
-                userId={undefined}
-              />
-              <GoalCard
-                goal={
-                  Object {
-                    "conversation_id": 4,
-                    "creator_id": 3,
-                    "description": "to drink them all",
-                    "goal_points": 2300000,
-                    "goal_time": "2018-01-14 18:00:00",
-                    "id": 4,
-                    "title": "drinking tourney",
-                  }
-                }
-                leaveGroup={undefined}
-                userId={undefined}
-              />
-            </tbody>,
-            "className": "goal-body-info",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": Array [
-                <tr
-                  className="goal-row"
-                >
-                  <th>
-                    Goal Title
-                  </th>
-                  <th>
-                    Goal Time 
-                  </th>
-                  <th>
-                    Goal Points 
-                  </th>
-                  <th />
-                </tr>,
-                Array [
-                  <GoalCard
-                    goal={
-                      Object {
-                        "conversation_id": 1,
-                        "creator_id": 1,
-                        "description": "to rule them all",
-                        "goal_points": 2300,
-                        "goal_time": "2018-01-12 15:00:00",
-                        "id": 1,
-                        "title": "chess tourney",
-                      }
-                    }
-                    leaveGroup={undefined}
-                    userId={undefined}
-                  />,
-                  <GoalCard
-                    goal={
-                      Object {
-                        "conversation_id": 2,
-                        "creator_id": 2,
-                        "description": "to skewer them all",
-                        "goal_points": 23000,
-                        "goal_time": "2018-01-13 16:00:00",
-                        "id": 2,
-                        "title": "darts tourney",
-                      }
-                    }
-                    leaveGroup={undefined}
-                    userId={undefined}
-                  />,
-                  <GoalCard
-                    goal={
-                      Object {
-                        "conversation_id": 3,
-                        "creator_id": 2,
-                        "description": "to pool them all",
-                        "goal_points": 230000,
-                        "goal_time": "2018-01-14 17:00:00",
-                        "id": 3,
-                        "title": "pool tourney",
-                      }
-                    }
-                    leaveGroup={undefined}
-                    userId={undefined}
-                  />,
-                  <GoalCard
-                    goal={
-                      Object {
-                        "conversation_id": 4,
-                        "creator_id": 3,
-                        "description": "to drink them all",
-                        "goal_points": 2300000,
-                        "goal_time": "2018-01-14 18:00:00",
-                        "id": 4,
-                        "title": "drinking tourney",
-                      }
-                    }
-                    leaveGroup={undefined}
-                    userId={undefined}
-                  />,
-                ],
-              ],
-            },
-            "ref": null,
-            "rendered": Array [
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": Array [
-                    <th>
-                      Goal Title
-                    </th>,
-                    <th>
-                      Goal Time 
-                    </th>,
-                    <th>
-                      Goal Points 
-                    </th>,
-                    <th />,
-                  ],
-                  "className": "goal-row",
-                },
-                "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "Goal Title",
-                    },
-                    "ref": null,
-                    "rendered": "Goal Title",
-                    "type": "th",
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "Goal Time ",
-                    },
-                    "ref": null,
-                    "rendered": "Goal Time ",
-                    "type": "th",
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "Goal Points ",
-                    },
-                    "ref": null,
-                    "rendered": "Goal Points ",
-                    "type": "th",
-                  },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {},
-                    "ref": null,
-                    "rendered": null,
-                    "type": "th",
-                  },
-                ],
-                "type": "tr",
-              },
-              Object {
-                "instance": null,
-                "key": "goal-1",
-                "nodeType": "function",
-                "props": Object {
-                  "goal": Object {
-                    "conversation_id": 1,
-                    "creator_id": 1,
-                    "description": "to rule them all",
-                    "goal_points": 2300,
-                    "goal_time": "2018-01-12 15:00:00",
-                    "id": 1,
-                    "title": "chess tourney",
-                  },
-                  "leaveGroup": undefined,
-                  "userId": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": "goal-2",
-                "nodeType": "function",
-                "props": Object {
-                  "goal": Object {
-                    "conversation_id": 2,
-                    "creator_id": 2,
-                    "description": "to skewer them all",
-                    "goal_points": 23000,
-                    "goal_time": "2018-01-13 16:00:00",
-                    "id": 2,
-                    "title": "darts tourney",
-                  },
-                  "leaveGroup": undefined,
-                  "userId": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": "goal-3",
-                "nodeType": "function",
-                "props": Object {
-                  "goal": Object {
-                    "conversation_id": 3,
-                    "creator_id": 2,
-                    "description": "to pool them all",
-                    "goal_points": 230000,
-                    "goal_time": "2018-01-14 17:00:00",
-                    "id": 3,
-                    "title": "pool tourney",
-                  },
-                  "leaveGroup": undefined,
-                  "userId": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-              Object {
-                "instance": null,
-                "key": "goal-4",
-                "nodeType": "function",
-                "props": Object {
-                  "goal": Object {
-                    "conversation_id": 4,
-                    "creator_id": 3,
-                    "description": "to drink them all",
-                    "goal_points": 2300000,
-                    "goal_time": "2018-01-14 18:00:00",
-                    "id": 4,
-                    "title": "drinking tourney",
-                  },
-                  "leaveGroup": undefined,
-                  "userId": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": [Function],
-              },
-            ],
-            "type": "tbody",
-          },
-          "type": "table",
+          "type": "div",
         },
       ],
       "type": "div",

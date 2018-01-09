@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MainApp snapshot should always match the snapshot 1`] = `
+exports[`GoalCard snapshot should always match the snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -30,9 +30,10 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <td>
-          <a
-            href={
+        <h3>
+          <Link
+            replace={false}
+            to={
               Object {
                 "pathname": "/Goal/1",
                 "state": Object {
@@ -42,14 +43,14 @@ ShallowWrapper {
             }
           >
             chess tourney
-          </a>
-        </td>,
-        <td>
+          </Link>
+        </h3>,
+        <h3>
           2018-01-12 15:00:00
-        </td>,
-        <td>
+        </h3>,
+        <h3>
           2300
-        </td>,
+        </h3>,
       ],
       "className": "goal-row",
     },
@@ -60,8 +61,9 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <a
-            href={
+          "children": <Link
+            replace={false}
+            to={
               Object {
                 "pathname": "/Goal/1",
                 "state": Object {
@@ -71,16 +73,17 @@ ShallowWrapper {
             }
           >
             chess tourney
-          </a>,
+          </Link>,
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
+          "nodeType": "class",
           "props": Object {
             "children": "chess tourney",
-            "href": Object {
+            "replace": false,
+            "to": Object {
               "pathname": "/Goal/1",
               "state": Object {
                 "userId": undefined,
@@ -89,9 +92,9 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": "chess tourney",
-          "type": "a",
+          "type": [Function],
         },
-        "type": "td",
+        "type": "h3",
       },
       Object {
         "instance": null,
@@ -102,7 +105,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": "2018-01-12 15:00:00",
-        "type": "td",
+        "type": "h3",
       },
       Object {
         "instance": null,
@@ -113,10 +116,10 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": 2300,
-        "type": "td",
+        "type": "h3",
       },
     ],
-    "type": "tr",
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -125,9 +128,10 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <td>
-            <a
-              href={
+          <h3>
+            <Link
+              replace={false}
+              to={
                 Object {
                   "pathname": "/Goal/1",
                   "state": Object {
@@ -137,14 +141,14 @@ ShallowWrapper {
               }
             >
               chess tourney
-            </a>
-          </td>,
-          <td>
+            </Link>
+          </h3>,
+          <h3>
             2018-01-12 15:00:00
-          </td>,
-          <td>
+          </h3>,
+          <h3>
             2300
-          </td>,
+          </h3>,
         ],
         "className": "goal-row",
       },
@@ -155,8 +159,9 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <a
-              href={
+            "children": <Link
+              replace={false}
+              to={
                 Object {
                   "pathname": "/Goal/1",
                   "state": Object {
@@ -166,16 +171,17 @@ ShallowWrapper {
               }
             >
               chess tourney
-            </a>,
+            </Link>,
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
+            "nodeType": "class",
             "props": Object {
               "children": "chess tourney",
-              "href": Object {
+              "replace": false,
+              "to": Object {
                 "pathname": "/Goal/1",
                 "state": Object {
                   "userId": undefined,
@@ -184,9 +190,9 @@ ShallowWrapper {
             },
             "ref": null,
             "rendered": "chess tourney",
-            "type": "a",
+            "type": [Function],
           },
-          "type": "td",
+          "type": "h3",
         },
         Object {
           "instance": null,
@@ -197,7 +203,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": "2018-01-12 15:00:00",
-          "type": "td",
+          "type": "h3",
         },
         Object {
           "instance": null,
@@ -208,10 +214,10 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": 2300,
-          "type": "td",
+          "type": "h3",
         },
       ],
-      "type": "tr",
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {

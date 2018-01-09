@@ -78,7 +78,6 @@ class GoalDashboard extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="dashboard-container">
         <div className="dashboard-body">

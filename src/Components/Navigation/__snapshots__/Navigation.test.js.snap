@@ -17,162 +17,18 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <ul
-        className=""
-      >
-        <li
-          className="nav-links"
-        >
-          <Link
-            onClick={[Function]}
-            replace={false}
-            style={
-              Object {
-                "display": "none",
-              }
-            }
-            to="/"
-          >
-            Log Out
-          </Link>
-        </li>
-        <li
-          className="nav-links"
-        >
-          <Link
-            replace={false}
-            to="/UserDashboard"
-          >
-            Dashboard
-          </Link>
-        </li>
-      </ul>,
-      "className": "navigation",
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <li
-            className="nav-links"
-          >
-            <Link
-              onClick={[Function]}
-              replace={false}
-              style={
-                Object {
-                  "display": "none",
-                }
-              }
-              to="/"
-            >
-              Log Out
-            </Link>
-          </li>,
-          <li
-            className="nav-links"
-          >
-            <Link
-              replace={false}
-              to="/UserDashboard"
-            >
-              Dashboard
-            </Link>
-          </li>,
-        ],
-        "className": "",
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <Link
-              onClick={[Function]}
-              replace={false}
-              style={
-                Object {
-                  "display": "none",
-                }
-              }
-              to="/"
-            >
-              Log Out
-            </Link>,
-            "className": "nav-links",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "children": "Log Out",
-              "onClick": [Function],
-              "replace": false,
-              "style": Object {
-                "display": "none",
-              },
-              "to": "/",
-            },
-            "ref": null,
-            "rendered": "Log Out",
-            "type": [Function],
-          },
-          "type": "li",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": <Link
-              replace={false}
-              to="/UserDashboard"
-            >
-              Dashboard
-            </Link>,
-            "className": "nav-links",
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "children": "Dashboard",
-              "replace": false,
-              "to": "/UserDashboard",
-            },
-            "ref": null,
-            "rendered": "Dashboard",
-            "type": [Function],
-          },
-          "type": "li",
-        },
-      ],
-      "type": "ul",
-    },
-    "type": "nav",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <ul
+      "children": Array [
+        <h1>
+          Squad Goals
+        </h1>,
+        <ul
           className=""
         >
           <li
             className="nav-links"
           >
             <Link
+              className="nav-button"
               onClick={[Function]}
               replace={false}
               style={
@@ -187,8 +43,14 @@ ShallowWrapper {
           </li>
           <li
             className="nav-links"
+            style={
+              Object {
+                "display": "none",
+              }
+            }
           >
             <Link
+              className="nav-button"
               replace={false}
               to="/UserDashboard"
             >
@@ -196,10 +58,23 @@ ShallowWrapper {
             </Link>
           </li>
         </ul>,
-        "className": "navigation",
+      ],
+      "className": "navigation",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Squad Goals",
+        },
+        "ref": null,
+        "rendered": "Squad Goals",
+        "type": "h1",
       },
-      "ref": null,
-      "rendered": Object {
+      Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
@@ -209,6 +84,7 @@ ShallowWrapper {
               className="nav-links"
             >
               <Link
+                className="nav-button"
                 onClick={[Function]}
                 replace={false}
                 style={
@@ -223,8 +99,14 @@ ShallowWrapper {
             </li>,
             <li
               className="nav-links"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
             >
               <Link
+                className="nav-button"
                 replace={false}
                 to="/UserDashboard"
               >
@@ -242,6 +124,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": <Link
+                className="nav-button"
                 onClick={[Function]}
                 replace={false}
                 style={
@@ -262,6 +145,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": "Log Out",
+                "className": "nav-button",
                 "onClick": [Function],
                 "replace": false,
                 "style": Object {
@@ -281,12 +165,16 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": <Link
+                className="nav-button"
                 replace={false}
                 to="/UserDashboard"
               >
                 Dashboard
               </Link>,
               "className": "nav-links",
+              "style": Object {
+                "display": "none",
+              },
             },
             "ref": null,
             "rendered": Object {
@@ -295,6 +183,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": "Dashboard",
+                "className": "nav-button",
                 "replace": false,
                 "to": "/UserDashboard",
               },
@@ -307,6 +196,195 @@ ShallowWrapper {
         ],
         "type": "ul",
       },
+    ],
+    "type": "nav",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1>
+            Squad Goals
+          </h1>,
+          <ul
+            className=""
+          >
+            <li
+              className="nav-links"
+            >
+              <Link
+                className="nav-button"
+                onClick={[Function]}
+                replace={false}
+                style={
+                  Object {
+                    "display": "none",
+                  }
+                }
+                to="/"
+              >
+                Log Out
+              </Link>
+            </li>
+            <li
+              className="nav-links"
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+            >
+              <Link
+                className="nav-button"
+                replace={false}
+                to="/UserDashboard"
+              >
+                Dashboard
+              </Link>
+            </li>
+          </ul>,
+        ],
+        "className": "navigation",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Squad Goals",
+          },
+          "ref": null,
+          "rendered": "Squad Goals",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <li
+                className="nav-links"
+              >
+                <Link
+                  className="nav-button"
+                  onClick={[Function]}
+                  replace={false}
+                  style={
+                    Object {
+                      "display": "none",
+                    }
+                  }
+                  to="/"
+                >
+                  Log Out
+                </Link>
+              </li>,
+              <li
+                className="nav-links"
+                style={
+                  Object {
+                    "display": "none",
+                  }
+                }
+              >
+                <Link
+                  className="nav-button"
+                  replace={false}
+                  to="/UserDashboard"
+                >
+                  Dashboard
+                </Link>
+              </li>,
+            ],
+            "className": "",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Link
+                  className="nav-button"
+                  onClick={[Function]}
+                  replace={false}
+                  style={
+                    Object {
+                      "display": "none",
+                    }
+                  }
+                  to="/"
+                >
+                  Log Out
+                </Link>,
+                "className": "nav-links",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Log Out",
+                  "className": "nav-button",
+                  "onClick": [Function],
+                  "replace": false,
+                  "style": Object {
+                    "display": "none",
+                  },
+                  "to": "/",
+                },
+                "ref": null,
+                "rendered": "Log Out",
+                "type": [Function],
+              },
+              "type": "li",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <Link
+                  className="nav-button"
+                  replace={false}
+                  to="/UserDashboard"
+                >
+                  Dashboard
+                </Link>,
+                "className": "nav-links",
+                "style": Object {
+                  "display": "none",
+                },
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": "Dashboard",
+                  "className": "nav-button",
+                  "replace": false,
+                  "to": "/UserDashboard",
+                },
+                "ref": null,
+                "rendered": "Dashboard",
+                "type": [Function],
+              },
+              "type": "li",
+            },
+          ],
+          "type": "ul",
+        },
+      ],
       "type": "nav",
     },
   ],

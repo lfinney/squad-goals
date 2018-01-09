@@ -47,33 +47,42 @@ ShallowWrapper {
         className="dashboard-body"
       >
         <h1
-          className="dashboard-body-title"
-        >
-          Goal Name
-        </h1>
+          className="dashboard-body-title goal-body-title"
+        />
         <div
           className="dashboard-body-info"
         >
-          <div>
-            <h2 />
+          <div
+            className="squad-dashboard-body-titles"
+          >
+            <p />
           </div>
-          <div>
-            <h2 />
+          <div
+            className="goal-dash-content"
+          >
+            <div>
+              <h2>
+                Starts at 
+              </h2>
+            </div>
+            <div>
+              <h2 />
+            </div>
           </div>
-          <div>
-            <h2 />
+          <div
+            className="squad-dashboard-button"
+          >
+            <div
+              className="single-button-container"
+            >
+              <input
+                className="nav-button"
+                onClick={[Function]}
+                type="submit"
+                value="Join"
+              />
+            </div>
           </div>
-          <div>
-            <h2 />
-          </div>
-          <div>
-            <input
-              onClick={[Function]}
-              type="submit"
-              value="Join"
-            />
-          </div>
-          <div />
         </div>
       </div>,
       "className": "dashboard-container",
@@ -86,33 +95,42 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <h1
-            className="dashboard-body-title"
-          >
-            Goal Name
-          </h1>,
+            className="dashboard-body-title goal-body-title"
+          />,
           <div
             className="dashboard-body-info"
           >
-            <div>
-              <h2 />
+            <div
+              className="squad-dashboard-body-titles"
+            >
+              <p />
             </div>
-            <div>
-              <h2 />
+            <div
+              className="goal-dash-content"
+            >
+              <div>
+                <h2>
+                  Starts at 
+                </h2>
+              </div>
+              <div>
+                <h2 />
+              </div>
             </div>
-            <div>
-              <h2 />
+            <div
+              className="squad-dashboard-button"
+            >
+              <div
+                className="single-button-container"
+              >
+                <input
+                  className="nav-button"
+                  onClick={[Function]}
+                  type="submit"
+                  value="Join"
+                />
+              </div>
             </div>
-            <div>
-              <h2 />
-            </div>
-            <div>
-              <input
-                onClick={[Function]}
-                type="submit"
-                value="Join"
-              />
-            </div>
-            <div />
           </div>,
           false,
         ],
@@ -125,11 +143,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "Goal Name",
-            "className": "dashboard-body-title",
+            "children": undefined,
+            "className": "dashboard-body-title goal-body-title",
           },
           "ref": null,
-          "rendered": "Goal Name",
+          "rendered": null,
           "type": "h1",
         },
         Object {
@@ -138,26 +156,37 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": Array [
-              <div>
-                <h2 />
+              <div
+                className="squad-dashboard-body-titles"
+              >
+                <p />
               </div>,
-              <div>
-                <h2 />
+              <div
+                className="goal-dash-content"
+              >
+                <div>
+                  <h2>
+                    Starts at 
+                  </h2>
+                </div>
+                <div>
+                  <h2 />
+                </div>
               </div>,
-              <div>
-                <h2 />
+              <div
+                className="squad-dashboard-button"
+              >
+                <div
+                  className="single-button-container"
+                >
+                  <input
+                    className="nav-button"
+                    onClick={[Function]}
+                    type="submit"
+                    value="Join"
+                  />
+                </div>
               </div>,
-              <div>
-                <h2 />
-              </div>,
-              <div>
-                <input
-                  onClick={[Function]}
-                  type="submit"
-                  value="Join"
-                />
-              </div>,
-              <div />,
             ],
             "className": "dashboard-body-info",
           },
@@ -168,7 +197,8 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": <h2 />,
+                "children": <p />,
+                "className": "squad-dashboard-body-titles",
               },
               "ref": null,
               "rendered": Object {
@@ -180,7 +210,7 @@ ShallowWrapper {
                 },
                 "ref": null,
                 "rendered": null,
-                "type": "h2",
+                "type": "p",
               },
               "type": "div",
             },
@@ -189,7 +219,89 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": <h2 />,
+                "children": Array [
+                  <div>
+                    <h2>
+                      Starts at 
+                    </h2>
+                  </div>,
+                  <div>
+                    <h2 />
+                  </div>,
+                ],
+                "className": "goal-dash-content",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <h2>
+                      Starts at 
+                    </h2>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": Array [
+                        "Starts at ",
+                        undefined,
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      "Starts at ",
+                      undefined,
+                    ],
+                    "type": "h2",
+                  },
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <h2 />,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": undefined,
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "h2",
+                  },
+                  "type": "div",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <div
+                  className="single-button-container"
+                >
+                  <input
+                    className="nav-button"
+                    onClick={[Function]}
+                    type="submit"
+                    value="Join"
+                  />
+                </div>,
+                "className": "squad-dashboard-button",
               },
               "ref": null,
               "rendered": Object {
@@ -197,92 +309,31 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": undefined,
+                  "children": <input
+                    className="nav-button"
+                    onClick={[Function]}
+                    type="submit"
+                    value="Join"
+                  />,
+                  "className": "single-button-container",
                 },
                 "ref": null,
-                "rendered": null,
-                "type": "h2",
-              },
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": <h2 />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "nav-button",
+                    "onClick": [Function],
+                    "type": "submit",
+                    "value": "Join",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": "input",
                 },
-                "ref": null,
-                "rendered": null,
-                "type": "h2",
+                "type": "div",
               },
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": <h2 />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": undefined,
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "h2",
-              },
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": <input
-                  onClick={[Function]}
-                  type="submit"
-                  value="Join"
-                />,
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "onClick": [Function],
-                  "type": "submit",
-                  "value": "Join",
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "input",
-              },
-              "type": "div",
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": Array [],
-              },
-              "ref": null,
-              "rendered": Array [],
               "type": "div",
             },
           ],
@@ -304,33 +355,42 @@ ShallowWrapper {
           className="dashboard-body"
         >
           <h1
-            className="dashboard-body-title"
-          >
-            Goal Name
-          </h1>
+            className="dashboard-body-title goal-body-title"
+          />
           <div
             className="dashboard-body-info"
           >
-            <div>
-              <h2 />
+            <div
+              className="squad-dashboard-body-titles"
+            >
+              <p />
             </div>
-            <div>
-              <h2 />
+            <div
+              className="goal-dash-content"
+            >
+              <div>
+                <h2>
+                  Starts at 
+                </h2>
+              </div>
+              <div>
+                <h2 />
+              </div>
             </div>
-            <div>
-              <h2 />
+            <div
+              className="squad-dashboard-button"
+            >
+              <div
+                className="single-button-container"
+              >
+                <input
+                  className="nav-button"
+                  onClick={[Function]}
+                  type="submit"
+                  value="Join"
+                />
+              </div>
             </div>
-            <div>
-              <h2 />
-            </div>
-            <div>
-              <input
-                onClick={[Function]}
-                type="submit"
-                value="Join"
-              />
-            </div>
-            <div />
           </div>
         </div>,
         "className": "dashboard-container",
@@ -343,33 +403,42 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <h1
-              className="dashboard-body-title"
-            >
-              Goal Name
-            </h1>,
+              className="dashboard-body-title goal-body-title"
+            />,
             <div
               className="dashboard-body-info"
             >
-              <div>
-                <h2 />
+              <div
+                className="squad-dashboard-body-titles"
+              >
+                <p />
               </div>
-              <div>
-                <h2 />
+              <div
+                className="goal-dash-content"
+              >
+                <div>
+                  <h2>
+                    Starts at 
+                  </h2>
+                </div>
+                <div>
+                  <h2 />
+                </div>
               </div>
-              <div>
-                <h2 />
+              <div
+                className="squad-dashboard-button"
+              >
+                <div
+                  className="single-button-container"
+                >
+                  <input
+                    className="nav-button"
+                    onClick={[Function]}
+                    type="submit"
+                    value="Join"
+                  />
+                </div>
               </div>
-              <div>
-                <h2 />
-              </div>
-              <div>
-                <input
-                  onClick={[Function]}
-                  type="submit"
-                  value="Join"
-                />
-              </div>
-              <div />
             </div>,
             false,
           ],
@@ -382,11 +451,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "Goal Name",
-              "className": "dashboard-body-title",
+              "children": undefined,
+              "className": "dashboard-body-title goal-body-title",
             },
             "ref": null,
-            "rendered": "Goal Name",
+            "rendered": null,
             "type": "h1",
           },
           Object {
@@ -395,26 +464,37 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": Array [
-                <div>
-                  <h2 />
+                <div
+                  className="squad-dashboard-body-titles"
+                >
+                  <p />
                 </div>,
-                <div>
-                  <h2 />
+                <div
+                  className="goal-dash-content"
+                >
+                  <div>
+                    <h2>
+                      Starts at 
+                    </h2>
+                  </div>
+                  <div>
+                    <h2 />
+                  </div>
                 </div>,
-                <div>
-                  <h2 />
+                <div
+                  className="squad-dashboard-button"
+                >
+                  <div
+                    className="single-button-container"
+                  >
+                    <input
+                      className="nav-button"
+                      onClick={[Function]}
+                      type="submit"
+                      value="Join"
+                    />
+                  </div>
                 </div>,
-                <div>
-                  <h2 />
-                </div>,
-                <div>
-                  <input
-                    onClick={[Function]}
-                    type="submit"
-                    value="Join"
-                  />
-                </div>,
-                <div />,
               ],
               "className": "dashboard-body-info",
             },
@@ -425,7 +505,8 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": <h2 />,
+                  "children": <p />,
+                  "className": "squad-dashboard-body-titles",
                 },
                 "ref": null,
                 "rendered": Object {
@@ -437,7 +518,7 @@ ShallowWrapper {
                   },
                   "ref": null,
                   "rendered": null,
-                  "type": "h2",
+                  "type": "p",
                 },
                 "type": "div",
               },
@@ -446,7 +527,89 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": <h2 />,
+                  "children": Array [
+                    <div>
+                      <h2>
+                        Starts at 
+                      </h2>
+                    </div>,
+                    <div>
+                      <h2 />
+                    </div>,
+                  ],
+                  "className": "goal-dash-content",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": <h2>
+                        Starts at 
+                      </h2>,
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": Array [
+                          "Starts at ",
+                          undefined,
+                        ],
+                      },
+                      "ref": null,
+                      "rendered": Array [
+                        "Starts at ",
+                        undefined,
+                      ],
+                      "type": "h2",
+                    },
+                    "type": "div",
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": <h2 />,
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {
+                        "children": undefined,
+                      },
+                      "ref": null,
+                      "rendered": null,
+                      "type": "h2",
+                    },
+                    "type": "div",
+                  },
+                ],
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <div
+                    className="single-button-container"
+                  >
+                    <input
+                      className="nav-button"
+                      onClick={[Function]}
+                      type="submit"
+                      value="Join"
+                    />
+                  </div>,
+                  "className": "squad-dashboard-button",
                 },
                 "ref": null,
                 "rendered": Object {
@@ -454,92 +617,31 @@ ShallowWrapper {
                   "key": undefined,
                   "nodeType": "host",
                   "props": Object {
-                    "children": undefined,
+                    "children": <input
+                      className="nav-button"
+                      onClick={[Function]}
+                      type="submit"
+                      value="Join"
+                    />,
+                    "className": "single-button-container",
                   },
                   "ref": null,
-                  "rendered": null,
-                  "type": "h2",
-                },
-                "type": "div",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": <h2 />,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "className": "nav-button",
+                      "onClick": [Function],
+                      "type": "submit",
+                      "value": "Join",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": "input",
                   },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "h2",
+                  "type": "div",
                 },
-                "type": "div",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": <h2 />,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": undefined,
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "h2",
-                },
-                "type": "div",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": <input
-                    onClick={[Function]}
-                    type="submit"
-                    value="Join"
-                  />,
-                },
-                "ref": null,
-                "rendered": Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "onClick": [Function],
-                    "type": "submit",
-                    "value": "Join",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "input",
-                },
-                "type": "div",
-              },
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": Array [],
-                },
-                "ref": null,
-                "rendered": Array [],
                 "type": "div",
               },
             ],

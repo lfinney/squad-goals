@@ -4,7 +4,6 @@ import Comment from '../Comment/Comment';
 
 const Conversation = ({ comments }) => {
   const commentCards = comments.map((comment) => {
-    console.log(comment);
     return (
       <Comment commentData={comment} key={`comment-${comment.id}`} />
     );

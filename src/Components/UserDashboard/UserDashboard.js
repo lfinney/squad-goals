@@ -104,7 +104,6 @@ class UserDashboard extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="dashboard-container">
         <div className="content-container">

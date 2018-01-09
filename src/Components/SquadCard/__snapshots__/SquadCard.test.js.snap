@@ -26,7 +26,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <td>
+        <h3>
           <Link
             replace={false}
             to={
@@ -40,13 +40,13 @@ ShallowWrapper {
           >
             Gizmo
           </Link>
-        </td>,
-        <td>
+        </h3>,
+        <h3>
           1
-        </td>,
-        <td>
+        </h3>,
+        <h3>
           1
-        </td>,
+        </h3>,
       ],
       "className": "squad-row",
     },
@@ -90,7 +90,7 @@ ShallowWrapper {
           "rendered": "Gizmo",
           "type": [Function],
         },
-        "type": "td",
+        "type": "h3",
       },
       Object {
         "instance": null,
@@ -101,7 +101,7 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": 1,
-        "type": "td",
+        "type": "h3",
       },
       Object {
         "instance": null,
@@ -112,10 +112,10 @@ ShallowWrapper {
         },
         "ref": null,
         "rendered": 1,
-        "type": "td",
+        "type": "h3",
       },
     ],
-    "type": "tr",
+    "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -124,7 +124,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <td>
+          <h3>
             <Link
               replace={false}
               to={
@@ -138,13 +138,13 @@ ShallowWrapper {
             >
               Gizmo
             </Link>
-          </td>,
-          <td>
+          </h3>,
+          <h3>
             1
-          </td>,
-          <td>
+          </h3>,
+          <h3>
             1
-          </td>,
+          </h3>,
         ],
         "className": "squad-row",
       },
@@ -188,7 +188,7 @@ ShallowWrapper {
             "rendered": "Gizmo",
             "type": [Function],
           },
-          "type": "td",
+          "type": "h3",
         },
         Object {
           "instance": null,
@@ -199,7 +199,7 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": 1,
-          "type": "td",
+          "type": "h3",
         },
         Object {
           "instance": null,
@@ -210,10 +210,10 @@ ShallowWrapper {
           },
           "ref": null,
           "rendered": 1,
-          "type": "td",
+          "type": "h3",
         },
       ],
-      "type": "tr",
+      "type": "div",
     },
   ],
   Symbol(enzyme.__options__): Object {
