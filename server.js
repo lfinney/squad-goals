@@ -388,7 +388,7 @@ app.get('/api/v1/users/:userId/goals/:goalId', (request, response) => {
     .select('*')
     .then(user =>
       response.status(200).json(user))
-    .catch(error => response.status(422).json(error));
+    .catch(error => response.status(404).json(error));
 });
 
 // POST user to a goal
