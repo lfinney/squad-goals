@@ -107,7 +107,7 @@ class UserDashboard extends Component {
     return (
       <div className="dashboard-container">
         <h1>Squad Goals</h1>
-        <div className="user-info">
+        <div className="user-info dashboard-header">
           <h2 className="user-name">{this.state.activeUser}</h2>
           <h2 className="user-points">{this.state.points}</h2>
           <input

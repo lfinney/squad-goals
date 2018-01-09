@@ -111,7 +111,7 @@
   opacity: .95; }
 
 .dashboard-header input {
-  color: #fff;
+  color: #d2d3d3;
   background-color: #0e5bd7;
   border: none;
   font-weight: lighter;
@@ -119,6 +119,18 @@
 
 .dashboard-header input:focus {
   outline: none; }
+
+.dashboard-header a {
+  color: #d2d3d3;
+  font-size: 1.5em;
+  font-weight: lighter;
+  text-decoration: none; }
+
+.user-name,
+.user-points {
+  color: #d2d3d3;
+  font-size: 1.5em;
+  font-weight: lighter; }
 
 .squads-body {
   background-color: #0e5bd7;

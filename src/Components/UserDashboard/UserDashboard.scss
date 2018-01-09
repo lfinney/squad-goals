@@ -1,12 +1,14 @@
+@import '../../variables.scss';
+
 .dashboard-container h1 {
   display: inline-block;
-  color: #0e5bd7;
+  color: $main;
   margin: 10px 0 20px 30px;
 }
 
 .dashboard-header {
   align-items: center;
-  background-color: #0e5bd7;
+  background-color: $main;
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   display: flex;
@@ -19,8 +21,8 @@
 }
 
 .dashboard-header input {
-  color: #fff;
-  background-color: #0e5bd7;
+  color: $white;
+  background-color: $main;
   border: none;
   font-weight: lighter;
   font-size: 1.5em;
@@ -29,3 +31,23 @@
 .dashboard-header input:focus {
   outline: none;
 }
+
+.dashboard-header a {
+  color: $white;
+  font-size: 1.5em;
+  font-weight: lighter;
+  text-decoration: none;
+}
+
+.user-name,
+.user-points {
+  color: $white;
+  font-size: 1.5em;
+  font-weight: lighter;
+}
+
+// .user-info input {
+//   background-color: $main-light;
+//   border-radius: 5px;
+//   opacity: .9;
+// }
