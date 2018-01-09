@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 
 const GoalCard = ({ goal, leaveGroup, userId }) => {
-  console.log(goal);
+  console.log(goal.id);
   return (
     <div className="goal-row">
       <h3>
-        <a href={{
+        <Link to={{
           pathname: `/Goal/${goal.id}`,
           state: { userId },
         }}
         >
           {goal.title}
-        </a>
+        </Link>
       </h3>
       <h3>{goal.goal_time}</h3>
       <h3>{goal.goal_points}</h3>
