@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+
+.smack-talk h1 {
+  color: $black;
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 2em;
+  margin: 0;
+}
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $white;
+  border: $black 10px solid;
+}
