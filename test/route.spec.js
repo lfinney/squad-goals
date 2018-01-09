@@ -501,7 +501,7 @@ describe('API Routes', () => {
           response.body.should.be.a('array');
           response.body.length.should.equal(1);
           response.body.includes({ 'user_id': 1 });
-          response.body.includes({ 'goal_id': '1' });
+          response.body.includes({ 'goal_id': 1 });
           done();
         });
     });
@@ -513,6 +513,27 @@ describe('API Routes', () => {
           response.body.should.be.a('array');
           response.body.length.should.equal(0);
           done();
+        });
+    });
+  });
+
+  describe('POST /api/v1/users/:userId/goals/:goalId', () => {
+    it('should add a new user-goal pair to the joins table', (done) => {
+      chai.request(server)
+        .post('/api/v1/users/1/goals/4')
+        .end((error, response) => {
+          response.should.have.status(204);
+          chai.request(server)
+            .get('/api/v1/users/1/goals/4')
+            .end((getError, getResponse) => {
+              getResponse.should.have.status(200);
+              getResponse.should.be.json;
+              getResponse.body.should.be.a('array');
+              getResponse.body.length.should.equal(1);
+              getResponse.body.includes({ 'user_id': 1 });
+              getResponse.body.includes({ 'goal_id': 4 });
+              done();
+            });
         });
     });
   });
