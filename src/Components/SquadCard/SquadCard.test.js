@@ -8,14 +8,14 @@ import squad from '../../../data/test/squad_data_test';
 describe('SquadCard snapshot', () => {
   it('should always match the snapshot', () => {
     const wrapper = shallow(<SquadCard
-      squad={squad}
+      squad={squad[0]}
     />);
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<BrowserRouter><SquadCard squad={squad} /></BrowserRouter>, div);
+    const tbody = document.createElement('tbody');
+    ReactDOM.render(<BrowserRouter><SquadCard squad={squad[0]} /></BrowserRouter>, tbody);
   });
 });

@@ -6,28 +6,11 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Comment
     commentData={
-      Array [
-        Object {
-          "body": "this is the comments body",
-          "conversation_id": 1,
-          "id": 1,
-        },
-        Object {
-          "body": "this is the comments body 2",
-          "conversation_id": 1,
-          "id": 2,
-        },
-        Object {
-          "body": "this is the comments body 3",
-          "conversation_id": 3,
-          "id": 3,
-        },
-        Object {
-          "body": "this is the comments body 4",
-          "conversation_id": 4,
-          "id": 4,
-        },
-      ]
+      Object {
+        "body": "this is the comments body",
+        "conversation_id": 1,
+        "id": 1,
+      }
     }
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -42,7 +25,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <p />,
+      "children": <p>
+        this is the comments body
+      </p>,
       "className": "smack-talk",
     },
     "ref": null,
@@ -51,10 +36,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": undefined,
+        "children": "this is the comments body",
       },
       "ref": null,
-      "rendered": null,
+      "rendered": "this is the comments body",
       "type": "p",
     },
     "type": "div",
@@ -65,7 +50,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": <p />,
+        "children": <p>
+          this is the comments body
+        </p>,
         "className": "smack-talk",
       },
       "ref": null,
@@ -74,10 +61,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": undefined,
+          "children": "this is the comments body",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": "this is the comments body",
         "type": "p",
       },
       "type": "div",

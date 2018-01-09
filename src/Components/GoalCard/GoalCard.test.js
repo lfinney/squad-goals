@@ -7,7 +7,7 @@ import goal from '../../../data/test/goals_data_test';
 describe('MainApp snapshot', () => {
   it('should always match the snapshot', () => {
     const wrapper = shallow(<GoalCard
-      goal={goal}
+      goal={goal[0]}
     />);
 
     expect(wrapper).toMatchSnapshot();
@@ -15,9 +15,9 @@ describe('MainApp snapshot', () => {
 
 
   it('renders without crashing', () => {
-    const div = document.createElement('div');
+    const tbody = document.createElement('tbody');
     ReactDOM.render(<GoalCard
-      goal={goal}
-    />, div);
+      goal={goal[0]}
+    />, tbody);
   });
 });

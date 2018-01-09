@@ -7,7 +7,7 @@ import commentData from '../../../data/test/comments_data_test';
 describe('MainApp snapshot', () => {
   it('should always match the snapshot', () => {
     const wrapper = shallow(<Comment
-      commentData={commentData}
+      commentData={commentData[0]}
     />);
 
     expect(wrapper).toMatchSnapshot();
@@ -17,7 +17,7 @@ describe('MainApp snapshot', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Comment
-      commentData={commentData}
+      commentData={commentData[0]}
     />, div);
   });
 });

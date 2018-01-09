@@ -6,44 +6,15 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <GoalCard
     goal={
-      Array [
-        Object {
-          "conversation_id": 1,
-          "creator_id": 1,
-          "description": "to rule them all",
-          "goal_points": 2300,
-          "goal_time": "2018-01-12 15:00:00",
-          "id": 1,
-          "title": "chess tourney",
-        },
-        Object {
-          "conversation_id": 2,
-          "creator_id": 2,
-          "description": "to skewer them all",
-          "goal_points": 23000,
-          "goal_time": "2018-01-13 16:00:00",
-          "id": 2,
-          "title": "darts tourney",
-        },
-        Object {
-          "conversation_id": 3,
-          "creator_id": 2,
-          "description": "to pool them all",
-          "goal_points": 230000,
-          "goal_time": "2018-01-14 17:00:00",
-          "id": 3,
-          "title": "pool tourney",
-        },
-        Object {
-          "conversation_id": 4,
-          "creator_id": 3,
-          "description": "to drink them all",
-          "goal_points": 2300000,
-          "goal_time": "2018-01-14 18:00:00",
-          "id": 4,
-          "title": "drinking tourney",
-        },
-      ]
+      Object {
+        "conversation_id": 1,
+        "creator_id": 1,
+        "description": "to rule them all",
+        "goal_points": 2300,
+        "goal_time": "2018-01-12 15:00:00",
+        "id": 1,
+        "title": "chess tourney",
+      }
     }
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -63,16 +34,22 @@ ShallowWrapper {
           <a
             href={
               Object {
-                "pathname": "/Goal/undefined",
+                "pathname": "/Goal/1",
                 "state": Object {
                   "userId": undefined,
                 },
               }
             }
-          />
+          >
+            chess tourney
+          </a>
         </td>,
-        <td />,
-        <td />,
+        <td>
+          2018-01-12 15:00:00
+        </td>,
+        <td>
+          2300
+        </td>,
       ],
       "className": "goal-row",
     },
@@ -86,13 +63,15 @@ ShallowWrapper {
           "children": <a
             href={
               Object {
-                "pathname": "/Goal/undefined",
+                "pathname": "/Goal/1",
                 "state": Object {
                   "userId": undefined,
                 },
               }
             }
-          />,
+          >
+            chess tourney
+          </a>,
         },
         "ref": null,
         "rendered": Object {
@@ -100,16 +79,16 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": undefined,
+            "children": "chess tourney",
             "href": Object {
-              "pathname": "/Goal/undefined",
+              "pathname": "/Goal/1",
               "state": Object {
                 "userId": undefined,
               },
             },
           },
           "ref": null,
-          "rendered": null,
+          "rendered": "chess tourney",
           "type": "a",
         },
         "type": "td",
@@ -119,10 +98,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": undefined,
+          "children": "2018-01-12 15:00:00",
         },
         "ref": null,
-        "rendered": null,
+        "rendered": "2018-01-12 15:00:00",
         "type": "td",
       },
       Object {
@@ -130,10 +109,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": undefined,
+          "children": 2300,
         },
         "ref": null,
-        "rendered": null,
+        "rendered": 2300,
         "type": "td",
       },
     ],
@@ -150,16 +129,22 @@ ShallowWrapper {
             <a
               href={
                 Object {
-                  "pathname": "/Goal/undefined",
+                  "pathname": "/Goal/1",
                   "state": Object {
                     "userId": undefined,
                   },
                 }
               }
-            />
+            >
+              chess tourney
+            </a>
           </td>,
-          <td />,
-          <td />,
+          <td>
+            2018-01-12 15:00:00
+          </td>,
+          <td>
+            2300
+          </td>,
         ],
         "className": "goal-row",
       },
@@ -173,13 +158,15 @@ ShallowWrapper {
             "children": <a
               href={
                 Object {
-                  "pathname": "/Goal/undefined",
+                  "pathname": "/Goal/1",
                   "state": Object {
                     "userId": undefined,
                   },
                 }
               }
-            />,
+            >
+              chess tourney
+            </a>,
           },
           "ref": null,
           "rendered": Object {
@@ -187,16 +174,16 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": undefined,
+              "children": "chess tourney",
               "href": Object {
-                "pathname": "/Goal/undefined",
+                "pathname": "/Goal/1",
                 "state": Object {
                   "userId": undefined,
                 },
               },
             },
             "ref": null,
-            "rendered": null,
+            "rendered": "chess tourney",
             "type": "a",
           },
           "type": "td",
@@ -206,10 +193,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": undefined,
+            "children": "2018-01-12 15:00:00",
           },
           "ref": null,
-          "rendered": null,
+          "rendered": "2018-01-12 15:00:00",
           "type": "td",
         },
         Object {
@@ -217,10 +204,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": undefined,
+            "children": 2300,
           },
           "ref": null,
-          "rendered": null,
+          "rendered": 2300,
           "type": "td",
         },
       ],
