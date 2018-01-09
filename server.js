@@ -291,6 +291,7 @@ app.get('/api/v1/goals/:goalId', (request, response) => {
         title,
         description,
         goal_time,
+        goal_points,
         creator_id,
         conversation_id,
       } = goal[0];
@@ -329,6 +330,7 @@ app.get('/api/v1/goals/:goalId', (request, response) => {
         title,
         description,
         goal_time,
+        goal_points,
         creator_id,
         conversation_id,
         users,

@@ -15,7 +15,7 @@
 
 .smack-talk {
   width: 100%;
-  height: 350px; }
+  height: 300px; }
 
 .smack-talk h1 {
   font-size: 1.3em;
@@ -53,7 +53,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
   font-size: .8em;
   height: auto;
   width: 80%;
@@ -81,7 +80,8 @@ h2 {
   border: none;
   background-color: #001197;
   color: #d2d3d3;
-  box-shadow: 2px 2px 3px 0px #282828; }
+  box-shadow: 2px 2px 3px 0px #282828;
+  height: auto; }
 
 .single-button-container {
   height: auto; }
@@ -371,6 +371,9 @@ h1.goal-body-title {
   font-weight: lighter;
   width: 100%; }
 
+.goal-dash-content {
+  height: auto; }
+
 .creator-info {
   height: 40px; }
 
@@ -389,7 +392,7 @@ h1.goal-body-title {
   justify-content: center;
   background-color: #d2d3d3;
   border: #282828 10px solid;
-  height: auto;
+  height: 250px;
   overflow: scroll; }
 
 .comment {

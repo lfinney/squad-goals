@@ -12,5 +12,8 @@ h1.goal-body-title {
   font-weight: lighter;
   width: 100%; }
 
+.goal-dash-content {
+  height: auto; }
+
 .creator-info {
   height: 40px; }
