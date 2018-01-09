@@ -104,22 +104,25 @@ class UserDashboard extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="dashboard-container">
         <h1>Squad Goals</h1>
         <div className="user-info dashboard-header">
           <h2 className="user-name">{this.state.activeUser}</h2>
-          <h2 className="user-points">{this.state.points}</h2>
+          <h2 className="user-points">{this.state.points} Points</h2>
           <input
             onClick={() => {
             this.deleteAccount(this.state.activeUserId);
           }}
+            className="nav-button"
             type="button"
             value="Delete Account"
           />
         </div>
         <div className="dashboard-header">
           <input
+            className="nav-button"
             onClick={() => {
             this.showContent('user-squads');
           }}
@@ -127,6 +130,7 @@ class UserDashboard extends Component {
             value="My Squads"
           />
           <input
+            className="nav-button"
             onClick={() => {
             this.showContent('user-goals');
           }}
@@ -134,6 +138,7 @@ class UserDashboard extends Component {
             value="My Goals"
           />
           <input
+            className="nav-button"
             onClick={() => {
             this.showContent('all-squads');
           }}
@@ -141,13 +146,16 @@ class UserDashboard extends Component {
             value="All Squads"
           />
           <input
+            className="nav-button"
             onClick={() => {
             this.showContent('all-goals');
           }}
             type="button"
             value="All Goals"
           />
-          <Link to={{
+          <Link
+            className="nav-button"
+            to={{
             pathname: '/CreateSquads',
             state: { userId: this.state.activeUserId },
           }}

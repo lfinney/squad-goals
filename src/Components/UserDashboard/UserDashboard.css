@@ -16,13 +16,6 @@
   margin: 10px auto 10px auto;
   opacity: .95; }
 
-.dashboard-header input {
-  color: #d2d3d3;
-  background-color: #0e5bd7;
-  border: none;
-  font-weight: lighter;
-  font-size: 1.5em; }
-
 .dashboard-header input:focus {
   outline: none; }
 

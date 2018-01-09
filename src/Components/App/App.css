@@ -55,3 +55,11 @@
   justify-content: space-between;
   font-size: .8em;
   margin: 10px; }
+
+.nav-button {
+  padding: 10px;
+  text-decoration: none;
+  border: none;
+  background-color: #001197;
+  color: #d2d3d3;
+  box-shadow: 2px 2px 3px 0px #282828; }
