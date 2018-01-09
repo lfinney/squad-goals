@@ -1,5 +1,6 @@
 * {
-  margin: 0; }
+  margin: 0;
+  box-sizing: border-box; }
 
 .dashboard-container {
   background-image: url(./Components/Assets/up-arrows.jpg);
@@ -11,10 +12,7 @@
   width: 65%; }
 
 .smack-talk {
-  background-color: #22affe;
-  margin: auto;
-  height: 40%;
-  width: 80%; }
+  width: 100%; }
 
 .smack-talk h1 {
   font-size: 1.3em;
@@ -68,6 +66,12 @@
   background-color: #001197;
   color: #d2d3d3;
   box-shadow: 2px 2px 3px 0px #282828; }
+
+.conversation-container {
+  background-color: #22affe;
+  margin: auto;
+  height: 40%;
+  width: 80%; }
 
 .navigation {
   background-color: #0e5bd7;
@@ -323,6 +327,47 @@
   flex-direction: row;
   justify-content: space-around;
   width: 100%; }
+
+.smack-talk h1 {
+  color: #282828;
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 2em;
+  margin: 0; }
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #d2d3d3;
+  border: #282828 10px solid; }
+
+.comment {
+  margin: 10px auto 10px 20px; }
+
+.comment p {
+  color: #282828; }
+
+.submit-comment {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  margin-top: 10px; }
+
+.submit-comment-form {
+  width: 100%; }
+
+.submit-comment input {
+  height: 40px; }
+
+.submit-comment-input {
+  width: 75%;
+  min-width: 250px; }
+
+.submit-comment-button {
+  width: 20%;
+  min-width: 75px; }
 
 body {
   margin: 0;

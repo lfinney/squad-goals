@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Comment = ({ commentData }) => {
   return (
-    <div className="smack-talk">
+    <div className="comment">
       <p>{commentData.body}</p>
     </div>
   );

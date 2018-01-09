@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class SubmitComment extends Component {
-  // Need to get the conversation_id via props and need to rework
-  // the server endpoint to post a comment to just take a conversation_id
-
   postNewComment() {
     const commentBody = document.querySelector('.squad-name').value;
     const postBody = {
@@ -32,6 +29,7 @@ class SubmitComment extends Component {
             placeholder="What do you want to say?"
           />
           <input
+            className="submit-comment-button nav-button"
             onClick={() => {
               this.postNewComment();
             }}

@@ -1,1 +1,9 @@
+@import '../../variables.scss';
 
+.comment {
+  margin: 10px auto 10px 20px;
+}
+
+.comment p {
+  color: $black;
+}
