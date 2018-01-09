@@ -63,7 +63,7 @@ app.get('/api/v1/dashboard/:uid', (request, response) => {
   return database('users').where('id', uid).select()
     .then(async (user) => {
       if (!user.length) {
-        response.status(404).json({ error: `Could not find user with id: ${uid}` });
+        return response.status(404).json({ error: `Could not find user with id: ${uid}` });
       }
       const {
         id,
@@ -118,27 +118,6 @@ app.get('/api/v1/dashboard/:uid', (request, response) => {
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
-app.patch('/api/v1/users/:id', (request, response) => {
-  const { id } = request.params;
-  const updateUsername = request.body;
-
-  if (!updateUsername.user_name) {
-    return response.status(422).json({
-      error: 'You must send only an object literal with the key user_name',
-    });
-  }
-
-  database('users').where('id', id)
-    .update(updateUsername, '*')
-    .then((update) => {
-      update ?
-        response.sendStatus(204)
-        :
-        response.sendStatus(404);
-    })
-    .catch(error => response.status(500).json({ error }));
-});
-
 app.delete('/api/v1/users/:id', (request, response) => {
   const { id } = request.params;
 
@@ -160,7 +139,6 @@ app.get('/api/v1/squads', (request, response) => {
 
 app.post('/api/v1/squads', (request, response) => {
   const newSquad = request.body;
-
   for (const requiredParameter of ['squad_name', 'user_id']) {
     if (!newSquad[requiredParameter]) {
       return response.status(422).json({
@@ -183,10 +161,9 @@ app.post('/api/v1/squads', (request, response) => {
             user_id: newSquad.user_id,
             squad_id: insertedSquad[0].id,
           }, '*')
-            .then(joinsObj => joinsObj)
+            .then(squad => response.status(201).json(squad))
             .catch(error => response.status(422).json(error));
         })
-        .then(squad => response.status(204).json(squad))
         .catch(error => response.status(500).json({ error }));
     })
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
@@ -198,7 +175,7 @@ app.get('/api/v1/squads/:squadid', (request, response) => {
   return database('squads').where('id', squadid).select()
     .then(async (squad) => {
       if (!squad.length) {
-        response.status(404).json({ error: `Could not find squad with id: ${squadid}` });
+        return response.status(404).json({ error: `Could not find squad with id: ${squadid}` });
       }
       const {
         id,
@@ -248,27 +225,6 @@ app.get('/api/v1/squads/:squadid', (request, response) => {
     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
 });
 
-app.patch('/api/v1/squads/:id', (request, response) => {
-  const { id } = request.params;
-  const updateSquadname = request.body;
-
-  if (!updateSquadname.squad_name) {
-    return response.status(422).json({
-      error: 'You must send only an object literal with the key squad_name',
-    });
-  }
-
-  database('squads').where('id', id)
-    .update(updateSquadname, '*')
-    .then((update) => {
-      update ?
-        response.sendStatus(204)
-        :
-        response.sendStatus(404);
-    })
-    .catch(error => response.status(500).json({ error }));
-});
-
 app.delete('/api/v1/squads/:id', (request, response) => {
   const { id } = request.params;
 
@@ -288,106 +244,8 @@ app.get('/api/v1/goals', (request, response) => {
     .catch(error => response.status(500).json({ error: `internal server error ${error}` }));
 });
 
-app.get('/api/v1/goals/:goalId', (request, response) => {
-  const { goalId } = request.params;
-
-  return database('goals').where('id', goalId).select()
-    .then(async (goal) => {
-      if (!goal.length) {
-        response.status(404).json({ error: `Could not find goal with id: ${goalId}` });
-      }
-      const {
-        id,
-        title,
-        description,
-        goal_time,
-        creator_id,
-        conversation_id,
-      } = goal[0];
-
-      const users = await database('users')
-        .join('users_goals', 'users_goals.user_id', '=', 'users.id')
-        .where('users_goals.goal_id', id)
-        .select('*')
-        .then((goalUsers) => {
-          return goalUsers.reduce((accu, user) => {
-            const goalUser = {
-              id: user.id,
-              user_name: user.user_name,
-              points: user.points,
-            };
-            return [...accu, goalUser];
-          }, []);
-        })
-        .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-
-      const conversation = await database('comments')
-        .where('conversation_id', conversation_id)
-        .select('*')
-        .then((userComments) => {
-          return userComments.reduce((accu, comment) => {
-            const userComment = {
-              id: comment.id,
-              body: comment.body,
-              timestamp: comment.created_at,
-            };
-            return [...accu, userComment];
-          }, []);
-        })
-        .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-
-      return response.status(200).json({
-        id,
-        title,
-        description,
-        goal_time,
-        creator_id,
-        conversation_id,
-        users,
-        conversation,
-      });
-    })
-    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-});
-
-app.patch('/api/v1/goals/:id', (request, response) => {
-  const { id } = request.params;
-  const updateGoal = request.body;
-
-  if (!(updateGoal.title || updateGoal.description ||
-    updateGoal.goal_time || updateGoal.goal_points)) {
-    return response.status(422).json({
-      error: 'You must send only an object literal with a key of title, body, goal_time, or goal_points',
-    });
-  }
-
-  database('goals').where('id', id)
-    .update(updateGoal, '*')
-    .then((update) => {
-      return update ?
-        response.sendStatus(204)
-        :
-        response.sendStatus(404);
-    })
-    .catch(error => response.status(500).json({ error }));
-});
-
-app.delete('/api/v1/goals/:id', (request, response) => {
-  const { id } = request.params;
-
-  database('goals').where('id', id).del()
-    .then((result) => {
-      result ?
-        response.sendStatus(204)
-        :
-        response.status(422).json({ error: `No goal with id ${id}` });
-    })
-    .catch(error => response.status(422).json(error));
-});
-
 app.post('/api/v1/goals', (request, response) => {
   const newGoal = request.body;
-
   for (const requiredParameter of ['title', 'description', 'goal_time', 'goal_points', 'user_id']) {
     if (!newGoal[requiredParameter]) {
       return response.status(422).json({
@@ -414,26 +272,86 @@ app.post('/api/v1/goals', (request, response) => {
             user_id: newGoal.user_id,
             goal_id: insertedGoal[0].id,
           }, '*')
-            .then(joinsObj => joinsObj)
+            .then(goal => response.status(201).json(goal))
             .catch(error => response.status(422).json(error));
         })
-        .then(goal => response.status(204).json(goal))
         .catch(error => response.status(500).json({ error }));
     })
     .catch(error => response.status(500).json({ error: `Error creating new conversation: ${error}` }));
 });
 
-// app.get('/api/v1/users/:id/goals-created', (request, response) => {
-//   const userId = request.params.id;
-//
-//   database('goals').where('creator_id', userId).select()
-//     .then((user) => {
-//       user.length ? response.status(200).json(user)
-//         :
-//         response.status(404).json({ error: `Could not find user with id: ${userId}` });
-//     })
-//     .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-// });
+app.get('/api/v1/goals/:goalId', (request, response) => {
+  const { goalId } = request.params;
+
+  return database('goals').where('id', goalId).select()
+    .then(async (goal) => {
+      if (!goal.length) {
+        return response.status(404).json({ error: `Could not find goal with id: ${goalId}` });
+      }
+      const {
+        id,
+        title,
+        description,
+        goal_time,
+        creator_id,
+        conversation_id,
+      } = goal[0];
+
+      const users = await database('users')
+        .join('users_goals', 'users_goals.user_id', '=', 'users.id')
+        .where('users_goals.goal_id', id)
+        .select('*')
+        .then((goalUsers) => {
+          return goalUsers.reduce((accu, user) => {
+            const goalUser = {
+              id: user.id,
+              user_name: user.user_name,
+              points: user.points,
+            };
+            return [...accu, goalUser];
+          }, []);
+        });
+
+      const conversation = await database('comments')
+        .where('conversation_id', conversation_id)
+        .select('*')
+        .then((userComments) => {
+          return userComments.reduce((accu, comment) => {
+            const userComment = {
+              id: comment.id,
+              body: comment.body,
+              timestamp: comment.created_at,
+            };
+            return [...accu, userComment];
+          }, []);
+        });
+
+      return response.status(200).json({
+        id,
+        title,
+        description,
+        goal_time,
+        creator_id,
+        conversation_id,
+        users,
+        conversation,
+      });
+    })
+    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
+});
+
+app.delete('/api/v1/goals/:id', (request, response) => {
+  const { id } = request.params;
+
+  database('goals').where('id', id).del()
+    .then((result) => {
+      result ?
+        response.sendStatus(204)
+        :
+        response.status(422).json({ error: `No goal with id ${id}` });
+    })
+    .catch(error => response.status(422).json(error));
+});
 
 app.post('/api/v1/comments', (request, response) => {
   const newComment = request.body;
@@ -450,27 +368,6 @@ app.post('/api/v1/comments', (request, response) => {
     .catch(error => response.status(500).json({ error }));
 });
 
-app.patch('/api/v1/comments/:id', (request, response) => {
-  const { id } = request.params;
-  const updateComment = request.body;
-
-  if (!updateComment.body) {
-    return response.status(422).json({
-      error: 'You must send only an object literal with the key body',
-    });
-  }
-
-  database('comments').where('id', id)
-    .update(updateComment, '*')
-    .then((update) => {
-      return update ?
-        response.sendStatus(204)
-        :
-        response.sendStatus(404);
-    })
-    .catch(error => response.status(500).json({ error }));
-});
-
 app.delete('/api/v1/comments/:id', (request, response) => {
   const { id } = request.params;
 
@@ -484,71 +381,6 @@ app.delete('/api/v1/comments/:id', (request, response) => {
     .catch(error => response.status(422).json(error));
 });
 
-// GET all sqauds for one user
-app.get('/api/v1/users/:userId/squads', (request, response) => {
-  const { userId } = request.params;
-
-  database('squads')
-    .join('users_squads', 'users_squads.squad_id', '=', 'squads.id')
-    .where('users_squads.user_id', userId)
-    .select('*')
-    .then((users) => {
-      users.length ? response.status(200).json(users)
-        :
-        response.status(404).json({ error: `Could not find squad with id: ${squadId}` });
-    })
-    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-});
-
-// GET all goals for one users
-app.get('/api/v1/users/:id/goals', (request, response) => {
-  const { id } = request.params;
-
-  database('goals')
-    .join('users_goals', 'users_goals.goal_id', '=', 'goals.id')
-    .where('users_goals.user_id', id)
-    .select('*')
-    .then((goals) => {
-      goals.length ? response.status(200).json(goals)
-        :
-        response.status(404).json({ error: `Could not find a goals for user with id${id}` });
-    })
-    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-});
-
-// GET all users in one squad
-app.get('/api/v1/squads/:squadId/users', (request, response) => {
-  const { squadId } = request.params;
-
-  database('users')
-    .join('users_squads', 'users_squads.user_id', '=', 'users.id')
-    .where('users_squads.squad_id', squadId)
-    .select('*')
-    .then((users) => {
-      users.length ? response.status(200).json(users)
-        :
-        response.status(404).json({ error: `Could not find squad with id: ${squadId}` });
-    })
-    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-});
-
-// GET all users part of a goal
-app.get('/api/v1/goals/:goalId/users', (request, response) => {
-  const { goalId } = request.params;
-
-  database('users')
-    .join('users_goals', 'users_goals.user_id', '=', 'users.id')
-    .where('users_goals.goal_id', goalId)
-    .select('*')
-    .then((users) => {
-      users.length ? response.status(200).json(users)
-        :
-        response.status(404).json({ error: `Could not find goal with id: ${goalId}` });
-    })
-    .catch(error => response.status(500).json({ error: `Internal server error ${error}` }));
-});
-
-
 // GET user_goal confirmation
 app.get('/api/v1/users/:userId/goals/:goalId', (request, response) => {
   const { userId, goalId } = request.params;
@@ -556,7 +388,7 @@ app.get('/api/v1/users/:userId/goals/:goalId', (request, response) => {
     .select('*')
     .then(user =>
       response.status(200).json(user))
-    .catch(error => response.status(422).json(error));
+    .catch(error => response.status(404).json(error));
 });
 
 // POST user to a goal
