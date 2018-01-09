@@ -3,12 +3,13 @@
   box-sizing: border-box;
   height: 100%; }
 
+.App {
+  background-image: url(./Components/Assets/sunshine.jpg);
+  background-size: cover; }
+
 .dashboard-container {
-  background-image: url(./Components/Assets/up-arrows.jpg);
-  background-size: cover;
   display: flex;
-  justify-content: center;
-  overflow: scroll; }
+  justify-content: center; }
 
 .content-container {
   width: 65%; }
@@ -49,7 +50,7 @@
   width: 100%; }
 
 .dashboard-body-info {
-  background-color: #22affe;
+  background-color: #57a2cd;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -78,7 +79,7 @@ h2 {
   padding: 10px;
   text-decoration: none;
   border: none;
-  background-color: #001197;
+  background-color: #637F35;
   color: #d2d3d3;
   box-shadow: 2px 2px 3px 0px #282828;
   height: auto; }
@@ -87,7 +88,7 @@ h2 {
   height: auto; }
 
 .conversation-container {
-  background-color: #22affe;
+  background-color: #57a2cd;
   margin: auto;
   height: 40%;
   width: 80%; }

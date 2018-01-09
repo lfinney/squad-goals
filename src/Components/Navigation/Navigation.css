@@ -1,5 +1,5 @@
 .navigation {
-  background-color: #0e5bd7;
+  background: rgba(87, 162, 205, 0.05);
   height: 100px;
   display: flex;
   flex-direction: row;
@@ -11,7 +11,7 @@
 
 .navigation h1 {
   align-items: center;
-  color: #d2d3d3;
+  color: #585858;
   display: flex;
   font-size: 2.5em;
   justify-content: center;

@@ -1,5 +1,5 @@
 .welcome {
-  background-image: url(./Components/Assets/up-arrows.jpg);
+  background-image: url(./Components/Assets/sunshine.jpg);
   background-size: cover; }
 
 .welcome-form {
@@ -10,7 +10,7 @@
 .welcome-form input {
   border-radius: 5px;
   margin: 25px auto 10px auto;
-  color: #0e5bd7;
+  color: #3782AD;
   font-weight: lighter;
   font-size: 1em;
   width: 45%;

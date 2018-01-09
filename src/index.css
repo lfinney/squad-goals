@@ -3,12 +3,13 @@
   box-sizing: border-box;
   height: 100%; }
 
+.App {
+  background-image: url(./Components/Assets/sunshine.jpg);
+  background-size: cover; }
+
 .dashboard-container {
-  background-image: url(./Components/Assets/up-arrows.jpg);
-  background-size: cover;
   display: flex;
-  justify-content: center;
-  overflow: scroll; }
+  justify-content: center; }
 
 .content-container {
   width: 65%; }
@@ -49,7 +50,7 @@
   width: 100%; }
 
 .dashboard-body-info {
-  background-color: #22affe;
+  background-color: #57a2cd;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -78,7 +79,7 @@ h2 {
   padding: 10px;
   text-decoration: none;
   border: none;
-  background-color: #001197;
+  background-color: #637F35;
   color: #d2d3d3;
   box-shadow: 2px 2px 3px 0px #282828;
   height: auto; }
@@ -87,7 +88,7 @@ h2 {
   height: auto; }
 
 .conversation-container {
-  background-color: #22affe;
+  background-color: #57a2cd;
   margin: auto;
   height: 40%;
   width: 80%; }
@@ -96,7 +97,7 @@ h2 {
   height: auto; }
 
 .navigation {
-  background-color: #0e5bd7;
+  background: rgba(87, 162, 205, 0.05);
   height: 100px;
   display: flex;
   flex-direction: row;
@@ -108,7 +109,7 @@ h2 {
 
 .navigation h1 {
   align-items: center;
-  color: #d2d3d3;
+  color: #585858;
   display: flex;
   font-size: 2.5em;
   justify-content: center;
@@ -133,7 +134,7 @@ h2 {
   margin-right: 40px; }
 
 .welcome {
-  background-image: url(./Components/Assets/up-arrows.jpg);
+  background-image: url(./Components/Assets/sunshine.jpg);
   background-size: cover; }
 
 .welcome-form {
@@ -144,7 +145,7 @@ h2 {
 .welcome-form input {
   border-radius: 5px;
   margin: 25px auto 10px auto;
-  color: #0e5bd7;
+  color: #3782AD;
   font-weight: lighter;
   font-size: 1em;
   width: 45%;
@@ -162,7 +163,7 @@ h2 {
 
 .dashboard-header {
   align-items: center;
-  background-color: #0e5bd7;
+  background-color: #3782AD;
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   display: flex;
@@ -214,7 +215,7 @@ h3 a {
   align-items: center; }
 
 .squads-body {
-  background-color: #0e5bd7;
+  background-color: #3782AD;
   box-shadow: 2px 2px 4px #282828;
   border-radius: 5px;
   color: #d2d3d3;
@@ -236,7 +237,7 @@ h3 a {
   width: 100%; }
 
 .squads-body input {
-  background-color: #22affe;
+  background-color: #57a2cd;
   border: none;
   border-radius: 3px;
   margin-bottom: 30px; }
@@ -255,7 +256,7 @@ h3 a {
 
 .goal-body {
   text-align: center;
-  background-color: #0e5bd7;
+  background-color: #3782AD;
   box-shadow: 2px 2px 4px black;
   border-radius: 5px;
   color: #fff;
@@ -296,7 +297,7 @@ h3 a {
   margin: 25px; }
 
 .create-squads {
-  background-image: url(./Components/Assets/up-arrows.jpg);
+  background-image: url(./Components/Assets/sunshine.jpg);
   background-size: cover; }
 
 .create-squads-body {
@@ -397,7 +398,7 @@ h1.goal-body-title {
 
 .comment {
   margin: 10px 20px;
-  height: 250px;
+  height: auto;
   width: 95%; }
 
 .comment p {

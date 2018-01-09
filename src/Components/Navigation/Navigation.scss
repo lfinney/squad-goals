@@ -1,7 +1,7 @@
 @import '../../variables.scss';
 
 .navigation {
-  background-color: $main;
+  background: rgba(87, 162, 205, .05);
   height: 100px;
   display: flex;
   flex-direction: row;
@@ -15,7 +15,7 @@
 
 .navigation h1 {
   align-items: center;
-  color: $white;
+  color: $darkgrey;
   display: flex;
   font-size: 2.5em;
   justify-content: center;
