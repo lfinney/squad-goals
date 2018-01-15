@@ -12,9 +12,13 @@ accountable to the goals they set.
 - Frontend - React frontend via the create-react-app npm
 
 ## Backend
-Schema designed using dbdesigner.net:
-![squad-goals-schema](https://user-images.githubusercontent.com/22566946/34962025-443aefc2-f9ff-11e7-909e-b5737d83fcfb.png)
+- Schema designed using dbdesigner.net:
+![squad-goals-schema](https://user-images.githubusercontent.com/22566946/34962195-f2f2d8ea-f9ff-11e7-89d9-fa3c196cac35.png)
+- Uses Google Firebase for OAuth as well as leveraging a user's Firebase id to retrieve and serve up user specific information while using the site.
 
 ## Frontend
+- Frontend designed to be mobile-first
+- React-Router used to facilitate user navigation
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
